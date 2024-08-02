@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex property</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .contenar{
+            width: 80%;
+            height: 80vh;
+            margin: 40px auto;
+            border: 2px solid red;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            background: linear-gradient(45deg,rgba(0, 128, 0, 0.623),rgba(0, 0, 255, 0.493),gray);
+        }
+        .item{
+            height: 100px;
+            width: 100px;
+            border: 2px solid black;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+        }
+        .box1{
+            background-color: rgb(39, 71, 71);
+        }
+        .box2{
+            background-color: rgb(52, 70, 42);
+        }
+        .box3{
+            background-color: rgb(73, 52, 40);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contenar">
+        <div class="item box1">Box1</div>
+        <div class="item box2">box2</div>
+        <div class="item box3">box3</div>
+    </div>
+</body>
+
+</html>

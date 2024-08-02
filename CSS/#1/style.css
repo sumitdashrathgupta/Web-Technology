@@ -1,0 +1,24 @@
+
+.first::first-letter {
+    color: blue;
+}
+
+.para::first-line {
+    background-image: linear-gradient(45deg, blue, red);
+    color: white;
+    font-weight: 600;
+}
+
+h2::after {
+    content: " sumit gupta";
+    color: green;
+}
+
+.para::selection {
+    background-color: black;
+    color: white;
+}
+
+ul li::marker {
+    color: orange;
+}
