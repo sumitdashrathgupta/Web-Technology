@@ -151,7 +151,7 @@
 
     & .four-section .material-symbols-outlined {
         position: relative;
-        left: 166%;
+        left: 160%;
         color: white;
         background-color: #ff385c;
         padding: 10px;
@@ -217,7 +217,9 @@
         width: 100%;
         aspect-ratio: 1;
         border-radius: 20px;
+        object-fit: cover;
     }
+   
 
     & .card p {
         color: rgba(100, 100, 100, 0.725);

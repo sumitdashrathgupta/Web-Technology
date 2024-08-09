@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position property</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            position: relative;
+        }
+
+        header {
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            text-align: center;
+            background-color: aquamarine;
+        }
+
+        nav ul {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            padding: 20px 0;
+            background-color: bisque;
+            list-style: none;
+
+        }
+
+        ul li a {
+            text-decoration: none;
+        }
+
+        .contenar {
+            width: 50%;
+            height: 60vh;
+            margin: 2% auto;
+            border: 1px solid black;
+            position: relative;
+            z-index: 0;
+        }
+
+        .item {
+            width: 100px;
+            height: 100px;
+            border: 1px solid greenyellow;
+        }
+
+        .d1 {
+            background: rebeccapurple;
+            position: relative;
+            left: 100px;
+        }
+
+        .d2 {
+            background-color: gray;
+            position: absolute;
+            right: 0;
+        }
+
+        .d3 {
+            background-color: aqua;
+            position: fixed;
+            bottom: 5%;
+            right: 5%;
+        }
+
+        .section {
+            width: 60%;
+            margin: auto;
+        }
+
+        p {
+            line-height: 20px;
+            text-align: justify;
+        }
+
+
+
+        .displat-product {
+            position: absolute;
+            top: 11%;
+            left: 29%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            border: 1px solid black;
+            width: 140px;
+            height: 150px;
+            z-index: 1;
+            /* display: none; */
+           
+
+        }
+
+         ul li a:hover + .displat-product {
+            display: block;
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Heading</h1>
+    </header>
+    <nav class="navbar">
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="" class="sys">Service</a></li>
+            <div class="displat-product">
+                <ul>
+                    <li>System</li>
+                    <li>Product</li>
+                    <li>Apple</li>
+                    <li>Banana</li>
+                </ul>
+            </div>
+            <li><a href="">Blog</a></li>
+            <li><a href="">About</a></li>
+        </ul>
+    </nav>
+
+    <div class="contenar">
+        <div class="item d1">1</div>
+        <div class="item d2">2</div>
+        <div class="item d3">3</div>
+    </div>
+    <div class="section">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quo at consequatur asperiores ab placeat,
+            aliquam numquam ex. Laboriosam nisi suscipit doloremque quidem, voluptas, fugiat dicta deserunt, quod velit
+            minima tempore vero. Distinctio hic rem illum expedita repudiandae officia perferendis, nesciunt corrupti
+            maxime necessitatibus nulla animi ducimus nihil quo amet iste a, ea, totam tempore provident quam pariatur.
+            Eius iure natus dicta laudantium reiciendis tempore adipisci nesciunt minima at consequuntur cupiditate eum
+            voluptatem iste ipsam, rerum iusto eaque ipsa est odit! Ipsam illo ipsa ducimus natus, facere ea ex aperiam
+            doloribus fugiat odio est quia cumque saepe repellat expedita iste. Commodi impedit qui corporis hic error
+            ipsam illo nesciunt velit veritatis at quos, delectus maiores nulla repellendus, placeat laborum explicabo
+            harum architecto. Autem illo, dolore qui ea recusandae corporis repudiandae officiis velit explicabo id et
+            quas vel commodi facilis quisquam excepturi tenetur ex esse ratione! Tenetur, magnam eum veritatis eos nulla
+            nihil explicabo reprehenderit magni omnis cupiditate reiciendis cum, voluptate a eius. Incidunt aliquid,
+            unde fugit eligendi iste obcaecati quia amet sequi architecto possimus quaerat pariatur iure ipsa dolore
+            sint placeat cupiditate nesciunt rerum doloribus ea nam voluptates mollitia officia. Sit, quisquam ipsa.
+            Eaque neque, perspiciatis culpa consectetur ex consequatur aliquam corporis dignissimos voluptates eum
+            deleniti. Ipsam voluptatum ab optio laborum modi. Tempora provident nostrum consequatur neque molestiae
+            totam veniam? Reiciendis ducimus et minima eius nam odit impedit veritatis autem ipsa, vel libero minus
+            tenetur dolore ratione possimus quaerat cum corporis, modi excepturi quis. Dolorum laudantium, sequi itaque
+            dolor ex quae labore asperiores porro veritatis earum voluptatem omnis! Provident quasi beatae quod
+            aspernatur, corrupti ad qui consequatur distinctio sit dolor excepturi debitis impedit officia. Qui hic,
+            fuga et officiis ipsa nemo suscipit aliquid enim commodi optio rerum inventore aliquam distinctio sint
+            molestiae porro tenetur perferendis numquam obcaecati expedita eos laudantium provident neque. Maiores
+            voluptates nesciunt nemo atque repellendus mollitia, officiis quas corrupti deleniti sequi hic! Perspiciatis
+            sunt ipsam unde id, ipsa aut reprehenderit magnam libero eligendi non, sint quidem dolore officiis autem
+            suscipit fugit quaerat porro provident corrupti doloremque ratione vel! Numquam, accusantium unde esse
+            tenetur accusamus illo rem dignissimos ipsa cumque! Eligendi, laudantium dignissimos? Repudiandae hic, sit
+            ratione fuga veniam reiciendis aperiam voluptas officia perspiciatis sint praesentium. Voluptas assumenda
+            reiciendis sapiente commodi officiis amet sequi possimus velit ea, vero sint, nisi tempora quo enim
+            blanditiis dicta at numquam libero! Magnam fuga culpa quam perferendis non? Voluptas fugit dolorum
+            architecto accusantium ducimus aspernatur corrupti quibusdam quod rerum delectus, dolor nam ipsa recusandae
+            sunt, tempora iure officia. Incidunt odit, natus reiciendis veniam, in ex blanditiis sequi iusto enim dolore
+            aspernatur nam fuga adipisci velit praesentium quo? Corporis, iusto delectus sint necessitatibus
+            consequuntur accusamus dolorum sit omnis, assumenda odio, beatae impedit! Doloremque accusamus tempore modi
+            nam reiciendis rerum, quaerat delectus inventore pariatur. Adipisci, deleniti provident? Similique
+            repellendus quasi ducimus iusto laudantium excepturi quibusdam praesentium, mollitia delectus vitae maxime
+            veniam officia cumque possimus aperiam aspernatur! A tempora inventore facilis. Aperiam laboriosam rem
+            cumque perferendis culpa beatae architecto recusandae ad fugiat. Repellendus, sit architecto.</p>
+    </div>
+</body>
+
+</html>
