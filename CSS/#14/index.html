@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>or for login page</title>
+    <style>
+        .term {
+            width: 30%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .or::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            height: 1px;
+            width: 100%;
+            background-color: aqua;
+            z-index: 0;
+        }
+        span{
+            font-size: 1.2em;
+            line-height: 1rem;
+            background-color: rgb(248, 252, 255);
+            z-index: 1;
+            padding: 5px;
+        
+        
+        }
+    </style>
+</head>
+
+<body>
+    <div class="term">
+        <span class="or">or</span>
+    </div>
+</body>
+
+</html>
