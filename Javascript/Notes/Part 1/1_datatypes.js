@@ -43,7 +43,7 @@
 //! ============================
 //! Data Types Interview Questions
 //! ============================
-
+ 
 //? 1: What is the difference between null and undefined in JavaScript❓
 
 // null: Imagine an Empty Box
@@ -151,7 +151,7 @@
 // console.log(parseFloat("077"));
 // // 77 (leading zeros are ignored)
 // console.log(parseInt("1.9"));
-// +console.log(parseFloat("1.9"));
+// +console.log(parseFloat("1.9"));b
 // 1 (decimal part is truncated)
 
 //! When we will not get an Output
