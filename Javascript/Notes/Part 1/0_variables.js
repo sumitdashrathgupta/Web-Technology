@@ -28,3 +28,4 @@ var $cityName = "New York";
 
 var my@Email = "john@example.com";
 //? Explanation: This is not a valid variable name. It includes the special character '@', which is not allowed in JavaScript variable names. Only letters, numbers, underscores, and dollar signs are allowed.
+
