@@ -1,4 +1,10 @@
 // class and contructor
+// 1) Using class and constructor
+//2)using constructor function
+//3) object
+//object constructor
+
+
 
 let a = 10
 var b = 20;
