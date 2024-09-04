@@ -28,14 +28,27 @@
 
 
 // let fruits = ["apple", "orange", "mango", "grapes", "banana"];
-// let fruits = "sumit"
-for (const element of fruits) {
-    console.log(element);
-    // return element;
-}
+// for (const element of fruits) {
+    //     console.log(element);
+    //     // return element;
+    // }
+    
+// for (const key in fruits) {
+//     console.log(key);
+//     return key;
+// }
 
-for (const key in fruits) {
-    console.log(key);
-    // return key;
-}
 
+let fruits = "sumit"
+// for (let i = 0; i < fruits.length; i++) {
+//         console.log(fruits[i]);
+//     }
+    
+// const myForEachArr = fruits.forEach((curElem, index, arr) => {
+//   return `${curElem} ${index}`;
+//     console.log(arr);
+// });
+// console.log(myForEachArr);
+
+
+    
