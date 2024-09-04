@@ -14,4 +14,28 @@
 
 
 
+const obj = {
+    name: "sumit",
+    last: "gupta",
+    rollno: 235,
+    bro: {
+        key: "value",
+        int: 345
+    }
+}
+
+console.log(obj);
+// console.log(obj.name);
+// obj.name = "amit"
+// console.log(obj);
+// console.log(obj);
+// Object.seal(obj);
+// Object.freeze(obj)
+// obj.name = "amit"
+// console.log(obj);
+// delete obj.bro
+// console.log(obj);
+
+
+
 
