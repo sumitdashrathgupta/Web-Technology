@@ -33,7 +33,7 @@ console.log(x);*/
 console.log(Math.random());
 let randomans = Math.random() * (9999 - 1000) + 1000;
 console.log(randomans);
-console.log(Math.trunc(randomans));
+// console.log(Math.trunc(randomans));
 
 
 
