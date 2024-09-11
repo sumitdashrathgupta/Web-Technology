@@ -70,8 +70,8 @@
 //* ====================================
 
 //! What will be the Output 🤔💭
-// var result = "hello" / 2 
-// var result = "hello" % 2;
+// var result = "hello" / 2 ❓
+// var result = "hello" / 2;
 // console.log(result);
 
 //* ===================================
@@ -80,7 +80,6 @@
 
 //! var result = 0.1 + 0.2 ❓ 🤔💭
 // var result = 0.1 + 0.2;
-// console.log(result);
 // console.log(result.toFixed(2));
 // when working with floating-point numbers in JavaScript, consider using methods like toFixed() when precise decimal representation is necessary.
 

@@ -241,6 +241,7 @@ const isPalindrome = (str) => {
   //   } else {
   //     return false;
   //   }
+
   return str === reverse ? true : false;
 };
 

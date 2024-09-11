@@ -107,7 +107,7 @@
 
 //? 8: To check if a non-empty string is truthy or falsy in JavaScript, we can directly use if statement.
 
-// var myName = 0;
+// var myName = -5;
 // if (true) {
 //   console.log("this is truthy value");
 // } else {
@@ -155,9 +155,9 @@
 // 1 (decimal part is truncated)
 
 //! When we will not get an Output
-console.log(parseInt("&123"));
-console.log(parseInt("-123"));
-console.log(parseInt("xyz"));
+// console.log(parseInt("&123"));
+// console.log(parseInt("-123"));
+// console.log(parseInt("xyz"));
 // NaN (input can't be converted to an integer)
 
 //? What is the purpose of the NaN value in JavaScript❓
