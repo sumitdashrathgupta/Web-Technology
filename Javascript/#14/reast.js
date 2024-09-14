@@ -34,7 +34,7 @@ console.log(x);
 console.log(res);*/
 
 //With object
-let function = "system"
+
 const obj = {
     name1: "sumit",
     rollno: 245,
@@ -44,7 +44,7 @@ const obj = {
     ok: null
 }
 console.log(obj);
-//To used pass key of obje
+//To used pass key of obje  
 let { name1, rollno, function:Id, ...work } = obj
 console.log(name1, rollno);
 console.log(Id);
