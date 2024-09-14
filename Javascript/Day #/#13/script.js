@@ -22,7 +22,6 @@ console.log(str);
 
 // String method - split() => conver to string to array
 
-let a = "sumit"
 // let b = a.split("")
 // console.log(a);
 // console.log(b);
@@ -37,9 +36,12 @@ let a = "sumit"
 // let x= a.split("").reverse().join("");
 // console.log(x);
 
-// let y=a.split("").reduceRight((acc,cv)=>acc+cv,"")
-// console.log(y);
+let a = "sumit"
+let y=a.split("").reduceRight((acc,cv)=>acc+cv,"")
+console.log(y);
 
-
+let x="gupta"
+let d=x.consolesplit("").reduceRight((acc,cv)=>acc+cv,"")
+console.log(d);
 
 
