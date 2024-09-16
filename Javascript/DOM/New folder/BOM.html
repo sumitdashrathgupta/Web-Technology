@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom or Bom</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        .conternar {
+            width: 50%;
+            height: 100%;
+            border: 2px solid white;
+            margin: 1% 5%;
+            padding: 2%;
+        }
+
+        h2 {
+            padding: 2%;
+            color: white;
+            font-size: 2em;
+        }
+
+        button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            background-color: rgba(255, 255, 0, 0.8);
+            transition: .2s;
+            margin:2% 5%;
+            /* margin-right: 5%; */
+        }
+
+        button:hover {
+            cursor: pointer;
+            background-color: rgba(0, 255, 55, 0.8);
+            box-shadow: 5px 5px 6px rgba(255, 234, 234, 0.37);
+            outline: 1px solid rgba(255, 251, 251, 0.74);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="conternar">
+        <h2>Js window obj</h2>
+        <!-- <button onclick="window.open('https://github.com/sumitdashrathgupta')">Navgation</button> -->
+        <button onclick="window.open('https://sumitg-dev.netlify.app/')"  target="_blank">Sumit.dev</button>
+        <button onclick="window.open('https://www.youtube.com/watch?v=13gLB6hDHR8&list=PLwGdqUZWnOp0AZ-7h2b2CwT7eJPgQQ6jV&index=5')">Sumit.dev</button>
+        <!-- <button>Navgation</button> -->
+        <h2>JS history Obj</h2>
+        <button onclick="history.back()">Navgation</button>
+        <button onclick="history.forward()">Navgation</button>
+        <h2>JS locaton Obj</h2>
+        <button onclick="window.location.reload()">reload</button>
+        <button onclick="location.replace('https://github.com/sumitdashrathgupta')">Navgation</button>
+        <button onclick="location.assign('https://www.wikipedia.org/')">Navgation</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
