@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .contenar {
+            margin-top: 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            & h2 {
+                font-size: 2em;
+                font-weight: 600;
+            }
+
+            & input {
+                border-radius: 5px;
+                border: none;
+                outline: 1px solid rgba(128, 128, 128, 0.493);
+                margin: 10px 0;
+                padding: 5px;
+                font-size: 1.1em;
+                text-align: center;
+            }
+
+            & input:hover {
+                outline: 1px solid black;
+            }
+        }
+
+        .btn {
+            padding: 8px 10px;
+            margin-left: 5px;
+            border-radius: 5px;
+            outline: 1px solid rgba(42, 73, 61, 0.308);
+            border: none;
+        }
+
+        .btn:focus {
+            outline: 1px solid green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contenar">
+        <h2>CRUD JS DOM</h2>
+        <div class="input-content">
+            <input type="text" id="input-fild" placeholder="Enter Item">
+            <button class="btn">Click</button>
+        </div>
+        <div class="dolist"></div>
+    </div>
+    <script>
+        let inputfild = document.querySelector('#input-fild');
+        let buttonclick = document.querySelector('.btn');
+
+        function addwork(){
+            console.log(inputfild.value);
+
+        }
+
+        buttonclick.addEventListener('click', () => {
+            addwork();
+        }
+    )
+    </script>
+</body>
+
+</html>
