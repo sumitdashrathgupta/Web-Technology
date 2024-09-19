@@ -69,20 +69,13 @@
 // sumit event will return the event object as  event .
 
 
-const forme = document.getElementsByClassName("form-control");
-const user = document.getElementById('username');
-const pass = document.getElementById('password');
+// const forme = document.getElementsByClassName("form-control");
+// const user = document.getElementById('username');
+// const pass = document.getElementById('password');
 
-forme.addEventListener("submit", function (e) {
-    e.prevenDefault();
-    console.log(user.value);
-    console.log(pass.value);
-});
-
-
-
-
-
-
-
+// forme.addEventListener("submit", function (e) {
+//     e.prevenDefault();
+//     console.log(user.value);
+//     console.log(pass.value);
+// });
 

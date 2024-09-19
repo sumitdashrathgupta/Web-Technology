@@ -65,16 +65,19 @@
     <script>
         let inputfild = document.querySelector('#input-fild');
         let buttonclick = document.querySelector('.btn');
-
-        function addwork(){
-            console.log(inputfild.value);
-
+        let listp = document.querySelector('.dolist');
+        function addwork() {
+            let listEle = document.createElement('p');
+            listEle.textContent = inputfild.value;
+            // console.log(listEle);
+            listp.append(listEle);
+            inputfild.value = "";
         }
 
         buttonclick.addEventListener('click', () => {
             addwork();
         }
-    )
+        )
     </script>
 </body>
 

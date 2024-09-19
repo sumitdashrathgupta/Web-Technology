@@ -17,14 +17,66 @@
             <nav class="navbar">
                 <ul>
                     <li><a href="">Home</a></li>
-                    <li><a href="">Services</a></li>
-                    <li><a href="">Partners</a></li>
+                    <li class="first"><a href="">Services</a></li>
+                    <ul class="dropdown-manu">
+                        <li>Software Testing (TAAS)</li>
+                        <li>Software Development</li>
+                        <li>Skills Enhancement</li>
+                        <li>IT Consulting</li>
+                        <li>Crowd Testing</li>
+                    </ul>
+                    <li class="first1"><a href="">Partners</a></li>
+                    <ul class="dropdown-manu1">
+                        <li>Home</li>
+                    </ul>
                     <li><a href="">Articles</a></li>
                     <button class="btn">Get In Touch</button>
                 </ul>
             </nav>
         </div>
     </header>
+    <script>
+        let serv = document.querySelector('.first');
+        let serv1 = document.querySelector('.first1');
+        let manu = document.querySelector('.dropdown-manu');
+        let manu1 = document.querySelector('.dropdown-manu1');
+        serv.addEventListener('mouseover', (e) => {
+            console.log(e);
+            manu.style.visibility = 'visible'
+        })
+        serv.addEventListener('mouseout', (e) => {
+            manu.style.visibility = 'hidden'
+        })
+        manu.addEventListener('mouseover', (e) => {
+            console.log(e);
+            manu.style.visibility = 'visible'
+        })
+        manu.addEventListener('mouseout', (e) => {
+            console.log(e);
+            manu.style.visibility = 'hidden'
+        })
+
+        serv1.addEventListener('mouseover', (e) => {
+            console.log(e);
+            manu1.style.visibility = 'visible'
+        })
+
+        serv1.addEventListener('mouseout', (e) => {
+            console.log(e);
+            manu1.style.visibility = 'hidden'
+        })
+
+        manu1.addEventListener('mouseover', (e) => {
+            console.log(e);
+            manu1.style.visibility = 'visible'
+        })
+        manu1.addEventListener('mouseout', (e) => {
+            console.log(e);
+            manu1.style.visibility = 'hidden'
+        })
+
+
+    </script>
 </body>
 
 </html>

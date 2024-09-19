@@ -9,7 +9,7 @@ header {
     width: 100%;
     height: 100%;
     background-color: #ffffff;
-   
+
 }
 
 .header-contenar {
@@ -18,12 +18,15 @@ header {
     justify-content: space-around;
     padding: 25px 45px;
 }
-body{
+
+body {
     background-color: rgba(128, 128, 128, 0.204);
 }
-.logo img{
+
+.logo img {
     padding-right: 600px;
 }
+
 .navbar ul {
     display: flex;
     align-items: center;
@@ -47,6 +50,63 @@ ul li a {
 
 ul li a:hover {
     color: #f27f3d;
+}
+
+.dropdown-manu1 {
+    position: absolute;
+    top: 8%;
+    left: 72%;
+    background-color: #ffffff;
+    padding: 15px 20px;
+    /* border-radius: 10px; */
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    visibility: hidden;
+
+    & li {
+        font-size: 1.2em;
+        font-weight: 600;
+        width: 100%;
+        /* transition: .3s ease; */
+    }
+
+    & li:hover {
+        color: #f27f3d;
+    }
+}
+
+.dropdown-manu {
+    position: absolute;
+    top: 9%;
+    left: 61%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    padding: 10px 5px;
+    border-radius: 10px;
+    height: 250px;
+    visibility: hidden;
+
+    & li:first-child {
+        width: 99%;
+        font-size: 1.2em;
+        font-weight: 600;
+    }
+
+    & li {
+        font-size: 1.2em;
+        font-weight: 600;
+        width: 100%;
+        padding: 10px 5px;
+        /* transition: .3s ease; */
+    }
+
+    & li:hover {
+        cursor: pointer;
+        color: #f27f3d;
+    }
 }
 
 .btn {
