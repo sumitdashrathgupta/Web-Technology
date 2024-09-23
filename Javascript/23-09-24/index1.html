@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage & session Storage</title>
+</head>
+
+<body>
+    <script>
+        //key value pair in store
+        //storage in brower
+        // This property presont inside window
+
+
+        // setItem(key,value)
+        // getItem(key)
+        // removeItem(key)
+        // clear()
+
+        // console.log(window.localStorage);
+        // console.log(window.sessionStorage);
+        localStorage.setItem("name", "sumit")
+        localStorage.setItem("id", 568)
+        localStorage.setItem("skill", ['java', 'javascript'])
+
+        let o = {
+            doorno: 666, pincode: 559779, location: "thane"
+        }
+        localStorage.setItem('address', JSON.stringify(o))
+
+        let num = ['java', 'sql']
+        console.log(num.toString());
+
+        let id=localStorage.getItem("id")
+        console.log(id);
+
+        let skill=localStorage.getItem("skill")
+        console.log(skill.split(","));
+
+        let address=localStorage.getItem("address")
+        console.log(JSON.parse(address));
+
+        localStorage.removeItem("id")
+        localStorage.clear()
+
+
+
+        sessionStorage.setItem("name","sumit")
+        sessionStorage.setItem("id",77)
+        console.log(sessionStorage.getItem("name"));
+    </script>
+</body>
+
+</html>
