@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object copy - shall or deep copy</title>
+</head>
+
+<body>
+    <!-- How to mack the copy of on object -->
+    <!-- 1)Shallo copy
+         2)Deep copy -->
+
+    <!-- Shallo copy => 1)by copy object ref..,2)using object assign(),3)spread opetor ,4)for in loop
+        Deep copy   => 1)structure clone() 2)stringfy and parse -->
+
+    <script>
+        let std = {
+            name: "sumit",
+            id: 6465,
+            skill: ['java', 'sql'],
+            address: {
+                pincode: 565667,
+                location: 'kalwa'
+            }
+        }
+
+        let copy = std;
+        std.id = 56
+        console.log(copy);
+
+        //By coping the object ref:
+        // let cop=std
+        // std.id=900
+        // console.log(copy);
+
+        // using object.assign()
+        let copy1 = Object.assign({}, std)
+        std.id = 900
+        std.skill[1] = 'node';
+        std.address.pincode = 400605
+        console.log(copy1);
+
+        // using spread operator
+        let copy2 = { ...std }
+        std.id = 900
+        std.address.location = "Qspider thane"
+        console.log(copy2);
+
+        //using for in loop
+        let copy3 = {}
+        for (let key in std) {
+            // console.log(key);
+            copy3[key] = std[key]
+        }
+        std.id = 900
+        std.skill[i] = 'ruby'
+        console.log(copy3);
+
+
+
+        //                  deep copy
+
+        // structuredclone()
+        let copy4 = structuredClone(std)
+        std.id = 673
+        std.address.location = 'mulaund'
+        console.log(copy4);
+
+
+        // stringify() or parse()
+        var x = JSON.stringify(std)
+        var copy5 = JSON.parse(std)
+        std.id = 656
+        std.address.location = 'thane'
+        console.log(copy5);
+    </script>
+
+</body>
+
+</html>
