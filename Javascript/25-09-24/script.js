@@ -5,7 +5,7 @@ let p1 = new Promise((res, rej) => {
     else rej("promise rejected");
 });
 
-console.log(p1);
+//console.log(p1);
 
 p1.than((value) => {
     // resolved
