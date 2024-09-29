@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex box</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .contenar {
+            margin: 5% auto;
+            width: 70%;
+            height: 80vh;
+            background-image: linear-gradient(65deg, #2424cb, rgb(230, 104, 104), rgb(82, 210, 82));
+            border: 2px solid black;
+            box-shadow: 5px 6px 4px gray;
+            display: flex;
+            /* justify-content: flex-start; */
+            /* justify-content: flex-end; */
+            justify-content: center;
+            align-content: center;
+            /* align-items: center; */
+            flex-wrap: wrap;
+            /* flex-direction: row-reverse; */
+            /* flex-direction: column; */
+            /* flex-direction: column-reverse; */
+        }
+
+        .item {
+            color: white;
+            font-weight: 700;
+            width: 60px;
+            height: 60px;
+            border: 2px solid rgb(107, 236, 15);
+            /* padding: 20px; */
+            margin: 10px;
+        }
+
+        .item1 {
+            /* order: 2; */
+            /* flex-grow: 2; */
+            /* align-self: flex-end; */
+            flex-shrink: 10;
+        }
+
+        .item2 {
+            order: 3;
+            /* flex-grow: 4; */
+        }
+
+        .item3 {
+            order: 4;
+        }
+
+        .item6 {
+            order: 0;
+        }
+
+        .item4 {
+            order: 1;
+        }
+
+        .item5 {
+            order: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contenar">
+        <div class="item item1">Item 1</div>
+        <div class="item item2">Item 2</div>
+        <div class="item item3">Item 3</div>
+        <div class="item item4">Item 4</div>
+        <div class="item item5">Item 5</div>
+        <div class="item item6">Item 6</div>
+    </div>
+</body>
+
+</html>
