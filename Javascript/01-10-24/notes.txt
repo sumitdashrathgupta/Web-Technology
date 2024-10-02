@@ -1,0 +1,38 @@
+modules in javascript
+=>
+modules are used send the data one js file to anthor js file 
+there are two type of modules 
+common js modules
+=> common js modules will work in the server side ti will not work broser site
+- to export the data we shoul the property module.exports and the value shoul in the form of object 
+ to inport the data we shold use requred it will tack one agrument javascript file path
+
+
+ ES6 modules
+ =>
+ ES6 work only in the broser site and client site and it will not work in server site.
+ to perform es6 modules the js file extens shold .mjs and it script tag we sholfd pass atribut type="module".
+ In es6 module we have two type 
+ ->defult export 
+ ->named export
+
+ import in both the case same 
+ import ideficer from "app.js"; -> defult export
+ import {ideficer} from "app.js" -> named export
+
+ In defult export we can export only one data.
+ In named export we can export multipl data.
+
+ # proto type
+ Every object having one property which means the paraned object.
+ we can set one obj is part we using the property __proto__ .
+
+
+ #proto type inhertance
+access proprty  and method from the parant object using child object refecer.
+
+
+# set object 
+set object is used storage the unical value or data dubcat value are not alwe set object 
+two creade we shout const const one argument that is arry with in this array we can pass the value stront the inside the value
+we can alsom the value usinf add(),dlete(),clear(),
