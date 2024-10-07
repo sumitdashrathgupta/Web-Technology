@@ -16,5 +16,5 @@ let sub = (a, b) => {
 let data = [10, "str", 100n, true, () => "arr", null]
 
 module.export = {
-        add, sub, data,
+        add, sub, data
 };

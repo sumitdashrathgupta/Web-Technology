@@ -62,7 +62,7 @@
 
 // input.addEventListener('keydown', () => {
 //     let random = Math.floor(Math.random() * (9999 - 1000) + 1000);
-//     document.body.style.background = `#${random}`
+//     document.body.style.background = ` #${random} `
 // });
 
 // Submit Event => Submit event will be apply only for the form tag . Submit event will be trager wen user submit the form.
