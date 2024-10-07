@@ -4,42 +4,42 @@
 
 
 
-let obj = {
-    name: "sumit",
-    id: 321
-}
-obj.key1 = "value";
-console.log(obj);
+// let obj = {
+//     name: "sumit",
+//     id: 321
+// }
+// obj.key1 = "value";
+// console.log(obj);
 
-console.log(Object.keys(obj));
+// console.log(Object.keys(obj));
+
 
 
 let arr = [10, 20, 30]
-let m = new Map([[arr, "array value"], [100, "number value"], [true, "boolean value"], ["name", "sumit"]]);
-
+// let m = new Map([[arr, "array value"], [100, "number value"], [true, "boolean value"], ["name", "sumit"],[arr, "array value"]]);
+let m=new Map();
 m.set(arr, "array value")
 m.set(100, "number value")
 m.set("name", "sachin")
-m.set("name", "raj")
 
-console.log(m.size);
+// console.log(m.size);
+console.log(m)
+// console.log(m.get("name"));
+// console.log(m.get([10, 20, 30]));
+// console.log(m.delete("name"));
+// console.log(m.has(arr));
+// m.clear()
+// console.log(m);
 
-console.log(m.get("name"));
-console.log(m.get([10, 20, 30]));
-console.log(m.delete("name"));
-console.log(m.has(arr));
-m.clear()
-console.log(m);
 
+// m.forEach((v, i, a) => {
+//     console.log(v);
+//     console.log(i);
+//     console.log(a);
+// })
 
-m.forEach((v, i, a) => {
-    console.log(v);
-    console.log(i);
-    console.log(a);
-})
+// let key = m.keys();
+// console.log(key);
 
-let key = m.keys();
-console.log(key);
-
-for (let k of key) console.log(k);
-for (let v of m.values()) console.log(v);
+// for (let k of key) console.log(k);
+// for (let v of m.values()) console.log(v);

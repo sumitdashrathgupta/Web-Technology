@@ -29,7 +29,6 @@ form.addEventListener('submit', (e) => {
     // console.log(email.value);
     // console.log(DOB.value);
 
-
     Array.from(gender).forEach((v) => {
         if (v.checked) genderRes = v.value;
     });
