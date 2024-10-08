@@ -6,9 +6,7 @@ let e = document.querySelector("span")
 let x = document.querySelectorAll("span")
 
 
-
-
-
+a.color='red'
 console.log(a)
 console.log(b)
 console.log(c)

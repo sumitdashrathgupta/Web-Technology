@@ -17,17 +17,18 @@
 
 let arr = [10, 20, 30]
 // let m = new Map([[arr, "array value"], [100, "number value"], [true, "boolean value"], ["name", "sumit"],[arr, "array value"]]);
-let m=new Map();
+let m = new Map();
 m.set(arr, "array value")
 m.set(100, "number value")
 m.set("name", "sachin")
 
 // console.log(m.size);
-console.log(m)
+// console.log(m)
 // console.log(m.get("name"));
 // console.log(m.get([10, 20, 30]));
 // console.log(m.delete("name"));
-// console.log(m.has(arr));
+// console.log(m.has('name'));
+console.log(m);
 // m.clear()
 // console.log(m);
 

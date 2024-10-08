@@ -15,7 +15,7 @@ let sub = (a, b) => {
 
 let data = [10, "str", 100n, true, () => "arr", null]
 
-// module.export = {
+// module.export = {ggu
 //     add, sub, data,
 // };
 export default [add, sub, data];
