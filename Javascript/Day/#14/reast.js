@@ -21,6 +21,7 @@ arr(10,20,40,69,33.59)*/
 // let str = "javascript"
 // console.log(...str);
 // console.log([...str]);
+// console.log(str.split(''))
 
 
 //Destructuring

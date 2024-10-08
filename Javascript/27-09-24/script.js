@@ -1,24 +1,24 @@
-async function demo() {
-    try {
-        console.log("start");
-        let x = 100;
-        let y = x;
-        console.log(y);
-        const c = 10;
-        // c=90
-        console.log(c);
-        return 1000
-    }
-    catch (error) {
-        console.log(error);
-        console.log("erroe");
-    } finally {
-        console.log("finally");
-    }
-}
+// async function demo() {
+//     try {
+//         console.log("start");
+//         let x = 100;
+//         let y = x;
+//         console.log(y);
+//         const c = 10;
+//         // c=90
+//         console.log(c);
+//         return 1000
+//     }
+//     catch (error) {
+//         console.log(error);
+//         console.log("erroe");
+//     } finally {
+//         console.log("finally");
+//     }
+// }
 
 
-demo()
+// demo()
 
 
 /*This is a than and chetch */
@@ -54,7 +54,7 @@ demo()
 // ->prefixed with Promise
 
 
-let p1 = Promise.resolve("promise resolved")
+let p1 = Promise.reject("promise resolved")
 
 let demo = async () => {
     try {

@@ -41,7 +41,7 @@ let y=a.split("").reduceRight((acc,cv)=>acc+cv,"")
 console.log(y);
 
 let x="gupta"
-let d=x.consolesplit("").reduceRight((acc,cv)=>acc+cv,"")
+let d=x.split("").reduceRight((acc,cv)=>acc+cv,"")
 console.log(d);
 
 

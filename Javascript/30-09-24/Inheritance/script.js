@@ -1,13 +1,13 @@
 let parent = {
     name: "sumit",
-      }, id: 564,
+    id: 564,
     getName() {
         console.log(this.name);
     },
     setName(n) {
         this.name = n;
- 
-};
+    }
+}
 
 let child = {
     name: "raj"

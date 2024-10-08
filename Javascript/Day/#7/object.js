@@ -19,8 +19,8 @@
 
 //static method
 // object.assign( target,source)
-//1) It is used to merge one or multiple object
-// 2)It will tack 2 or mulple argument first argument is target value than other is a source value 
+//1) It is used to merk 2 or mulple argument first argument is target value than other is a source value ge one or multiple object
+// 2)It will tac
 
 
 let obj={

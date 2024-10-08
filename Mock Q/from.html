@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+
+<body>
+    <form action="" id="formcontrole">
+        <input type="text" name="name" id="fullname" placeholder="Full Name">
+        <input type="email" name="email" id="emailid" placeholder="Email ID">
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        const formdata = document.querySelector('#formcontrole');
+        const username = document.querySelector('#fullname');
+        const useremail = document.querySelector('#emailid');
+
+        // formdata.addEventListener('submit', (e) => {
+        //     e.preventDefault();
+        //     console.log(username.value);
+        //     console.log(useremail.value);
+        // })
+
+        formdata.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let data = new FormData();
+            console.log(username.value);
+            console.log(useremail.value);
+        });
+    </script>
+</body>
+
+</html>

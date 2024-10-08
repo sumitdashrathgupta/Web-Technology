@@ -27,9 +27,9 @@ console.log(m)
 // console.log(m.get("name"));
 // console.log(m.get([10, 20, 30]));
 // console.log(m.delete("name"));
-// console.log(m.has(arr));
+// console.log(m.has(100));
 // m.clear()
-// console.log(m);
+console.log(m);
 
 
 // m.forEach((v, i, a) => {
