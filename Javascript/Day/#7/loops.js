@@ -16,6 +16,7 @@ for (const i in obj) {
     console.log(i);
     console.log(obj[i]);
 }
+
 // for (const value of obj) {
 //     console.log(value);
 // }

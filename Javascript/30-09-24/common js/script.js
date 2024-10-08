@@ -1,11 +1,12 @@
 // Modules
 // -> common js Modules => server 
 // -> ES6 Modules => broser
+
 // -> default export - 1 data
 // -> named export - multiple data
 
 let add = (a, b) => {
-        console.log(a + b);
+        return a+b;
 };
 
 let sub = (a, b) => {
@@ -15,6 +16,6 @@ let sub = (a, b) => {
 
 let data = [10, "str", 100n, true, () => "arr", null]
 
-module.export = {
+module.exports = {
         add, sub, data
 };

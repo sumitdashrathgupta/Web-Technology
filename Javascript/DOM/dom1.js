@@ -35,3 +35,5 @@ console.log(se);
 
 let p1 = document.querySelector("p")
 console.log(p1);
+
+
