@@ -6,7 +6,7 @@ let e = document.querySelector("span")
 let x = document.querySelectorAll("span")
 
 
-a.color='red'
+// a.color='red'
 console.log(a)
 console.log(b)
 console.log(c)
@@ -21,5 +21,6 @@ console.log(x)
 // })
 // console.log(Array.isArray(a))
 // let convert=Array.from(a)
-// console.log(convert)
-// console.log(Array.isArray(convert))
+let convert=Array.prototype.slice.call(a)
+console.log(convert)
+console.log(Array.isArray(convert))
