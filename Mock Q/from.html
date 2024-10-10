@@ -14,7 +14,7 @@
         <button type="submit">Submit</button>
     </form>
     <script>
-        const formdata = document.querySelector('#formcontrole');
+        const formdata1 = document.querySelector('#formcontrole');
         const username = document.querySelector('#fullname');
         const useremail = document.querySelector('#emailid');
 
@@ -24,11 +24,13 @@
         //     console.log(useremail.value);
         // })
 
-        formdata.addEventListener('submit', (e) => {
+        formdata1.addEventListener('submit', (e) => {
             e.preventDefault();
-            let data = new FormData();
-            console.log(username.value);
-            console.log(useremail.value);
+            let data = new FormData(formdata1);
+            let userdata = Object.fromEntries(data)
+            console.log(userdata);
+            // console.log(username.value);
+            // console.log(useremail.value);
         });
     </script>
 </body>
