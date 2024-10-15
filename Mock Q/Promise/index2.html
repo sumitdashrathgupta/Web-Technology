@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fatch data</title>
+</head>
+
+<body>
+    <script>
+        let data = window.fetch('data.json')
+        // console.log(data)
+        data.then((e) => {
+            let userdata1 = e.json()
+            userdata1.then((v) => {
+                v.map((value) => {
+                    console.log(value)
+                })
+                //  v.map((value,index)=>{
+                // console.log(value)
+            // })
+        },
+            (e) => { console.log(e) })
+        }, (reje) => {
+            console.log(reje)
+        })
+    </script>
+</body>
+
+</html>
