@@ -1,33 +1,43 @@
-let user = document.querySelector("#user");
-let btn = document.getElementById("btn")
+let username = document.querySelector('#input1')
+let search = document.querySelector('.btn')
+let display_data = document.querySelector('.section2')
 
-btn.addEventListener('click', (e) => {
+search.addEventListener('click', (e) => {
     e.preventDefault();
-    getData(user.value)
-});
+    calldata(username.value);
+    username.value = '';
+})
 
-async function getData(user) {
+
+async function calldata(data) {
     try {
-        let data = await window.fetch('' + user);
-        let finalData = await data.json();
-        console.log(finalData);
-        let display = document.querySelector(".display-data");
 
-        if (finalData.status == "404" && finalData.message == "Not Found") {
-            display.innerHTML = `<h1>User Details Not Found</h1>`
+        user = await fetch(` https://api.github.com/users/` + data)
+        finaldata = await user.json();
+        if (finaldata.status == '404') {
+            display_data.innerHTML = ` 
+            <h1>404</h1>
+            <p>User Not Found</p>`
         }
         else {
-            let { name, company, login, location, avatar_url, bio, id, html_url } = finalData
-            display.innerHTML = `<img src=${avatar_url} alt=${id}/>
-            <p>Name : ${name}</p>
-            <p> Company : ${company}</p>
-            <p>Location : ${location}</p>
-            <button>
-            <a href=${html_url}> More Dely</a>
-            </button>
-            `;
+            let { avatar_url, name, id, location, html_url, bio, company } = finaldata
+            display_data.innerHTML = `
+                <div class="image">
+                    <img src=${avatar_url} alt="user Image"> 
+                </div>
+                <div class="information">
+                   <p>Name : ${name}</p>
+                   <p>Company : ${company}</p>
+                   <p>Id : ${id}</p>
+                   <p>Bio : ${bio}</p>
+                   <p>Location : ${location}</p>
+                   <p><a href=${html_url} target='_blank' >More Details ..</a>  </p>
+                </div>
+        `
         }
-    } catch (error) {
-        console.log('error');
+    }
+    catch (error) {
+        console.log(error)
     }
 }
+console.log(display_data)
