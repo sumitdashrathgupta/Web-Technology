@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promes</title>
+</head>
+<body>
+    <script>
+        const pro=new Promise((res,rej)=>{
+            let a=true
+            if(!a) res("succ")
+            rej("reject")
+        })
+
+        pro.then((value)=>{
+            console.log(value)
+            console.log("successfully")
+        }).catch(()=>{
+            console.log("rejecrt catch")
+        })
+        console.log(pro)
+    </script>
+</body>
+</html>
