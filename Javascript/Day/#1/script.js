@@ -39,3 +39,4 @@ console.log(array_ex);
 for (const element of array_ex) {
     console.log(element," = ",typeof element);
 }
+
