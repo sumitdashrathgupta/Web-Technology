@@ -1,0 +1,94 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100%;
+}
+.container-main {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.container-main > article {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: rgb(99, 99, 244);
+  border-radius: 10px;
+  box-shadow: 5px 5px 8px #595757;
+}
+.a1 {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.a1 > h1 {
+  font-size: 25px;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
+.a1 > hr {
+  border: none;
+  height: 2px;
+  background: #fff;
+}
+.a2 {
+  display: flex;
+  justify-content: space-between;
+}
+.a2 > input {
+  padding: 10px 20px;
+  outline: none;
+  border: 1px solid rgb(171, 171, 171);
+  border-radius: 5px;
+  width: 250px;
+}
+.a2 > button {
+  padding: 10px 20px;
+  background: #111;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+}
+.a3 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+.a3 > img {
+  height: 100px;
+  width: 100px;
+  border-radius: 100%;
+}
+.a3 > h1 {
+  font-size: 100px;
+  color: #fff;
+}
+.a3 > p {
+  font-size: 30px;
+  color: #fff;
+  font-weight: bold;
+}
+.a4 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.a4 > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.a4 > div > p {
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+}

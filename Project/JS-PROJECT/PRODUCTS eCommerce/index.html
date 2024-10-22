@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Commerce</title>
+    <link rel="stylesheet" href="./global.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <div class="main">
+      <div class="cart-container">
+        <i class="fa-solid fa-x"></i>
+        <article class="sub-cart-container">
+          <h1>Cart Items</h1>
+          <hr />
+          <div class="list-of-cart-items"></div>
+        </article>
+      </div>
+      <section id="header">
+        <article>
+          <ul class="ul">
+            <li><a href="#header">Home</a></li>
+            <li><a href="#display-products">Products</a></li>
+            <li>
+              <a href="#log-in-sign-up-form" class="display-name">Sign Up</a>
+            </li>
+            <li><a href="">Blogs</a></li>
+            <li><a href="">About Us</a></li>
+          </ul>
+          <i class="fa-solid fa-cart-shopping"></i>
+        </article>
+      </section>
+      <!-- ! products display -->
+
+      <section id="display-products">
+        <h1 class="pro">PRODUCTS LIST</h1>
+        <article class="sub-products"></article>
+      </section>
+
+      <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+      <section id="log-in-sign-up-form">
+        <article class="sub-sign-up">
+          <!-- ? sign-up form -->
+          <form class="sign-up-form">
+            <h1>Sign Up</h1>
+            <hr />
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Username"
+              required
+            />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+              required
+            />
+            <input
+              type="text"
+              name="confirmPassword"
+              id="confirmPassword"
+              placeholder="Confirm Password"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
+              required
+            />
+            <input
+              type="tel"
+              name="phone"
+              id="phone"
+              placeholder="Phone"
+              required
+            />
+            <span class="already-have-account">
+              Already an User? <b class="btn-log-in">Log In</b>
+            </span>
+            <button type="submit">Sign Up</button>
+          </form>
+          <!-- ??????????????????????????????????????? -->
+
+          <!-- & Log In form -->
+
+          <form class="log-in-form">
+            <h1>Log In</h1>
+            <hr />
+            <input
+              type="text"
+              name="username"
+              id="usernameLogIn"
+              placeholder="Username"
+              required
+            />
+            <input
+              type="password"
+              name="password"
+              id="passwordLogIn"
+              placeholder="Password"
+              required
+            />
+            <span class="create-account">
+              Create an Account <b class="btn-sign-up">Sign Up</b>
+            </span>
+            <button type="submit">Log In</button>
+          </form>
+
+          <!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+        </article>
+      </section>
+      <section id="blogs"></section>
+      <section id="footer"></section>
+    </div>
+    <script src="./App.js"></script>
+  </body>
+</html>

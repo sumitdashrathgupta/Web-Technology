@@ -1,0 +1,211 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  width: 100%;
+}
+.main {
+  width: 100%;
+}
+#header {
+  background: #111;
+  width: 100%;
+  height: 100px;
+  position: sticky;
+  top: 0;
+}
+.fa-cart-shopping {
+  color: #fff;
+  font-size: 35px;
+}
+#header > article {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+#header > article > ul {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  list-style: none;
+  gap: 35px;
+}
+#header > article > ul a {
+  font-size: 16px;
+  color: #fff;
+  font-weight: bold;
+  font-family: cursive;
+  text-decoration: none;
+}
+#display-products {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  margin-top: 40px;
+}
+.pro {
+  text-align: center;
+  color: purple;
+  text-decoration: underline;
+}
+.sub-products {
+  width: 80%;
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+.div-container-products {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 350px;
+  border-radius: 10px;
+  background: #ccc;
+  padding: 10px 20px;
+}
+.div-container-products > figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.div-container-products > figure > img {
+  height: 150px;
+  width: 150px;
+  border-radius: 100%;
+}
+.aa1 {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.aa2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.aa2 > p {
+  font-weight: bold;
+}
+.aa3 {
+  display: flex;
+  justify-content: center;
+}
+.aa3 > button {
+  padding: 10px 20px;
+  background: #111;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+}
+#log-in-sign-up-form {
+  width: 100%;
+}
+.sub-sign-up {
+  width: 80%;
+  margin: 100px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign-up-form,
+.log-in-form {
+  width: 40%;
+  display: flex;
+  background: #ccc;
+  border-radius: 5px;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+}
+.sign-up-form > h1,
+.log-in-form > h1 {
+  font-size: 20px;
+  font-weight: bold;
+  color: purple;
+  text-align: center;
+}
+.sign-up-form hr,
+.log-in-form hr {
+  height: 2px;
+  border: none;
+  background: purple;
+}
+.sign-up-form > input,
+.log-in-form > input {
+  border: 1px solid #eee;
+  padding: 10px 20px;
+  outline: none;
+  border-radius: 5px;
+}
+.sign-up-form > button,
+.log-in-form > button {
+  padding: 10px 20px;
+  background: #111;
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+.already-have-account,
+.create-account {
+  display: block;
+  text-align: center;
+}
+.already-have-account > b,
+.create-account > b {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.log-in-form {
+  display: none;
+}
+
+.cart-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  overflow-y: scroll;
+  width: 500px;
+  background: #ccc;
+  padding-top: 40px;
+  z-index: 1;
+  display: none;
+}
+.cart-container > article {
+  width: 85%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sub-cart-container > h1 {
+  color: purple;
+  font-size: 25px;
+  text-align: center;
+}
+.sub-cart-container hr {
+  background: purple;
+  border: none;
+  height: 2px;
+}
+.fa-x {
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  font-size: 30px;
+  color: black;
+  cursor: pointer;
+}

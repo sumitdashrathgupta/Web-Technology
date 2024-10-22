@@ -1,0 +1,105 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+}
+.container > article {
+  width: 80%;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.container > article > span {
+  color: blue;
+  text-decoration: underline;
+  font-size: 22px;
+  cursor: pointer;
+}
+table {
+  width: 100%;
+}
+table,
+td,
+th,
+tr {
+  border: 1px solid black;
+  padding: 15px 20px;
+  border-collapse: collapse;
+}
+th {
+  background: purple;
+  color: #fff;
+}
+.popup-form-container,
+.read-data-container,
+.update-container-form {
+  display: none;
+  width: 100%;
+}
+.popup-form-container > .sub-container,
+.sub-read,
+.sub-container-update {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+.fa-x,
+.close-btn-read,
+.close-btn-update {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  color: purple;
+  font-size: 30px;
+  cursor: pointer;
+}
+.sub-container > form,
+.main-read,
+.form-update-control {
+  width: 400px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #fff;
+  border-radius: 10px;
+}
+.sub-container > form > h1,
+.sub-container-update > form > h1 {
+  text-align: center;
+  color: purple;
+}
+.sub-container > form > hr,
+.sub-container-update > form > hr {
+  border: none;
+  height: 1px;
+  background: purple;
+}
+.sub-container > form > input,
+.sub-container-update > form > input {
+  padding: 10px 20px;
+  border: 1px solid #eee;
+  outline: none;
+  border-radius: 5px;
+}
+.sub-container > form > button,
+.sub-container-update > form > button {
+  border-radius: 5px;
+  padding: 10px 20px;
+  background: purple;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+}

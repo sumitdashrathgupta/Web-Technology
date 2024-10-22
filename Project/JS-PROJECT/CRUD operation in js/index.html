@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUD OPERATION</title>
+    <link rel="stylesheet" href="./global.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <section class="popup-form-container">
+      <article class="sub-container">
+        <i class="fa-solid fa-x"></i>
+        <form class="form-add-control">
+          <h1>Add Details</h1>
+          <hr />
+          <input type="number" name="id" id="id" placeholder="Enter Id" />
+          <input type="text" name="name" id="name" placeholder="Enter Name" />
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Enter Email"
+          />
+          <input
+            type="tel"
+            name="phone"
+            id="phone"
+            placeholder="Enter Phone number"
+          />
+          <button type="submit">Add Data</button>
+        </form>
+      </article>
+    </section>
+    <section class="read-data-container">
+      <article class="sub-read">
+        <button class="close-btn-read">close</button>
+        <div class="main-read">
+          <h1>USER DATA</h1>
+          <hr />
+          <p class="id-read"></p>
+          <p class="name-read"></p>
+          <p class="email-read"></p>
+          <p class="phone-read"></p>
+        </div>
+      </article>
+    </section>
+
+    <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+    <section class="update-container-form">
+      <article class="sub-container-update">
+        <i class="fa-solid fa-x close-btn-update"></i>
+        <form class="form-update-control">
+          <h1>Update Data</h1>
+          <hr />
+          <input type="text" name="name" id="uName" placeholder="Enter Name" />
+          <input
+            type="email"
+            name="email"
+            id="uEmail"
+            placeholder="Enter Email"
+          />
+          <input
+            type="tel"
+            name="phone"
+            id="uPhone"
+            placeholder="Enter Phone number"
+          />
+          <button type="submit">Update Data</button>
+        </form>
+      </article>
+    </section>
+
+    <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+    <section class="container">
+      <article>
+        <span class="display-form-update">Add+++</span>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>NAME</th>
+              <th>PHONE</th>
+              <th>EMAIL</th>
+              <th>MORE ACTIONS</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </article>
+    </section>
+    <script src="./App.js"></script>
+  </body>
+</html>
