@@ -1861,6 +1861,14 @@
       "confirmPassword": "123",
       "email": "kashi@gmail.com",
       "phone": "9696969696"
+    },
+    {
+      "id": "29a6",
+      "username": "sumitg150",
+      "password": "sumitg@150",
+      "confirmPassword": "sumitg@150",
+      "email": "dashrath@gmail.com",
+      "phone": "64354635"
     }
   ],
   "cart": [],

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transition</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contenar {
+            width: 200px;
+            height: 200px;
+            background: rgb(255, 0, 0);
+            transition: 2s ease-in-out;
+        }
+
+        .contenar:hover {
+            /* transform: skewX(45deg); */
+            /* transform: translatex(200px); */
+            /* transform: scaleX(2); */
+            /* transform: scaleY(2); */
+            /* transform: scaleZ(2); */
+            transform: rotate(360deg);
+            background: green;
+            /* border-radius: 50%; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contenar"></div>
+</body>
+
+</html>

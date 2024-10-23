@@ -1,11 +1,10 @@
 {
   "users": [
     {
-      "id": "1",
       "name": "Leanne Graham",
-      "username": "Bret",
       "email": "Sincere@april.biz",
-      "phone": "1-770-736-8031"
+      "phone": "1-770-736-8031",
+      "id": "1"
     },
     {
       "id": "2",
@@ -20,20 +19,6 @@
       "username": "Samantha",
       "email": "Nathan@yesenia.net",
       "phone": "1-463-123-4447"
-    },
-    {
-      "id": "4",
-      "name": "Patricia Lebsack",
-      "username": "Karianne",
-      "email": "Julianne.OConner@kory.org",
-      "phone": "493-170-9623 x156"
-    },
-    {
-      "id": "5",
-      "name": "Chelsey Dietrich",
-      "username": "Kamren",
-      "email": "Lucio_Hettinger@annie.ca",
-      "phone": "(254)954-1289"
     },
     {
       "id": "6",

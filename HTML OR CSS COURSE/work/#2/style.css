@@ -1,0 +1,32 @@
+/* .daynamic:link{
+    color: green;
+    font-weight: 600;
+} */
+/* .daynamic:visited{
+    color: green;
+}
+.daynamic:active{
+    color: rgb(55, 0, 128);
+    font-weight: 600;
+} */
+/* .daynamic:focus{
+    color: green;
+    font-weight: 600;
+} */
+
+
+
+
+ul li:first-child{
+    color: blue;
+}
+ul li:last-child{
+    color: brown;
+}
+ul li:nth-child(3){
+    color: aqua;
+}
+
+ul li::marker{
+    color: red;
+}
