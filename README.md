@@ -30,7 +30,7 @@ Every day, a new concept or improvement will be shared, along with its real-worl
 
 Here are some of the technologies you can expect to learn about:
 
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+), React, Web Components
+- **Frontend**: HTML5, CSS3, JavaScript (ES6+), React, git .
 
 ## Getting Started
 
