@@ -1,7 +1,8 @@
 
 //! A rest parameter must be last in a parameter list
 
-/*const arr = (a, b,...x) => {
+/*
+const arr = (a, b,...x) => {
     console.log("start");
     console.log(a);
     console.log(b);
@@ -10,7 +11,7 @@
 
 arr(10,20,40,69,33.59)*/
 
-//sepertor  only iterble
+//sepertor only iterble
 
 // let ar = [10, 20, 40, 69, 33, 59]
 // console.log(...ar);
@@ -29,10 +30,13 @@ arr(10,20,40,69,33.59)*/
 
 
 //With Array
-/*var a = [200, 300, 400, 600, 100]
-const [x, t,...res] = a
-console.log(x);
-console.log(res);*/
+
+/*
+    var a = [200, 300, 400, 600, 100]
+    const [x, t,...res] = a
+    console.log(x);
+    console.log(res);
+*/
 
 //With object
 // let function = "system"

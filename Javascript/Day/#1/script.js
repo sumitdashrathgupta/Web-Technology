@@ -1,7 +1,4 @@
 console.log("Hello world");
-
-
-
 //This is a datd type= primitive data type
 
 var a = 12
@@ -19,8 +16,6 @@ console.log(typeof d);//object
 console.log(typeof e);//undefined
 console.log(typeof f);//bigint
 console.log(typeof g);//symbol
-
-
 
 // This is a non primitive data type
 

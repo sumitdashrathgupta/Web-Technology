@@ -9,11 +9,11 @@
 
 
 //              Start
-
-
-
 //"use strict"
-//                          1)
+
+
+//              1)
+
 console.log(this);
 console.log(this === window);
 
@@ -27,9 +27,9 @@ let obj = {
 function demo() {
     console.log(this);
     let f1 = () => {
-        console.log(this);//!parent scope this keyword value
+        console.log(this);              //!parent scope this keyword value
     }
-    f1();
+    f1()
 }
 let x = demo.bind(obj);
 x();
@@ -67,8 +67,6 @@ let std = {
 }
 std.demo()
 std.arr()
-
-
 
 //              7)    addEventListener
 let check = document.querySelector('.contenar')

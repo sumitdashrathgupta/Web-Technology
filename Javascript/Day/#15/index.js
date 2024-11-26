@@ -52,7 +52,8 @@
     return inner;
 }
 let b = outer();
-console.log(b());*/
+console.log(b());
+*/
 
 (function sum(x,y){
     console.log(x+y);

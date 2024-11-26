@@ -7,7 +7,7 @@
 let p1 = Promise.resolve("resolve 1")
 let p2 = Promise.reject("reject 1")
 
-let p3 = new Promise((res, rej) => {
+let p3 = new Promis1e((res, rej) => {
     let r = true
     if (r) rej("reject promise")
     else res("resolve sromise 2")

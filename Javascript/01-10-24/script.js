@@ -6,10 +6,10 @@ setTimeout(() => {
     console.log("hello");
 }, 0)
 
-let p1 = Promise.resolve("resolve promise");
+let p1 = Promise.resolve("resolve promise")
 p1.then((e) => console.log(e),
     (d) => console.log(d)
-);
+)
 
 let p2 = new Promise((res, rej) => {
     let r = true

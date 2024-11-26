@@ -13,7 +13,6 @@
         //storage in brower
         // This property presont inside window
 
-
         // setItem(key,value)
         // getItem(key)
         // removeItem(key)
@@ -28,27 +27,26 @@
         let o = {
             doorno: 666, pincode: 559779, location: "thane"
         }
+
         localStorage.setItem('address', JSON.stringify(o))
 
         let num = ['java', 'sql']
-        console.log(num.toString());
+        console.log(num.toString())
 
-        let id=localStorage.getItem("id")
+        let id = localStorage.getItem("id")
         console.log(id);
 
-        let skill=localStorage.getItem("skill")
+        let skill = localStorage.getItem("skill")
         console.log(skill.split(","));
 
-        let address=localStorage.getItem("address")
+        let address = localStorage.getItem("address")
         console.log(JSON.parse(address));
 
         localStorage.removeItem("id")
         localStorage.clear()
 
-
-
-        sessionStorage.setItem("name","sumit")
-        sessionStorage.setItem("id",77)
+        sessionStorage.setItem("name", "sumit")
+        sessionStorage.setItem("id", 77)
         console.log(sessionStorage.getItem("name"));
     </script>
 </body>

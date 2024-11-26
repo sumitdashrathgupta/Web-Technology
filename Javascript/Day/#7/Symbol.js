@@ -11,7 +11,7 @@ obj[s2] = "value2"
 
 console.log(obj);
 console.log(Object.keys(obj));
-console.log(Object.getOwnPropertySymbols(obj));
+console.log(Object.values(obj));
 
 
 
