@@ -1,4 +1,4 @@
-const sub = "  java script   "
+const sub = "java script"
 const arr = ['s', 'u', 'm', 'i', 't']
 // console.log(sub);
 // console.log(sub.split("")); //string to array
