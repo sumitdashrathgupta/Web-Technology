@@ -38,6 +38,3 @@ let arr = [23, "sujdu", null, undefined, "work", 8628]
 // let arrr = [34, 56, 76, 45, 76]
 // console.log(arrr.fill(33,2,4));
 
-let a=[true,true,false,true,true]
-console.log(a);
-console.log(a.some);
