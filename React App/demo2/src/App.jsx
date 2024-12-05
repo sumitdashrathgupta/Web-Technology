@@ -41,49 +41,55 @@ import React, { useState } from "react";
 
 //!How can we define state in function based component
 
-// import React from "react";
-// const App=()=>{
-//     let result =React.useState(10);
-//     console.log(result);
-// }
-
-
+import React from "react";
+const App = () => {
+    let result = React.useState(10);
+    console.log(result);
+    let setResult = result[1];
+    setTimeout(() => {
+        setResult(4000)
+    }, 4000);
+    return(
+        <>
+        <h1>Hello world</h1>
+        <h2>{result[0]}</h2>
+        </>
+    )
+}
 
 //? How to iterate the state value in FBC
 
-import { useState, Fragment } from "react";
-const App = () => {
-    let { employee } = useState([
-        {
-            name: "abc",
-            id: 230
-        },
-        {
-            name: "raj",
-            id: 245
-        },
-        {
-            name: "ram",
-            id: 111
-        }
-    ])
-
-    // console.log(employee);
-
-    //!Each child in a list should have a unique "key"
-    return (
-        <div>
-            {employee.map((v, i) => {
-                return (
-                    <Fragment key={i + 1}>
-                        <h1>name : {v.name}</h1>
-                        <h2>Id :{v.id}</h2>
-                    </Fragment>
-                )
-            })}
-        </div>
-    )
-}
+// import { useState, Fragment } from "react";
+// const App = () => {
+//     let { employee } = useState([
+//         {
+//             name: "abc",
+//             id: 230
+//         },
+//         {
+//             name: "raj",
+//             id: 245
+//         },
+//         {
+//             name: "ram",
+//             id: 111
+//         }
+//     ])
+// console.log(employee);
+//!Each child in a list should have a unique "key"
+//     return (
+//         <div>
+//             {employee.map((v, i) => {
+//                 return (
+//                     <Fragment key={i + 1}>
+//                         <h1>name : {v.name}</h1>
+//                         <h2>Id :{v.id}</h2>
+//                     </Fragment>
+//                 )
+//             })}
+//         </div>
+//     )
+// }
 
 //! How to handle the events in CBC
 
