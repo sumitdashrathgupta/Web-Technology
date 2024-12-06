@@ -1,6 +1,6 @@
 import React from "react";
-import ReactDOM, { createRoot } from "react-dom";
-import App from "./App";
+import { createRoot } from "react-dom";
+import App from "./App06/App1";
 
 
 createRoot(document.querySelector("#root")).render(<App />);
