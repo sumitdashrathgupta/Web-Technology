@@ -1,47 +1,46 @@
 //? How to set the default value for props:
 
 /*import React, { Component } from "react";
-
 export default class Child extends Component {
-    static defaultprops = {
-
+    static defaultProps = {
+        name: "NA",
+        id: "NA",
+        demo: "NA"
     }
     render() {
-        // console.log(this.props);
+        console.log(this.props);
         let { id, name, demo } = this.props
         return (
             <>
+            Or operator
+                <h1>name: {this.props.name || "NA"}</h1>
+                <h2>id: {id || "NA"}</h2>
+                <h2>{demo() || "NA"}</h2>
+                <h1>Name :{this.props.name}</h1>
+                <h2>id:{id}</h2>
+                <h2>{demo()}</h2>
+            </>
+        )
+    }
+}
 
-                // {/* or opertor */
-// {/* <h1>Name :{this.props.name || "NA"}</h1>
-// <h2>id:{id || "NA"}</h2>
-// <h2>{demo() || "NA"}</h2> */}
+OutSide the class
 
-//                 <h1>Name :{this.props.name}</h1>
-//                 <h2>id:{id}</h2>
-//                 <h2>{demo()}</h2>
-//             </>
-//         )
-//     }
-// }
+Child.defaultProps = {
+    name: "NA",
+    id: "NA",
+    demo: "NA"
+}*/
 
+//                                                                     PropTypes
 
-
-// Child.defaultprops = {
-//     name: "NA",
-//     id: "NA",
-//     demo: "NA"
-// }
-
-/*
-
-import React, { Component } from "react";
-import PropTypes, { proptype } from "prop-types"
-
-console.log(proptype);
+/*import React, { Component } from "react";
+import PropTypes, { propType } from "prop-types";
 
 export default class Child extends Component {
+
     render() {
+        // console.log(this.props)
         let { id, name, demo } = this.props
         return (
             <>
@@ -58,8 +57,7 @@ Child.PropTypes = {
     id: PropTypes.number,
     demo: PropTypes.func,
 }
-    */
-
+*/
 
 //! How to treansfer the data from child to parent
 
@@ -69,8 +67,8 @@ const Child = ({ sendData }) => {
     return (
         <>
             <button type="button" onClick={() => {
-                sendData("Bhabhi")
-            }}>Send data</button>
+                sendData("Bhabhi") }}
+           > Send Data </button>
         </>
     )
 }

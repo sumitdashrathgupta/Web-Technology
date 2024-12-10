@@ -1,17 +1,20 @@
 //! CBC
 
-/*1)Static default props={    -> Inside the class
+/*
+1)Static default props={    -> Inside the class
     name:"NA",
     id:"NA",
     demo:"na"
 }
-
+    
 2) Or operator
-3)defaultProps (Outside the class)*/
+3)defaultProps (Outside the class)
+
+*/
 
 //! How to set the defult value for props:
-
-/*import React from "react";
+/*
+import React from "react";
 import Child from "./Child"
 
 export default function App() {
@@ -41,7 +44,7 @@ export default function App() {
 
 //! How to treansfer the data from child to parent 
 
-/*import React, { useState } from "react";
+import React, { useState } from "react";
 import Child from "./Child";
 
 const App = () => {
@@ -56,11 +59,11 @@ const App = () => {
         </>
     )
 }
-*/
+
+export default App;
 
 
-
-import React, { useState } from "react";
+/*import React, { useState } from "react";
 import { faker } from "@faker-js/faker";
 console.log(faker);
 
@@ -76,4 +79,4 @@ const App = () => {
         </>
     )
 }
-export default App;
+export default App;*/

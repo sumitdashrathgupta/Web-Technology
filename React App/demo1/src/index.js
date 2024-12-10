@@ -1,7 +1,8 @@
 import React from "react";
-import { createRoot } from "react-dom";
+import { createRoot } from "react-dom/client";
 // import App from "./App06/App1";
-import App from "./App09/App";
+import App from "./App10/App";
+// import App from "./App"
 
 
 createRoot(document.querySelector("#root")).render(<App />);
