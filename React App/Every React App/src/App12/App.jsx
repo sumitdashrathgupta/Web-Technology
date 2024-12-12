@@ -9,13 +9,13 @@
 
 //! Uncontrolled Component:
 
-/*import React, { useRef } from "react";
+import React, { useRef } from "react";
 
 const App = () => {
     let usernameRef = useRef();
     let passwordRef = useRef();
-
     let formRef = useRef()
+    
     let handleSubmit = (e) => {
         e.preventDefault();
         console.log({
@@ -23,9 +23,9 @@ const App = () => {
             password: passwordRef.current.value,
         });
 
-        var formdata = new FormData(formRef.current)
-        var finaldata = Object.FromEntries(formdata)
-        console.log(finaldata);
+        // var formdata = new FormData(formRef.current)
+        // var finaldata = Object.fromEntries(formdata)
+        // console.log(finaldata);
     }
     return (
         <>
@@ -38,7 +38,7 @@ const App = () => {
     )
 }
 
-export default App; */
+export default App; 
 
 //? Controlled Component
 
@@ -48,7 +48,7 @@ const App = () => {
     let [username, setUsername] = useState("");
     let [password, setPassword] = useState("");
     let handleSubmit = (e) => {
-        e.preventDefult();
+        e.preventDefault();
         console.log(username, password);
     }
     return <>
@@ -60,12 +60,11 @@ const App = () => {
     </>
 }
 
-export default App;
-*/
+export default App;*/
 
 //! IN CBC
 
-import React, { Component } from "react";
+/*import React, { Component } from "react";
 
 export default class App extends Component {
     constructor() {
@@ -101,4 +100,4 @@ export default class App extends Component {
             </>
         )
     }
-}
+}*/
