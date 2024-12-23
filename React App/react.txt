@@ -1,0 +1,120 @@
+** Class based Component - these component are simple javascript classes made up of multiple functions that add functionlaity to the application 
+	every class component are stateful that is CBC . we can define state with the help of state property (Inbuild property for every class based component)
+
+	- Every class component must inherit react.component class and it should have render method which returns jsx
+
+*** function based component - This component are simple javascript functions (arrow functions , named functions, functions with expression) that returns jsx
+	
+	- functions based components are stateless that is we don't have any inbuild property called as state to defined the data for the particular component.
+	 	But after introduction of react hooks we can able to define the state in function based component also. We can use useState() hook
+
+
+*** State in react - 
+	- state hold the information or data about that particular component 
+	- We could not to transfer the state from one component to another component
+	- States are mutable (We can change)
+	- Whenever there is any changes in state value the component will re-render 
+
+*** How to define the state in Class based component ?
+	- We can define the state 2 ways in class based components
+		- Using state property inside the class and outside the constructor
+		- Using this.state inside the constructor
+		- In class based components state values should be object or null otherwise it will throws warning App.state. must be set to an object or null
+		- Inside the constructor first statement should be the super() calling statement. which calls the parent class constructor 
+		- In class based component first constructor will execute and after the render method will execute
+
+** how to update the state value in cbc ?
+	- Every class components have one inbuild method that is setState() which is used to update the state value in class based component and it will take one argument that is the value we are going to update ( Object  or Null).
+
+
+********** React hooks *********
+
+- React hooks where introduced from the version react 16.8 
+	Hooks allows function component to have access to state and others react features so that class component are generally not needed 
+	Hooks allows us to use lifecycle methods and state 
+	
+-- RULES OF HOOKS 
+	There are 3 rules
+		- hooks can only be call inside the function components
+		- Hooks can only call at the top level of the component 
+		- Hook cannot be conditional 
+Note: Hooks will not work in react class based component 
+	WE can also create custom hooks in react but it should starts with use
+	Hooks are simple javascript functions which is used to perform some functionality in function based component 
+
+- How to define the state in function based component ?
+	- Function based component are stateless that is we don't have any inbuild property to define the state but we can use useState() hook to define the state value 
+	- use state hooks will take only 1 argument that is statevalue which can be any datatype and it will return 1 array with 2 elements 1st - statevalue , 2nd - updaterFunction
+	- This updaterFunction is used to update the state value and it will take one arugment that is the value we are going to update.
+
+- Event in React 
+	- Events in react are triggerd by user action such as clicking a button and are handled by event handlers we have to pass the event handler property such as onClick , onSubmit ,
+	In the opening tag of the react element.
+	This property will take one function as the value and this function will execute when the user trigger the event 
+
+
+
+-----------------------------------------
+
+*********** handling events in react ****************
+
+- We can handle the events by passing the event handler property in the opening tag of the react element and every event handler property will take one function as a value and that function will execute if the user triggers the event 
+- We can pass arrow function or named function as a value but in case of class based component when we are passing named function or anonymous function this keyword refers to undefined.
+	and we have to explicitly set the value for this keyword as the current component (same component)
+- We can set the value for this keyword inside the constructor using bind method 
+Example
+	- this.handleMouseOver = this.handleMouseOver.bind(this);
+
+
+// passing function as an argument for the updater function in class based component and function based component
+
+-  To update the state value we can also pass function as an argument and that function will take one parameter which holds the previous value 
+-  In the return statement we have to pass the value which we are going to update 
+-  We can use this for both CBC AND FBC.
+
+*********** PROPS ****************
+
+- props are properties which is used to transfer the data from one component to another 
+- props are immutable that is we can't change the props value 
+- props follow the unidirectional data flow that is from parent to child
+- props can pass any type of data such as string numbers, arrays, objects and functions
+
+*********** PASSING THE DATA THROUGH PROPS ************
+
+- The syntax for passing the data from one component to another is same in class based component and function based component 
+
+	ex- <Child
+		name = {"abc"}
+		id = {123}
+		skills = {["js","java","python"]}
+		demo = {demo}
+	    />
+
+- When we are passing the string data no need to write within expression directly we can pass using single quote and double quote.
+
+*********** RECEIVING THE DATA IN CHILD COMPONENT ***************
+
+- In class based component to receive the props we should this.props property and it will return each and every data in the form of object
+- IN function based component we can receive the props by passing a parameter and this also will return the data in the form of object.
+
+************* T-SQL query to list all tables ********************
+- Object explorer with in SQL server management studio can be used to get the list of tables, in a specific database. However, if we have to write a query to achieve the same, there are 3 system views that we can use.
+1. SYSOBJECTS - SQL server 2000, 2005 & 2008
+2. SYS.TABLES - SQL server 2005 & 2008
+3. INFORMATION_SCHEMA.TABLES - SQL Server 2005 & 2008
+
+// To get the list of different object types (XTYPE) in a database
+ - Select Distinct XTYPE from SYSOBJECTS
+ - Select * from sysobjects where xtype = 'V'
+ - Select * from sys.procedures
+ - Select * from information_schema.routines
+
+********** Re-runnable SQL Server Scripts ***************
+
+- What is a re-runnable SQL script ?
+   - A re-runnable script is a script, that, when run more than once, will not throw errors.
+
+// To make this script re-runnable
+1. Check for the existence of the table
+2. Create the table if it does not exist
+3. Else Print a message stating, the table already exists
