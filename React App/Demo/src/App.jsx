@@ -24,7 +24,6 @@ import React, { useState } from "react";
     render() {
         return (
             <div>
-
                 {this.state.employee.map((v, i) => {
                     let { name, id } = v
                     return (
