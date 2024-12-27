@@ -4,8 +4,6 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 
-
-
 const Product = () => {
     let [data, setData] = useState([])
 
@@ -41,9 +39,9 @@ const Product = () => {
                                     <>
                                         <tr key={i + 1}>
                                             <td>{id}</td>
+                                            <td><img src={thumbnail} alt="image" /></td>
                                             <td>{title}</td>
                                             <td>{description}</td>
-                                            <td>{thumbnail}</td>
                                             <td>{price}</td>
                                         </tr>
                                     </>
