@@ -5,7 +5,7 @@ import UserContext from "../Context/UserContext";
 const Login = () => {
     let [data, setData] = useState({
         username: "",
-        password: ""
+        password: "",
     });
 
     let { setNewdata } = useContext(UserContext)
@@ -16,7 +16,7 @@ const Login = () => {
         let { name, value } = e.target;
         setData({ ...data, [name]: value })
     }
-    let handleSubmit = () => {
+    let handleSubmit = (e) => {
         e.preventDefault();
         console.log(data);
     }
@@ -26,9 +26,11 @@ const Login = () => {
             <form onSubmit={handleSubmit}>
                 <input type="text" name="username" id="username" value={data.username} placeholder="enter username" onChange={handleChange} />
                 <input type="text" name="password" id="password" value={data.password} placeholder="enter Password" onChange={handleChange} />
-                <button type="submit"> Login</button>
+                <button type="submit">Login</button>
             </form>
 
         </>
     )
 }
+
+export default Login;
