@@ -9,7 +9,8 @@ const Login = () => {
     });
 
     let { setNewdata } = useContext(UserContext)
-    console.log(setNewdata);
+    // console.log(setNewdata);
+    setNewdata(data);
 
 
     let handleChange = (e) => {
