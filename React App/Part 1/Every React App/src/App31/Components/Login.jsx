@@ -10,7 +10,7 @@ const Login = () => {
 
     let { setNewdata } = useContext(UserContext)
     // console.log(setNewdata);
-    setNewdata(data);
+    
 
 
     let handleChange = (e) => {
@@ -20,6 +20,7 @@ const Login = () => {
     let handleSubmit = (e) => {
         e.preventDefault();
         console.log(data);
+        setNewdata(data)
     }
 
     return (
