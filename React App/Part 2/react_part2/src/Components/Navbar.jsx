@@ -1,39 +1,43 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
-const Navbar = () => {
-    let handlestyle = ({ isActive }) => {
-        return {
-            color: isActive ? "blue" : "#111",
-            textdecoration: isActive ? "underline" : "none"
-        }
-    }
-    return (
-        <>
-            <div className="dev">
-                <section>
-                    <ul>
-                        <li>
-                            <NavLink to={"/"} style={handlestyle}>
-                                Home
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink to={"/product"} style={handlestyle}>
-                                Product
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink to={"/about_us"} style={handlestyle}>
-                                About Us
-                            </NavLink>
-                        </li>
-                    </ul>
-                </section>
-            </div>
-        </>
-    )
-}
+const NavBar = () => {
+  let handleStyle = ({ isActive }) => {
+    return {
+      color: isActive ? "blue" : "#111",
+      textDecoration: isActive ? "underline" : "none",
+    };
+  };
+  return (
+    <div>
+      <div className="nav">
+        <section>
+          <ul>
+            <li>
+              <NavLink to={"/"} style={handleStyle}>
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to={"/products"} style={handleStyle}>
+                Products
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to={"/about-us"} style={handleStyle}>
+                AboutUs
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to={"/users"} style={handleStyle}>
+                Users
+              </NavLink>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  );
+};
 
-
-export default Navbar
+export default NavBar;
