@@ -1,0 +1,40 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgb(59, 59, 59), rgb(97, 97, 97));
+}
+
+.navbar {
+    width: 90%;
+    margin: 0 auto;
+    padding:20px 0;
+   
+
+    & ul {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    & li {
+        list-style: none;
+    }
+
+    & a {
+        text-decoration: none;
+        color: rgb(253, 253, 253);
+        font-weight: 600;
+        font-size: 2rem;
+    }
+}
+
+NavLink{
+    text-align: center;
+}
