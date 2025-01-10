@@ -1,0 +1,34 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.contenar-card {
+    width: 80%;
+    height: 100%;
+    margin: 0px auto;
+
+}
+
+.imgside {
+    width: 300px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.desc {
+    font-size: 12px;
+    padding: 0 5px;
+}
+
+.price {
+    font-size: 15px;
+    padding: 0 5px;
+}

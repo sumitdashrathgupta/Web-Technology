@@ -8,9 +8,10 @@ import User from "./Components/User"
 import ManProducte from "./Components/Producte/Man"
 import WomanProducte from "./Components/Producte/Woman"
 import Notpagefount from "./Components/Notpagefount"
-import "./Components/Style/Body.css";
-import "./Components/Style/Navbar.css";
 import Userditels from "./Components/Userditels"
+import "./Components/Style/Navbar.css";
+import "./Components/Style/Body.css";
+import "./Components/Style/Card.css"
 
 
 const App = () => {
