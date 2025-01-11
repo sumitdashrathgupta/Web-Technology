@@ -19,7 +19,7 @@ const Woman = () => {
                     <div className="contenar-card" key={i + 1}>
                         <div className="card" >
                             <h3>{title}</h3>
-                            <img src={images[0]} alt={title}  className="imgside"/>
+                            <img src={images[1]} alt={title}  className="imgside"/>
                             <h3 className="pric">{price}</h3>
                             <h4 className="desc">{description}</h4>
                         </div>

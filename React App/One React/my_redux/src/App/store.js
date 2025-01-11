@@ -6,5 +6,5 @@ let store=configureStore({
         userInfo:useReducer
     }
 })
-
+ 
 export default store;
