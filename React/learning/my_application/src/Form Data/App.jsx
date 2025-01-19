@@ -12,8 +12,6 @@ const App = () => {
     let SubmitForm = (e) => {
         e.preventDefault();
         console.log(Data);
-        
-
     }
     let HandelEvent = (e) => {
         let { name, value } = e.target
