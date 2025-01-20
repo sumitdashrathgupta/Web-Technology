@@ -9,6 +9,7 @@ export default class App extends Component {
             Count: 0
         }
     }
+    
     render() {
         return (
             <>
