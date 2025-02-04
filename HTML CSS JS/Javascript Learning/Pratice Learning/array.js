@@ -8,7 +8,7 @@ let obj = {
 let arr = [23, "sujdu", null, undefined, "work", 8628]
 // console.log(obj);
 // console.log(arr);
-// console.log(Array.from(obj));  It will be conver object to array
+// console.log(Array.from(obj));  //It will be conver object to array
 // console.log(Array.isArray(obj)); // It will be true or false
 // console.log(arr.length);
 // console.log(arr[2]);

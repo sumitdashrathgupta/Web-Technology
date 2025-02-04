@@ -17,8 +17,8 @@ function f1(a, b) {
     console.log("End");
 }
 
-// f1().call(obj,200,300)
+f1().call(obj,200,300)
 // f1.apply(obj,[200,600])
-let x = f1.bind(obj)
-x(300, 600);
-console.log(x);
+// let x = f1.bind(obj)
+// x(300, 600);
+// console.log(x);
