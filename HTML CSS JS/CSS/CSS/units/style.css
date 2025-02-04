@@ -1,8 +1,8 @@
 /** ------------------------------------- -->
-/**  UNITS IN CSS 
+/**  UNITS IN CSS
 /** ---------------------------------------- -->
 
-/** Absolute Lengths:  The absolute length units are fixed and a length expressed in any of these will appear as exactly that size. */
+/** Absolute Lengths: The absolute length units are fixed and a length expressed in any of these will appear as exactly that size. */
 
 /** Relative Lengths: Relative length units specify a length relative to another length property. Relative length units scale better between different rendering medium. */
 
@@ -11,7 +11,7 @@ It provides a fixed and consistent size on all devices and screens. */
 
 /*? Percentages (%): Percentages are relative units based on the parent element's size or the containing block.
 Widely used in creating responsive layouts.
-Example: width: 50%; sets an element's width to 50% of its parent's width. */
+Example: width: 50%; sets an element's width to 50% of its parent's width.*/
 
 /*? Em (em): em is a relative unit that is calculated based on the font size of the parent element.
 When you set an element's size in em, it's relative to the font size of its nearest parent with a specified font size. */
