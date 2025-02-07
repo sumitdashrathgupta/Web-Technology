@@ -1,0 +1,15 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.df {
+    width: 70%;
+    height: 100%;
+    margin: 50px auto;
+    padding: 50px 100px;
+    background: linear-gradient(45deg,rgb(203 203 203), rgb(153 201 247));
+    border-radius: 50px;
+}
