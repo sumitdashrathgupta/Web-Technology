@@ -1,0 +1,1579 @@
+SQL> SELECT * FROM STAFF;
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17934 MILLER     CLERK                17782 23-JAN-02       1430                    10         
+     17369 SMITH      CLERK                17902 12-NOV-99        800                    20         
+     17499 ALLEN      LIBRARIAN            17698 20-FEB-01       1600        300         30         
+     17521  WARD      LIBRARIAN            17698 21-FEB-01       1250        500         30         
+     17566 JONES      MANAGER              17839 04-FEB-01       2975                    20         
+     17654 MARTIN     LIBRARIAN            17698 29-SEP-01       1250       1400         30         
+     17782 CLARK      MANAGER              17839 05-JAN-01       2850                    30         
+     17788 SCOTT      MANAGER              17839 06-SEP-01       2450                    30         
+     17839 KING       PRESIDENT                  17-NOV-01       5000                    10         
+     17844 TURNER     LIBRARIAN            17698 09-AUG-01       1500          0         30         
+     17876 ADAMS      CLERK                17788 01-DEC-03       1100                    20         
+     17900 JAMES      CLERK                17900 12-MAR-01        950                    30         
+     17902 FORD       SR LIBRARIAN         17902 12-APR-01       3000                    20         
+
+13 rows selected.
+
+SQL> SELECT * FROM STAFF
+  2  WHERE LIBNO=20;
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17369 SMITH      CLERK                17902 12-NOV-99        800                    20         
+     17566 JONES      MANAGER              17839 04-FEB-01       2975                    20         
+     17876 ADAMS      CLERK                17788 01-DEC-03       1100                    20         
+     17902 FORD       SR LIBRARIAN         17902 12-APR-01       3000                    20         
+
+SQL> SELECT SNAME,SAL FROM STAFF
+  2  WHERE SAL>1000;
+
+SNAME             SAL                                                                               
+---------- ----------                                                                               
+MILLER           1430                                                                               
+ALLEN            1600                                                                               
+ WARD            1250                                                                               
+JONES            2975                                                                               
+MARTIN           1250                                                                               
+CLARK            2850                                                                               
+SCOTT            2450                                                                               
+KING             5000                                                                               
+TURNER           1500                                                                               
+ADAMS            1100                                                                               
+FORD             3000                                                                               
+
+11 rows selected.
+
+SQL> SELECT SNAME FROM STAFF
+  2  WHERE STAFFID = (SELECT MGRID FROM STAFF);
+WHERE STAFFID = (SELECT MGRID FROM STAFF)
+                 *
+ERROR at line 2:
+ORA-01427: single-row subquery returns more than one row 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT SNAME FROM STAFF
+  2* WHERE STAFFID = MGRID
+SQL> /
+
+SNAME                                                                                               
+----------                                                                                          
+JAMES                                                                                               
+FORD                                                                                                
+
+SQL> SELECT SNAME FROM STAFF
+  2  WHERE  DESIGN ='CLERK' AND LIBNO=20;
+
+SNAME                                                                                               
+----------                                                                                          
+SMITH                                                                                               
+ADAMS                                                                                               
+
+SQL> SELECT * FROM STAFF
+  2  WHERE SNAME IN('LIBRARIAN','SR LIBRARIAN');
+
+no rows selected
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT SNAME FROM STAFF
+  2* WHERE  DESIGN IN('LIBRARIAN','SR LIBRARIAN')
+SQL> /
+
+SNAME                                                                                               
+----------                                                                                          
+ALLEN                                                                                               
+ WARD                                                                                               
+MARTIN                                                                                              
+TURNER                                                                                              
+FORD                                                                                                
+
+SQL> SELECT * FROM STAFF
+  2  
+SQL> SELECT *
+  2  FROM STAFF
+  3  WHERE DOJ < TO_DATE('30-SEP-01', 'DD-MON-YY');
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17369 SMITH      CLERK                17902 12-NOV-99        800                    20         
+     17499 ALLEN      LIBRARIAN            17698 20-FEB-01       1600        300         30         
+     17521  WARD      LIBRARIAN            17698 21-FEB-01       1250        500         30         
+     17566 JONES      MANAGER              17839 04-FEB-01       2975                    20         
+     17654 MARTIN     LIBRARIAN            17698 29-SEP-01       1250       1400         30         
+     17782 CLARK      MANAGER              17839 05-JAN-01       2850                    30         
+     17788 SCOTT      MANAGER              17839 06-SEP-01       2450                    30         
+     17844 TURNER     LIBRARIAN            17698 09-AUG-01       1500          0         30         
+     17900 JAMES      CLERK                17900 12-MAR-01        950                    30         
+     17902 FORD       SR LIBRARIAN         17902 12-APR-01       3000                    20         
+
+10 rows selected.
+
+SQL> SELECT SNAME FROM STAFF
+  2  WHERE STAFFID != MGRID;
+
+SNAME                                                                                               
+----------                                                                                          
+MILLER                                                                                              
+SMITH                                                                                               
+ALLEN                                                                                               
+ WARD                                                                                               
+JONES                                                                                               
+MARTIN                                                                                              
+CLARK                                                                                               
+SCOTT                                                                                               
+TURNER                                                                                              
+ADAMS                                                                                               
+
+10 rows selected.
+
+SQL> SELECT * FROM STAFF
+  2  WHERE STAFFID IN(17369,17521,17839,17934,17788);
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17369 SMITH      CLERK                17902 12-NOV-99        800                    20         
+     17521  WARD      LIBRARIAN            17698 21-FEB-01       1250        500         30         
+     17788 SCOTT      MANAGER              17839 06-SEP-01       2450                    30         
+     17839 KING       PRESIDENT                  17-NOV-01       5000                    10         
+     17934 MILLER     CLERK                17782 23-JAN-02       1430                    10         
+
+SQL> SELECT * FROM STAFF
+  2  WHERE LIBNO NOT IN(10,30,40);
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17369 SMITH      CLERK                17902 12-NOV-99        800                    20         
+     17566 JONES      MANAGER              17839 04-FEB-01       2975                    20         
+     17876 ADAMS      CLERK                17788 01-DEC-03       1100                    20         
+     17902 FORD       SR LIBRARIAN         17902 12-APR-01       3000                    20         
+
+SQL> SELECT * FROM STAFF
+  2  WHERE SAL BETWEEN(2000 AND 5000);
+WHERE SAL BETWEEN(2000 AND 5000)
+                       *
+ERROR at line 2:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT * FROM STAFF
+  2* WHERE SAL BETWEEN 2000 AND 5000
+SQL> /
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17566 JONES      MANAGER              17839 04-FEB-01       2975                    20         
+     17782 CLARK      MANAGER              17839 05-JAN-01       2850                    30         
+     17788 SCOTT      MANAGER              17839 06-SEP-01       2450                    30         
+     17839 KING       PRESIDENT                  17-NOV-01       5000                    10         
+     17902 FORD       SR LIBRARIAN         17902 12-APR-01       3000                    20         
+
+SQL> SELECT * FROM STAFF
+  2  WHERE DOJ <'30-DEC-01' AND DOJ>'30-JUN-01';
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17654 MARTIN     LIBRARIAN            17698 29-SEP-01       1250       1400         30         
+     17788 SCOTT      MANAGER              17839 06-SEP-01       2450                    30         
+     17839 KING       PRESIDENT                  17-NOV-01       5000                    10         
+     17844 TURNER     LIBRARIAN            17698 09-AUG-01       1500          0         30         
+
+SQL> SELECT * FROM STAFF
+  2  WHERE COMM IN NULL;
+
+no rows selected
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT * FROM STAFF
+  2* WHERE COMM IS NULL
+SQL> /
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17934 MILLER     CLERK                17782 23-JAN-02       1430                    10         
+     17369 SMITH      CLERK                17902 12-NOV-99        800                    20         
+     17566 JONES      MANAGER              17839 04-FEB-01       2975                    20         
+     17782 CLARK      MANAGER              17839 05-JAN-01       2850                    30         
+     17788 SCOTT      MANAGER              17839 06-SEP-01       2450                    30         
+     17839 KING       PRESIDENT                  17-NOV-01       5000                    10         
+     17876 ADAMS      CLERK                17788 01-DEC-03       1100                    20         
+     17900 JAMES      CLERK                17900 12-MAR-01        950                    30         
+     17902 FORD       SR LIBRARIAN         17902 12-APR-01       3000                    20         
+
+9 rows selected.
+
+SQL> CL SCR
+SQL> SELECT * FROM STAFF;
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17934 MILLER     CLERK                17782 23-JAN-02       1430                    10         
+     17369 SMITH      CLERK                17902 12-NOV-99        800                    20         
+     17499 ALLEN      LIBRARIAN            17698 20-FEB-01       1600        300         30         
+     17521  WARD      LIBRARIAN            17698 21-FEB-01       1250        500         30         
+     17566 JONES      MANAGER              17839 04-FEB-01       2975                    20         
+     17654 MARTIN     LIBRARIAN            17698 29-SEP-01       1250       1400         30         
+     17782 CLARK      MANAGER              17839 05-JAN-01       2850                    30         
+     17788 SCOTT      MANAGER              17839 06-SEP-01       2450                    30         
+     17839 KING       PRESIDENT                  17-NOV-01       5000                    10         
+     17844 TURNER     LIBRARIAN            17698 09-AUG-01       1500          0         30         
+     17876 ADAMS      CLERK                17788 01-DEC-03       1100                    20         
+     17900 JAMES      CLERK                17900 12-MAR-01        950                    30         
+     17902 FORD       SR LIBRARIAN         17902 12-APR-01       3000                    20         
+
+13 rows selected.
+
+SQL> SELECT * FROM STAFF
+  2  WHERE MGRID = STAFFID;
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17900 JAMES      CLERK                17900 12-MAR-01        950                    30         
+     17902 FORD       SR LIBRARIAN         17902 12-APR-01       3000                    20         
+
+SQL> SELECT * FROM STAFF
+  2  WHERE LIBNO IS NULL;
+
+no rows selected
+
+SQL> SELECT * FROM STAFF
+  2  WHERE COMM IS NOT NULL;
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17499 ALLEN      LIBRARIAN            17698 20-FEB-01       1600        300         30         
+     17521  WARD      LIBRARIAN            17698 21-FEB-01       1250        500         30         
+     17654 MARTIN     LIBRARIAN            17698 29-SEP-01       1250       1400         30         
+     17844 TURNER     LIBRARIAN            17698 09-AUG-01       1500          0         30         
+
+SQL> SELECT * FROM STAFF
+  2  WHERE SAL>2000 AND COMM IS NULL;
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17566 JONES      MANAGER              17839 04-FEB-01       2975                    20         
+     17782 CLARK      MANAGER              17839 05-JAN-01       2850                    30         
+     17788 SCOTT      MANAGER              17839 06-SEP-01       2450                    30         
+     17839 KING       PRESIDENT                  17-NOV-01       5000                    10         
+     17902 FORD       SR LIBRARIAN         17902 12-APR-01       3000                    20         
+
+SQL> SELECT * FROM STAFF
+  2  WHERE SUBSTR(SNAME,1,1)='S';
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17369 SMITH      CLERK                17902 12-NOV-99        800                    20         
+     17788 SCOTT      MANAGER              17839 06-SEP-01       2450                    30         
+
+SQL> SELECT * FROM STAFF
+  2  WHERE SUBSTR(SNAME,1,1)='S' AND SUBSTR(SNAME,-1,1)='S';
+
+no rows selected
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT * FROM STAFF
+  2* WHERE SUBSTR(SNAME,1,1)='S' AND SUBSTR(SNAME,-1,-1)='S'
+SQL> /
+
+no rows selected
+
+SQL> SELECT * FROM STAFF
+  2  WHERE LENGTH(5)='S';
+WHERE LENGTH(5)='S'
+                *
+ERROR at line 2:
+ORA-01722: invalid number 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT * FROM STAFF
+  2* WHERE LENGTH(SNAME,5)='S'
+SQL> /
+WHERE LENGTH(SNAME,5)='S'
+      *
+ERROR at line 2:
+ORA-00909: invalid number of arguments 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT * FROM STAFF
+  2* WHERE LENGTH(SNAME)=5
+SQL> /
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17369 SMITH      CLERK                17902 12-NOV-99        800                    20         
+     17499 ALLEN      LIBRARIAN            17698 20-FEB-01       1600        300         30         
+     17521  WARD      LIBRARIAN            17698 21-FEB-01       1250        500         30         
+     17566 JONES      MANAGER              17839 04-FEB-01       2975                    20         
+     17782 CLARK      MANAGER              17839 05-JAN-01       2850                    30         
+     17788 SCOTT      MANAGER              17839 06-SEP-01       2450                    30         
+     17876 ADAMS      CLERK                17788 01-DEC-03       1100                    20         
+     17900 JAMES      CLERK                17900 12-MAR-01        950                    30         
+
+8 rows selected.
+
+SQL> SELECT * FROM STAFF
+  2  WHERE SUBSTR(SNAME,1,2)='I';
+
+no rows selected
+
+SQL> SELECT * FROM STAFF;
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17934 MILLER     CLERK                17782 23-JAN-02       1430                    10         
+     17369 SMITH      CLERK                17902 12-NOV-99        800                    20         
+     17499 ALLEN      LIBRARIAN            17698 20-FEB-01       1600        300         30         
+     17521  WARD      LIBRARIAN            17698 21-FEB-01       1250        500         30         
+     17566 JONES      MANAGER              17839 04-FEB-01       2975                    20         
+     17654 MARTIN     LIBRARIAN            17698 29-SEP-01       1250       1400         30         
+     17782 CLARK      MANAGER              17839 05-JAN-01       2850                    30         
+     17788 SCOTT      MANAGER              17839 06-SEP-01       2450                    30         
+     17839 KING       PRESIDENT                  17-NOV-01       5000                    10         
+     17844 TURNER     LIBRARIAN            17698 09-AUG-01       1500          0         30         
+     17876 ADAMS      CLERK                17788 01-DEC-03       1100                    20         
+     17900 JAMES      CLERK                17900 12-MAR-01        950                    30         
+     17902 FORD       SR LIBRARIAN         17902 12-APR-01       3000                    20         
+
+13 rows selected.
+
+SQL> SELECT * FROM STAFF
+  2  WHERE SUBSTR(SNAME,2,1)='I';
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17934 MILLER     CLERK                17782 23-JAN-02       1430                    10         
+     17839 KING       PRESIDENT                  17-NOV-01       5000                    10         
+
+SQL> CL SCR
+SQL> SELECT * FROM STAFF;
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17934 MILLER     CLERK                17782 23-JAN-02       1430                    10         
+     17369 SMITH      CLERK                17902 12-NOV-99        800                    20         
+     17499 ALLEN      LIBRARIAN            17698 20-FEB-01       1600        300         30         
+     17521  WARD      LIBRARIAN            17698 21-FEB-01       1250        500         30         
+     17566 JONES      MANAGER              17839 04-FEB-01       2975                    20         
+     17654 MARTIN     LIBRARIAN            17698 29-SEP-01       1250       1400         30         
+     17782 CLARK      MANAGER              17839 05-JAN-01       2850                    30         
+     17788 SCOTT      MANAGER              17839 06-SEP-01       2450                    30         
+     17839 KING       PRESIDENT                  17-NOV-01       5000                    10         
+     17844 TURNER     LIBRARIAN            17698 09-AUG-01       1500          0         30         
+     17876 ADAMS      CLERK                17788 01-DEC-03       1100                    20         
+     17900 JAMES      CLERK                17900 12-MAR-01        950                    30         
+     17902 FORD       SR LIBRARIAN         17902 12-APR-01       3000                    20         
+
+13 rows selected.
+
+SQL> SELECT SNAME, SAL, (SAL * 0.10) AS PF_AMOUNT
+  2  FROM STAFF;
+
+SNAME             SAL  PF_AMOUNT                                                                    
+---------- ---------- ----------                                                                    
+MILLER           1430        143                                                                    
+SMITH             800         80                                                                    
+ALLEN            1600        160                                                                    
+ WARD            1250        125                                                                    
+JONES            2975      297.5                                                                    
+MARTIN           1250        125                                                                    
+CLARK            2850        285                                                                    
+SCOTT            2450        245                                                                    
+KING             5000        500                                                                    
+TURNER           1500        150                                                                    
+ADAMS            1100        110                                                                    
+JAMES             950         95                                                                    
+FORD             3000        300                                                                    
+
+13 rows selected.
+
+SQL> SELECT SNAME
+  2  FROM STAFF
+  3  WHERE MONTHS_BETWEEN(SYSDATE, DOJ) > 24;
+
+SNAME                                                                                               
+----------                                                                                          
+MILLER                                                                                              
+SMITH                                                                                               
+ALLEN                                                                                               
+ WARD                                                                                               
+JONES                                                                                               
+MARTIN                                                                                              
+CLARK                                                                                               
+SCOTT                                                                                               
+KING                                                                                                
+TURNER                                                                                              
+ADAMS                                                                                               
+JAMES                                                                                               
+FORD                                                                                                
+
+13 rows selected.
+
+SQL> SELECT STAFFID,SNAME,SAL FROM STAFF
+  2  ORDER BY SAL;
+
+   STAFFID SNAME             SAL                                                                    
+---------- ---------- ----------                                                                    
+     17369 SMITH             800                                                                    
+     17900 JAMES             950                                                                    
+     17876 ADAMS            1100                                                                    
+     17521  WARD            1250                                                                    
+     17654 MARTIN           1250                                                                    
+     17934 MILLER           1430                                                                    
+     17844 TURNER           1500                                                                    
+     17499 ALLEN            1600                                                                    
+     17788 SCOTT            2450                                                                    
+     17782 CLARK            2850                                                                    
+     17566 JONES            2975                                                                    
+     17902 FORD             3000                                                                    
+     17839 KING             5000                                                                    
+
+13 rows selected.
+
+SQL> SELECT * FROM STAFF
+  2  ORDER BY DOJ;
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17369 SMITH      CLERK                17902 12-NOV-99        800                    20         
+     17782 CLARK      MANAGER              17839 05-JAN-01       2850                    30         
+     17566 JONES      MANAGER              17839 04-FEB-01       2975                    20         
+     17499 ALLEN      LIBRARIAN            17698 20-FEB-01       1600        300         30         
+     17521  WARD      LIBRARIAN            17698 21-FEB-01       1250        500         30         
+     17900 JAMES      CLERK                17900 12-MAR-01        950                    30         
+     17902 FORD       SR LIBRARIAN         17902 12-APR-01       3000                    20         
+     17844 TURNER     LIBRARIAN            17698 09-AUG-01       1500          0         30         
+     17788 SCOTT      MANAGER              17839 06-SEP-01       2450                    30         
+     17654 MARTIN     LIBRARIAN            17698 29-SEP-01       1250       1400         30         
+     17839 KING       PRESIDENT                  17-NOV-01       5000                    10         
+     17934 MILLER     CLERK                17782 23-JAN-02       1430                    10         
+     17876 ADAMS      CLERK                17788 01-DEC-03       1100                    20         
+
+13 rows selected.
+
+SQL> SELECT SNAME,SAL,DESIGN,LIBNO FROM STAFF
+  2  ORDER BY LIBNO AND SAL DESC;
+ORDER BY LIBNO AND SAL DESC
+               *
+ERROR at line 2:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT SNAME,SAL,DESIGN,LIBNO FROM STAFF
+  2* ORDER BY LIBNO,SAL DESC
+SQL> /
+
+SNAME             SAL DESIGN               LIBNO                                                    
+---------- ---------- --------------- ----------                                                    
+KING             5000 PRESIDENT               10                                                    
+MILLER           1430 CLERK                   10                                                    
+FORD             3000 SR LIBRARIAN            20                                                    
+JONES            2975 MANAGER                 20                                                    
+ADAMS            1100 CLERK                   20                                                    
+SMITH             800 CLERK                   20                                                    
+CLARK            2850 MANAGER                 30                                                    
+SCOTT            2450 MANAGER                 30                                                    
+ALLEN            1600 LIBRARIAN               30                                                    
+TURNER           1500 LIBRARIAN               30                                                    
+ WARD            1250 LIBRARIAN               30                                                    
+MARTIN           1250 LIBRARIAN               30                                                    
+JAMES             950 CLERK                   30                                                    
+
+13 rows selected.
+
+SQL> CL SCR
+SQL> 
+SQL> SELECT SNAME,
+  2         SAL,
+  3         (SAL * 0.10) AS PF,
+  4         (SAL * 0.50) AS HRA,
+  5         (SAL * 0.30) AS DA,
+  6         (SAL + (SAL * 0.50) + (SAL * 0.30) - (SAL * 0.10)) AS GROSS
+  7  FROM STAFF
+  8  ORDER BY GROSS ASC;
+
+SNAME             SAL         PF        HRA         DA      GROSS                                   
+---------- ---------- ---------- ---------- ---------- ----------                                   
+SMITH             800         80        400        240       1360                                   
+JAMES             950         95        475        285       1615                                   
+ADAMS            1100        110        550        330       1870                                   
+ WARD            1250        125        625        375       2125                                   
+MARTIN           1250        125        625        375       2125                                   
+MILLER           1430        143        715        429       2431                                   
+TURNER           1500        150        750        450       2550                                   
+ALLEN            1600        160        800        480       2720                                   
+SCOTT            2450        245       1225        735       4165                                   
+CLARK            2850        285       1425        855       4845                                   
+JONES            2975      297.5     1487.5      892.5     5057.5                                   
+FORD             3000        300       1500        900       5100                                   
+KING             5000        500       2500       1500       8500                                   
+
+13 rows selected.
+
+SQL> SELECT STAFFID,
+  2         SNAME,
+  3         SAL,
+  4         ROUND(SAL * 1.15) AS NEW_SAL
+  5  FROM STAFF;
+
+   STAFFID SNAME             SAL    NEW_SAL                                                         
+---------- ---------- ---------- ----------                                                         
+     17934 MILLER           1430       1645                                                         
+     17369 SMITH             800        920                                                         
+     17499 ALLEN            1600       1840                                                         
+     17521  WARD            1250       1438                                                         
+     17566 JONES            2975       3421                                                         
+     17654 MARTIN           1250       1438                                                         
+     17782 CLARK            2850       3278                                                         
+     17788 SCOTT            2450       2818                                                         
+     17839 KING             5000       5750                                                         
+     17844 TURNER           1500       1725                                                         
+     17876 ADAMS            1100       1265                                                         
+     17900 JAMES             950       1093                                                         
+     17902 FORD             3000       3450                                                         
+
+13 rows selected.
+
+SQL> SELECT INCAP(SNAME) FROM STAFF
+  2  WHERE SUBSTR(SNAME,1,1) IN('J','A','M');
+SELECT INCAP(SNAME) FROM STAFF
+       *
+ERROR at line 1:
+ORA-00904: "INCAP": invalid identifier 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT INITCAP(SNAME) FROM STAFF
+  2* WHERE SUBSTR(SNAME,1,1) IN('J','A','M')
+SQL> /
+
+INITCAP(SN                                                                                          
+----------                                                                                          
+Miller                                                                                              
+Allen                                                                                               
+Jones                                                                                               
+Martin                                                                                              
+Adams                                                                                               
+James                                                                                               
+
+6 rows selected.
+
+SQL> CL SCR
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                   
+------------------------------ ------- ----------                                                   
+DEPT                           TABLE                                                                
+EMP                            TABLE                                                                
+BONUS                          TABLE                                                                
+SALGRADE                       TABLE                                                                
+STAFF                          TABLE                                                                
+LIBRARY                        TABLE                                                                
+BOOKS                          TABLE                                                                
+MEMBER                         TABLE                                                                
+SALGRADE2                      TABLE                                                                
+TRANSACTION                    TABLE                                                                
+DUKAN                          TABLE                                                                
+
+11 rows selected.
+
+SQL> SELECT * FROM MEMBER;
+
+MEM_NO               MEM_NAME             ME NO_OF_BOOKS TOTAL_FINE EXPIRY_DA                       
+-------------------- -------------------- -- ----------- ---------- ---------                       
+M102                 JANE                 M            1            30-JUN-05                       
+M108                 MILLER               M            2         80 20-JUN-05                       
+M104                 SHERLY               M            2         20 20-JUN-05                       
+M109                 WATSON               M            1         10 29-AUG-05                       
+Y101                 LAZOR                Y            3         30 29-AUG-06                       
+Y109                 PETER                Y            4         27 27-JUN-06                       
+Y102                 MERCY                Y            2        100 20-JAN-06                       
+L106                 SONY                 L            6       1100 20-JAN-20                       
+L109                 GREG                 L            3       2000 22-SEP-20                       
+L117                 MABIE                L            2       1000 03-JAN-19                       
+
+10 rows selected.
+
+SQL> CL SCR
+SQL> SELECT * FROM STAFF;
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17934 MILLER     CLERK                17782 23-JAN-02       1430                    10         
+     17369 SMITH      CLERK                17902 12-NOV-99        800                    20         
+     17499 ALLEN      LIBRARIAN            17698 20-FEB-01       1600        300         30         
+     17521  WARD      LIBRARIAN            17698 21-FEB-01       1250        500         30         
+     17566 JONES      MANAGER              17839 04-FEB-01       2975                    20         
+     17654 MARTIN     LIBRARIAN            17698 29-SEP-01       1250       1400         30         
+     17782 CLARK      MANAGER              17839 05-JAN-01       2850                    30         
+     17788 SCOTT      MANAGER              17839 06-SEP-01       2450                    30         
+     17839 KING       PRESIDENT                  17-NOV-01       5000                    10         
+     17844 TURNER     LIBRARIAN            17698 09-AUG-01       1500          0         30         
+     17876 ADAMS      CLERK                17788 01-DEC-03       1100                    20         
+     17900 JAMES      CLERK                17900 12-MAR-01        950                    30         
+     17902 FORD       SR LIBRARIAN         17902 12-APR-01       3000                    20         
+
+13 rows selected.
+
+SQL> SELECT SNAME,MONTHS_BETWEEN(SYSDATE,DOJ) FROM STAFF;
+
+SNAME      MONTHS_BETWEEN(SYSDATE,DOJ)                                                              
+---------- ---------------------------                                                              
+MILLER                      276.467301                                                              
+SMITH                        302.82214                                                              
+ALLEN                       287.564076                                                              
+ WARD                       287.531818                                                              
+JONES                       288.080205                                                              
+MARTIN                      280.273753                                                              
+CLARK                       289.047947                                                              
+SCOTT                              281                                                              
+KING                         278.66085                                                              
+TURNER                      281.918914                                                              
+ADAMS                       254.176979                                                              
+JAMES                        286.82214                                                              
+FORD                         285.82214                                                              
+
+13 rows selected.
+
+SQL> SELECT SNAME,SAL,LPAD(SAL,15,'$') FROM STAFF;
+
+SNAME             SAL LPAD(SAL,15,'$'                                                               
+---------- ---------- ---------------                                                               
+MILLER           1430 $$$$$$$$$$$1430                                                               
+SMITH             800 $$$$$$$$$$$$800                                                               
+ALLEN            1600 $$$$$$$$$$$1600                                                               
+ WARD            1250 $$$$$$$$$$$1250                                                               
+JONES            2975 $$$$$$$$$$$2975                                                               
+MARTIN           1250 $$$$$$$$$$$1250                                                               
+CLARK            2850 $$$$$$$$$$$2850                                                               
+SCOTT            2450 $$$$$$$$$$$2450                                                               
+KING             5000 $$$$$$$$$$$5000                                                               
+TURNER           1500 $$$$$$$$$$$1500                                                               
+ADAMS            1100 $$$$$$$$$$$1100                                                               
+JAMES             950 $$$$$$$$$$$$950                                                               
+FORD             3000 $$$$$$$$$$$3000                                                               
+
+13 rows selected.
+
+SQL> SELECT SNAME,DOJ,TO_CHAR(DOJ,'FMDAY) FROM STAFF;
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT SNAME,DOJ,TO_CHAR(DOJ,'FMDAY') FROM STAFF
+SQL> /
+
+SNAME      DOJ       TO_CHAR(D                                                                      
+---------- --------- ---------                                                                      
+MILLER     23-JAN-02 WEDNESDAY                                                                      
+SMITH      12-NOV-99 FRIDAY                                                                         
+ALLEN      20-FEB-01 TUESDAY                                                                        
+ WARD      21-FEB-01 WEDNESDAY                                                                      
+JONES      04-FEB-01 SUNDAY                                                                         
+MARTIN     29-SEP-01 SATURDAY                                                                       
+CLARK      05-JAN-01 FRIDAY                                                                         
+SCOTT      06-SEP-01 THURSDAY                                                                       
+KING       17-NOV-01 SATURDAY                                                                       
+TURNER     09-AUG-01 THURSDAY                                                                       
+ADAMS      01-DEC-03 MONDAY                                                                         
+JAMES      12-MAR-01 MONDAY                                                                         
+FORD       12-APR-01 THURSDAY                                                                       
+
+13 rows selected.
+
+SQL> SELECT COUNT(*) FROM STAFF;
+
+  COUNT(*)                                                                                          
+----------                                                                                          
+        13                                                                                          
+
+SQL> SELECT COUNT(DISIGN) FROM STAFF;
+SELECT COUNT(DISIGN) FROM STAFF
+             *
+ERROR at line 1:
+ORA-00904: "DISIGN": invalid identifier 
+
+
+SQL> SELECT * FROM STAFF;
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17934 MILLER     CLERK                17782 23-JAN-02       1430                    10         
+     17369 SMITH      CLERK                17902 12-NOV-99        800                    20         
+     17499 ALLEN      LIBRARIAN            17698 20-FEB-01       1600        300         30         
+     17521  WARD      LIBRARIAN            17698 21-FEB-01       1250        500         30         
+     17566 JONES      MANAGER              17839 04-FEB-01       2975                    20         
+     17654 MARTIN     LIBRARIAN            17698 29-SEP-01       1250       1400         30         
+     17782 CLARK      MANAGER              17839 05-JAN-01       2850                    30         
+     17788 SCOTT      MANAGER              17839 06-SEP-01       2450                    30         
+     17839 KING       PRESIDENT                  17-NOV-01       5000                    10         
+     17844 TURNER     LIBRARIAN            17698 09-AUG-01       1500          0         30         
+     17876 ADAMS      CLERK                17788 01-DEC-03       1100                    20         
+     17900 JAMES      CLERK                17900 12-MAR-01        950                    30         
+     17902 FORD       SR LIBRARIAN         17902 12-APR-01       3000                    20         
+
+13 rows selected.
+
+SQL> SELECT COUNT(DESIGN) FROM STAFF;
+
+COUNT(DESIGN)                                                                                       
+-------------                                                                                       
+           13                                                                                       
+
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                   
+------------------------------ ------- ----------                                                   
+DEPT                           TABLE                                                                
+EMP                            TABLE                                                                
+BONUS                          TABLE                                                                
+SALGRADE                       TABLE                                                                
+STAFF                          TABLE                                                                
+LIBRARY                        TABLE                                                                
+BOOKS                          TABLE                                                                
+MEMBER                         TABLE                                                                
+SALGRADE2                      TABLE                                                                
+TRANSACTION                    TABLE                                                                
+DUKAN                          TABLE                                                                
+
+11 rows selected.
+
+SQL> SELECT * FROM LIBRARY;
+
+     LIBNO LIBNAME              CITY                                                                
+---------- -------------------- ----------                                                          
+        10 KNOWLEDGE POWER      DELHI                                                               
+        20 REDEFINE KNOWLEDE    BOMBAY                                                              
+        30 EXPERTISE            CHENNAI                                                             
+        40 EXCELLENCE           KOLKATA                                                             
+
+SQL> SELECT MAX(SAL) FROM STAFF
+  2  WHERE DESIGN='LIBRARIAN';
+
+  MAX(SAL)                                                                                          
+----------                                                                                          
+      1600                                                                                          
+
+SQL> SELECT AVG(SAL) FROM STAFF
+  2  WHERE LIBNO=20;
+
+  AVG(SAL)                                                                                          
+----------                                                                                          
+   1968.75                                                                                          
+
+SQL> SELECT * FROM STAFF
+  2  WHERE MONTHS_BETWEEN(SYSDATE,DOJ)=200;
+
+no rows selected
+
+SQL> SELECT * FROM STAFF;
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17934 MILLER     CLERK                17782 23-JAN-02       1430                    10         
+     17369 SMITH      CLERK                17902 12-NOV-99        800                    20         
+     17499 ALLEN      LIBRARIAN            17698 20-FEB-01       1600        300         30         
+     17521  WARD      LIBRARIAN            17698 21-FEB-01       1250        500         30         
+     17566 JONES      MANAGER              17839 04-FEB-01       2975                    20         
+     17654 MARTIN     LIBRARIAN            17698 29-SEP-01       1250       1400         30         
+     17782 CLARK      MANAGER              17839 05-JAN-01       2850                    30         
+     17788 SCOTT      MANAGER              17839 06-SEP-01       2450                    30         
+     17839 KING       PRESIDENT                  17-NOV-01       5000                    10         
+     17844 TURNER     LIBRARIAN            17698 09-AUG-01       1500          0         30         
+     17876 ADAMS      CLERK                17788 01-DEC-03       1100                    20         
+     17900 JAMES      CLERK                17900 12-MAR-01        950                    30         
+     17902 FORD       SR LIBRARIAN         17902 12-APR-01       3000                    20         
+
+13 rows selected.
+
+SQL> SELECT SNAME,
+  2         DOJ,
+  3         TO_CHAR(NEXT_DAY(ADD_MONTHS(DOJ, 6), 'MONDAY'), 'Day, the DDth of Month, YYYY') AS REVIEW
+  4  FROM STAFF;
+       TO_CHAR(NEXT_DAY(ADD_MONTHS(DOJ, 6), 'MONDAY'), 'Day, the DDth of Month, YYYY') AS REVIEW
+                                                       *
+ERROR at line 3:
+ORA-01821: date format not recognized 
+
+
+SQL> SELECT * FROM STAFF
+  2  WHERE SAL> 3000 AS "GOOD SAL" AND SAL=3000 AS "AVG SAL" AND SAL<3000 AS "POOR SAL";
+WHERE SAL> 3000 AS "GOOD SAL" AND SAL=3000 AS "AVG SAL" AND SAL<3000 AS "POOR SAL"
+                *
+ERROR at line 2:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> SELECT SNAME,
+  2         SAL,
+  3         CASE
+  4             WHEN SAL > 3000 THEN 'Good salary'
+  5             WHEN SAL = 3000 THEN 'Average salary'
+  6             WHEN SAL < 3000 THEN 'Poor salary'
+  7         END AS SALARY_STATUS
+  8  FROM STAFF;
+
+SNAME             SAL SALARY_STATUS                                                                 
+---------- ---------- --------------                                                                
+MILLER           1430 Poor salary                                                                   
+SMITH             800 Poor salary                                                                   
+ALLEN            1600 Poor salary                                                                   
+ WARD            1250 Poor salary                                                                   
+JONES            2975 Poor salary                                                                   
+MARTIN           1250 Poor salary                                                                   
+CLARK            2850 Poor salary                                                                   
+SCOTT            2450 Poor salary                                                                   
+KING             5000 Good salary                                                                   
+TURNER           1500 Poor salary                                                                   
+ADAMS            1100 Poor salary                                                                   
+JAMES             950 Poor salary                                                                   
+FORD             3000 Average salary                                                                
+
+13 rows selected.
+
+SQL> SELECT DOJ FROM STAFF
+  2  WHERE TO_CHAR(DOJ,'FMDAY')='MON';
+
+no rows selected
+
+SQL> SELECT SNAME,COMM CASE
+  2  WHERE COMM IS NULL THAN "NO COMMISSION" END AS NO COMM
+  3  FROM STAFF;
+WHERE COMM IS NULL THAN "NO COMMISSION" END AS NO COMM
+*
+ERROR at line 2:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT SNAME,COMM CASE COMM IS NULL THAN "NO COMMISSION" END AS NO COMM
+  2* FROM STAFF
+SQL> /
+SELECT SNAME,COMM CASE COMM IS NULL THAN "NO COMMISSION" END AS NO COMM
+                       *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT SNAME,COMM CASE WHEN COMM IS NULL THAN "NO COMMISSION" END AS NO COMM
+  2* FROM STAFF
+SQL> /
+SELECT SNAME,COMM CASE WHEN COMM IS NULL THAN "NO COMMISSION" END AS NO COMM
+                       *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT SNAME, CASE WHEN COMM IS NULL THAN 'NO COMMISSION' ELSE TO_CHAR(COMM) END AS COMM
+  2* FROM STAFF
+SQL> /
+SELECT SNAME, CASE WHEN COMM IS NULL THAN 'NO COMMISSION' ELSE TO_CHAR(COMM) END AS COMM
+                                     *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT SNAME, CASE WHEN COMM IS NULL THEN 'NO COMMISSION' ELSE TO_CHAR(COMM) END AS COMM
+  2* FROM STAFF
+SQL> /
+
+SNAME      COMM                                                                                     
+---------- ----------------------------------------                                                 
+MILLER     NO COMMISSION                                                                            
+SMITH      NO COMMISSION                                                                            
+ALLEN      300                                                                                      
+ WARD      500                                                                                      
+JONES      NO COMMISSION                                                                            
+MARTIN     1400                                                                                     
+CLARK      NO COMMISSION                                                                            
+SCOTT      NO COMMISSION                                                                            
+KING       NO COMMISSION                                                                            
+TURNER     0                                                                                        
+ADAMS      NO COMMISSION                                                                            
+JAMES      NO COMMISSION                                                                            
+FORD       NO COMMISSION                                                                            
+
+13 rows selected.
+
+SQL> SELECT LIBNO,COUNT(*) FROM EMP;
+SELECT LIBNO,COUNT(*) FROM EMP
+       *
+ERROR at line 1:
+ORA-00904: "LIBNO": invalid identifier 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT LIBNO,COUNT(*) FROM STAFF
+SQL> /
+SELECT LIBNO,COUNT(*) FROM STAFF
+       *
+ERROR at line 1:
+ORA-00937: not a single-group group function 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT COUNT(*) FROM STAFF
+  2* WHERE LIBNO>0
+SQL> /
+
+  COUNT(*)                                                                                          
+----------                                                                                          
+        13                                                                                          
+
+SQL> CL SCR
+SQL> SELECT LIBNO FROM STAFF
+  2  WHERE (SELECT SUM(SAL) FROM STAFF);
+WHERE (SELECT SUM(SAL) FROM STAFF)
+                                 *
+ERROR at line 2:
+ORA-00936: missing expression 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT SUM(SAL) FROM STAFF
+  2* WHERE LIBNO
+SQL> /
+WHERE LIBNO
+          *
+ERROR at line 2:
+ORA-00920: invalid relational operator 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT LIBNO,SUM(SAL) FROM STAFF
+  2* GROUP BY LIBNO
+SQL> /
+
+     LIBNO   SUM(SAL)                                                                               
+---------- ----------                                                                               
+        30      11850                                                                               
+        20       7875                                                                               
+        10       6430                                                                               
+
+SQL> CL SCR
+SQL> SELECT DESIGN,COUNT(DESIGN) FROM STAFF
+  2  GROUP BY DESIGN
+  3  ORDER BY STAFFID;
+ORDER BY STAFFID
+         *
+ERROR at line 3:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> SELECT * FROM STAFF;
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17934 MILLER     CLERK                17782 23-JAN-02       1430                    10         
+     17369 SMITH      CLERK                17902 12-NOV-99        800                    20         
+     17499 ALLEN      LIBRARIAN            17698 20-FEB-01       1600        300         30         
+     17521  WARD      LIBRARIAN            17698 21-FEB-01       1250        500         30         
+     17566 JONES      MANAGER              17839 04-FEB-01       2975                    20         
+     17654 MARTIN     LIBRARIAN            17698 29-SEP-01       1250       1400         30         
+     17782 CLARK      MANAGER              17839 05-JAN-01       2850                    30         
+     17788 SCOTT      MANAGER              17839 06-SEP-01       2450                    30         
+     17839 KING       PRESIDENT                  17-NOV-01       5000                    10         
+     17844 TURNER     LIBRARIAN            17698 09-AUG-01       1500          0         30         
+     17876 ADAMS      CLERK                17788 01-DEC-03       1100                    20         
+     17900 JAMES      CLERK                17900 12-MAR-01        950                    30         
+     17902 FORD       SR LIBRARIAN         17902 12-APR-01       3000                    20         
+
+13 rows selected.
+
+SQL> SELECT DESIGN,
+  2         COUNT(*) AS NUM_OF_STAFF
+  3  FROM STAFF
+  4  GROUP BY DESIGN
+  5  ORDER BY NUM_OF_STAFF ASC;
+
+DESIGN          NUM_OF_STAFF                                                                        
+--------------- ------------                                                                        
+PRESIDENT                  1                                                                        
+SR LIBRARIAN               1                                                                        
+MANAGER                    3                                                                        
+CLERK                      4                                                                        
+LIBRARIAN                  4                                                                        
+
+SQL> CL SCR
+SQL> SELECT SUM(SAL),MAX(SAL),MIN(SAL),AVG(SAL) FROM STAFF;
+
+  SUM(SAL)   MAX(SAL)   MIN(SAL)   AVG(SAL)                                                         
+---------- ---------- ---------- ----------                                                         
+     26155       5000        800 2011.92308                                                         
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT SUM(SAL),MAX(SAL),MIN(SAL),AVG(SAL) AS JOB FROM STAFF
+  2* GROUP BY JOB
+SQL> /
+GROUP BY JOB
+         *
+ERROR at line 2:
+ORA-00904: "JOB": invalid identifier 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT SUM(SAL),MAX(SAL),MIN(SAL),AVG(SAL) AS JOBS FROM STAFF
+  2* GROUP BY JOBS
+SQL> /
+GROUP BY JOBS
+         *
+ERROR at line 2:
+ORA-00904: "JOBS": invalid identifier 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT SUM(SAL),MAX(SAL),MIN(SAL),AVG(SAL),JOB FROM STAFF
+  2* GROUP BY JOB
+SQL> /
+GROUP BY JOB
+         *
+ERROR at line 2:
+ORA-00904: "JOB": invalid identifier 
+
+
+SQL> CL SCR
+SQL> SELECT AVG(SAL),JOB FROM STAFF
+  2  WHERE STAFFID = MGRID
+  3  GROUP BY JOB;
+GROUP BY JOB
+         *
+ERROR at line 3:
+ORA-00904: "JOB": invalid identifier 
+
+
+SQL> SELECT DESIGN,
+  2         AVG(SAL) AS AVG_SAL
+  3  FROM STAFF
+  4  WHERE DESIGN != 'MANAGER'  -- Exclude managers
+  5  GROUP BY DESIGN;
+
+DESIGN             AVG_SAL                                                                          
+--------------- ----------                                                                          
+LIBRARIAN             1400                                                                          
+CLERK                 1070                                                                          
+PRESIDENT             5000                                                                          
+SR LIBRARIAN          3000                                                                          
+
+SQL> SELECT DESIGN,
+  2         SUM(SAL) AS TOTAL_SAL,
+  3         MAX(SAL) AS MAX_SAL,
+  4         MIN(SAL) AS MIN_SAL,
+  5         AVG(SAL) AS AVG_SAL
+  6  FROM STAFF
+  7  WHERE LIBNO = 20
+  8  GROUP BY DESIGN;
+
+DESIGN           TOTAL_SAL    MAX_SAL    MIN_SAL    AVG_SAL                                         
+--------------- ---------- ---------- ---------- ----------                                         
+CLERK                 1900       1100        800        950                                         
+SR LIBRARIAN          3000       3000       3000       3000                                         
+MANAGER               2975       2975       2975       2975                                         
+
+SQL> SELECT LIBNO,
+  2         AVG(SAL) AS AVG_SAL
+  3  FROM STAFF
+  4  GROUP BY LIBNO
+  5  HAVING COUNT(*) > 5;
+
+     LIBNO    AVG_SAL                                                                               
+---------- ----------                                                                               
+        30 1692.85714                                                                               
+
+SQL> SELECT DESIGN
+  2  FROM STAFF
+  3  GROUP BY DESIGN
+  4  HAVING MAX(SAL) >= 5000;
+
+DESIGN                                                                                              
+---------------                                                                                     
+PRESIDENT                                                                                           
+
+SQL> SELECT DESIGN,
+  2         SUM(SAL) AS TOTAL_SAL,
+  3         MAX(SAL) AS MAX_SAL,
+  4         MIN(SAL) AS MIN_SAL,
+  5         AVG(SAL) AS AVG_SAL
+  6  FROM STAFF
+  7  WHERE LIBNO = 20
+  8  GROUP BY DESIGN
+  9  HAVING SUM(SAL) > 2000
+ 10  ORDER BY TOTAL_SAL DESC;
+
+DESIGN           TOTAL_SAL    MAX_SAL    MIN_SAL    AVG_SAL                                         
+--------------- ---------- ---------- ---------- ----------                                         
+SR LIBRARIAN          3000       3000       3000       3000                                         
+MANAGER               2975       2975       2975       2975                                         
+
+SQL> SELECT M.MEMBER_ID, M.NAME, M.ADDRESS, B.BOOK_ID, B.TITLE, F.FINE_AMOUNT
+  2  FROM MEMBERS M
+  3  JOIN FINES F ON M.MEMBER_ID = F.MEMBER_ID
+  4  JOIN BOOKS B ON F.BOOK_ID = B.BOOK_ID
+  5  WHERE F.FINE_AMOUNT > 200;
+JOIN FINES F ON M.MEMBER_ID = F.MEMBER_ID
+     *
+ERROR at line 3:
+ORA-00942: table or view does not exist 
+
+
+SQL> SELECT SNAME, DESIGN, SAL, LIBNO
+  2  FROM STAFF
+  3  WHERE LIBNO IN (30, 40);
+
+SNAME      DESIGN                 SAL      LIBNO                                                    
+---------- --------------- ---------- ----------                                                    
+ALLEN      LIBRARIAN             1600         30                                                    
+ WARD      LIBRARIAN             1250         30                                                    
+MARTIN     LIBRARIAN             1250         30                                                    
+CLARK      MANAGER               2850         30                                                    
+SCOTT      MANAGER               2450         30                                                    
+TURNER     LIBRARIAN             1500         30                                                    
+JAMES      CLERK                  950         30                                                    
+
+7 rows selected.
+
+SQL> SELECT L.LIBNO, L.LNAME, SUM(S.SAL) AS TOTAL_SAL
+  2  FROM STAFF S
+  3  JOIN LIBRARIES L ON S.LIBNO = L.LIBNO
+  4  GROUP BY L.LIBNO, L.LNAME;
+JOIN LIBRARIES L ON S.LIBNO = L.LIBNO
+     *
+ERROR at line 3:
+ORA-00942: table or view does not exist 
+
+
+SQL> SELECT SNAME, DESIGN, SAL, LOCATION
+  2  FROM STAFF
+  3  WHERE LOCATION = 'Delhi';
+WHERE LOCATION = 'Delhi'
+      *
+ERROR at line 3:
+ORA-00904: "LOCATION": invalid identifier 
+
+
+SQL> SELECT * FROM LIBRIRY;
+SELECT * FROM LIBRIRY
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> CL SCR
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                   
+------------------------------ ------- ----------                                                   
+DEPT                           TABLE                                                                
+EMP                            TABLE                                                                
+BONUS                          TABLE                                                                
+SALGRADE                       TABLE                                                                
+STAFF                          TABLE                                                                
+LIBRARY                        TABLE                                                                
+BOOKS                          TABLE                                                                
+MEMBER                         TABLE                                                                
+SALGRADE2                      TABLE                                                                
+TRANSACTION                    TABLE                                                                
+DUKAN                          TABLE                                                                
+
+11 rows selected.
+
+SQL> SELECT * FROM LIBRARY;
+
+     LIBNO LIBNAME              CITY                                                                
+---------- -------------------- ----------                                                          
+        10 KNOWLEDGE POWER      DELHI                                                               
+        20 REDEFINE KNOWLEDE    BOMBAY                                                              
+        30 EXPERTISE            CHENNAI                                                             
+        40 EXCELLENCE           KOLKATA                                                             
+
+SQL> SELECT SNAME,DESIGN,SAL FROM STAFF
+  2  WHERER  LIBNO IN(SELECT LIBNO FROM LIBRARY
+  3  WHERE CITY='DELHI');
+WHERER  LIBNO IN(SELECT LIBNO FROM LIBRARY
+        *
+ERROR at line 2:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> SELECT * FROM STAFF;
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17934 MILLER     CLERK                17782 23-JAN-02       1430                    10         
+     17369 SMITH      CLERK                17902 12-NOV-99        800                    20         
+     17499 ALLEN      LIBRARIAN            17698 20-FEB-01       1600        300         30         
+     17521  WARD      LIBRARIAN            17698 21-FEB-01       1250        500         30         
+     17566 JONES      MANAGER              17839 04-FEB-01       2975                    20         
+     17654 MARTIN     LIBRARIAN            17698 29-SEP-01       1250       1400         30         
+     17782 CLARK      MANAGER              17839 05-JAN-01       2850                    30         
+     17788 SCOTT      MANAGER              17839 06-SEP-01       2450                    30         
+     17839 KING       PRESIDENT                  17-NOV-01       5000                    10         
+     17844 TURNER     LIBRARIAN            17698 09-AUG-01       1500          0         30         
+     17876 ADAMS      CLERK                17788 01-DEC-03       1100                    20         
+     17900 JAMES      CLERK                17900 12-MAR-01        950                    30         
+     17902 FORD       SR LIBRARIAN         17902 12-APR-01       3000                    20         
+
+13 rows selected.
+
+SQL> SELECT SNAME,DESIGN,SAL FROM STAFF
+  2  WHERER  LIBNO IN(SELECT LIBNO FROM LIBRARY
+  3  WHERE CITY='DELHI')
+  4  ;
+WHERER  LIBNO IN(SELECT LIBNO FROM LIBRARY
+        *
+ERROR at line 2:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT SNAME,DESIGN,SAL FROM STAFF
+  2  WHERER  LIBNO = (SELECT LIBNO FROM LIBRARY
+  3* WHERE CITY='DELHI')
+  4  /
+WHERER  LIBNO = (SELECT LIBNO FROM LIBRARY
+        *
+ERROR at line 2:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> SELECT * FROM LIBRARY;
+
+     LIBNO LIBNAME              CITY                                                                
+---------- -------------------- ----------                                                          
+        10 KNOWLEDGE POWER      DELHI                                                               
+        20 REDEFINE KNOWLEDE    BOMBAY                                                              
+        30 EXPERTISE            CHENNAI                                                             
+        40 EXCELLENCE           KOLKATA                                                             
+
+SQL> SELECT S.SNAME, S.DESIGN, S.SAL, L.CITY
+  2  FROM STAFF S
+  3  JOIN LIBRARY L ON S.LIBNO = L.LIBNO
+  4  WHERE L.CITY = 'DELHI';
+
+SNAME      DESIGN                 SAL CITY                                                          
+---------- --------------- ---------- ----------                                                    
+MILLER     CLERK                 1430 DELHI                                                         
+KING       PRESIDENT             5000 DELHI                                                         
+
+SQL> SELECT * FROM STAFF
+  2  WHERE LIBNO IN(30,40);
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17499 ALLEN      LIBRARIAN            17698 20-FEB-01       1600        300         30         
+     17521  WARD      LIBRARIAN            17698 21-FEB-01       1250        500         30         
+     17654 MARTIN     LIBRARIAN            17698 29-SEP-01       1250       1400         30         
+     17782 CLARK      MANAGER              17839 05-JAN-01       2850                    30         
+     17788 SCOTT      MANAGER              17839 06-SEP-01       2450                    30         
+     17844 TURNER     LIBRARIAN            17698 09-AUG-01       1500          0         30         
+     17900 JAMES      CLERK                17900 12-MAR-01        950                    30         
+
+7 rows selected.
+
+SQL> SELECT * FROM STAFF
+  2  WHERE STAFFID =< MGRID;
+WHERE STAFFID =< MGRID
+               *
+ERROR at line 2:
+ORA-00936: missing expression 
+
+
+SQL> SELECT S.SNAME AS STAFF_NAME,
+  2         S.DESIGN AS STAFF_DESIGNATION,
+  3         S.SAL AS STAFF_SALARY,
+  4         M.SNAME AS MANAGER_NAME,
+  5         M.DESIGN AS MANAGER_DESIGNATION,
+  6         M.SAL AS MANAGER_SALARY
+  7  FROM STAFF S
+  8  JOIN STAFF M ON S.MGRID = M.STAFFID
+  9  WHERE S.SAL < M.SAL;
+
+STAFF_NAME STAFF_DESIGNATI STAFF_SALARY MANAGER_NA MANAGER_DESIGNA MANAGER_SALARY                   
+---------- --------------- ------------ ---------- --------------- --------------                   
+MILLER     CLERK                   1430 CLARK      MANAGER                   2850                   
+ADAMS      CLERK                   1100 SCOTT      MANAGER                   2450                   
+SCOTT      MANAGER                 2450 KING       PRESIDENT                 5000                   
+CLARK      MANAGER                 2850 KING       PRESIDENT                 5000                   
+JONES      MANAGER                 2975 KING       PRESIDENT                 5000                   
+SMITH      CLERK                    800 FORD       SR LIBRARIAN              3000                   
+
+6 rows selected.
+
+SQL> SELECT S.SNAME AS STAFF_NAME,
+  2         S.DESIGN AS STAFF_DESIGNATION,
+  3         S.DOJ AS STAFF_DOJ,
+  4         M.SNAME AS MANAGER_NAME,
+  5         M.DESIGN AS MANAGER_DESIGNATION,
+  6         M.DOJ AS MANAGER_DOJ
+  7  FROM STAFF S
+  8  JOIN STAFF M ON S.MGRID = M.STAFFID
+  9  WHERE S.DOJ < M.DOJ;
+
+STAFF_NAME STAFF_DESIGNATI STAFF_DOJ MANAGER_NA MANAGER_DESIGNA MANAGER_D                           
+---------- --------------- --------- ---------- --------------- ---------                           
+SCOTT      MANAGER         06-SEP-01 KING       PRESIDENT       17-NOV-01                           
+CLARK      MANAGER         05-JAN-01 KING       PRESIDENT       17-NOV-01                           
+JONES      MANAGER         04-FEB-01 KING       PRESIDENT       17-NOV-01                           
+SMITH      CLERK           12-NOV-99 FORD       SR LIBRARIAN    12-APR-01                           
+
+SQL> SELECT S.SNAME, S.DESIGN, S.SAL, L.LIBNAME, L.CITY, G.GRADE
+  2  FROM STAFF S
+  3  JOIN LIBRARY L ON S.LIBNO = L.LIBNO
+  4  JOIN SALGRADE G ON S.SAL BETWEEN G.LOWSAL AND G.HIGHSAL
+  5  WHERE S.DESIGN != 'CLERK'
+  6  AND G.GRADE != 1
+  7  ORDER BY S.SNAME;
+JOIN SALGRADE G ON S.SAL BETWEEN G.LOWSAL AND G.HIGHSAL
+                                              *
+ERROR at line 4:
+ORA-00904: "G"."HIGHSAL": invalid identifier 
+
+
+SQL> SELECT S.SNAME, S.DESIGN, S.SAL, L.LIBNAME, L.CITY, G.GRADE
+  2  FROM STAFF S
+  3  JOIN LIBRARY L ON S.LIBNO = L.LIBNO
+  4  JOIN SALGRADE G ON S.SAL BETWEEN G.LOWSAL AND G.HIGHSAL
+  5  WHERE S.DESIGN != 'CLERK'
+  6  AND G.GRADE != 1
+  7  ORDER BY S.SNAME;
+JOIN SALGRADE G ON S.SAL BETWEEN G.LOWSAL AND G.HIGHSAL
+                                              *
+ERROR at line 4:
+ORA-00904: "G"."HIGHSAL": invalid identifier 
+
+
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                   
+------------------------------ ------- ----------                                                   
+DEPT                           TABLE                                                                
+EMP                            TABLE                                                                
+BONUS                          TABLE                                                                
+SALGRADE                       TABLE                                                                
+STAFF                          TABLE                                                                
+LIBRARY                        TABLE                                                                
+BOOKS                          TABLE                                                                
+MEMBER                         TABLE                                                                
+SALGRADE2                      TABLE                                                                
+TRANSACTION                    TABLE                                                                
+DUKAN                          TABLE                                                                
+
+11 rows selected.
+
+SQL> SELECT S.SNAME, S.DESIGN, S.SAL, G.GRADE
+  2  FROM STAFF S
+  3  JOIN SALGRADE G ON S.SAL BETWEEN G.LOWSAL AND G.HIGHSAL
+  4  WHERE G.GRADE IN (3, 4);
+JOIN SALGRADE G ON S.SAL BETWEEN G.LOWSAL AND G.HIGHSAL
+                                              *
+ERROR at line 3:
+ORA-00904: "G"."HIGHSAL": invalid identifier 
+
+
+SQL> SELECT * FROM SALGRADE2       ;
+
+     GRADE      LOSAL      HISAL                                                                    
+---------- ---------- ----------                                                                    
+         1        700       1200                                                                    
+         2       1201       1400                                                                    
+         3       1401       2000                                                                    
+         4       2001       3000                                                                    
+         5       3001       9999                                                                    
+
+SQL> SELECT S.SNAME, S.DESIGN, S.SAL, G.GRADE
+  2  FROM STAFF S
+  3  JOIN SALGRADE2 G ON S.SAL BETWEEN G.LOSAL AND G.HISAL
+  4  WHERE G.GRADE IN (3, 4);
+
+SNAME      DESIGN                 SAL      GRADE                                                    
+---------- --------------- ---------- ----------                                                    
+MILLER     CLERK                 1430          3                                                    
+ALLEN      LIBRARIAN             1600          3                                                    
+TURNER     LIBRARIAN             1500          3                                                    
+JONES      MANAGER               2975          4                                                    
+CLARK      MANAGER               2850          4                                                    
+SCOTT      MANAGER               2450          4                                                    
+FORD       SR LIBRARIAN          3000          4                                                    
+
+7 rows selected.
+
+SQL> SELECT S.SNAME, S.DESIGN, S.SAL, G.GRADE, L.LIBNAME
+  2  FROM STAFF S
+  3  JOIN SALGRADE2 G ON S.SAL BETWEEN G.LOSAL AND G.HISAL
+  4  JOIN LIBRARY L ON S.LIBNO = L.LIBNO
+  5  WHERE (S.SAL * 12 > 36000) OR S.DESIGN = 'CLERK';
+
+SNAME      DESIGN                 SAL      GRADE LIBNAME                                            
+---------- --------------- ---------- ---------- --------------------                               
+KING       PRESIDENT             5000          5 KNOWLEDGE POWER                                    
+MILLER     CLERK                 1430          3 KNOWLEDGE POWER                                    
+ADAMS      CLERK                 1100          1 REDEFINE KNOWLEDE                                  
+JAMES      CLERK                  950          1 EXPERTISE                                          
+SMITH      CLERK                  800          1 REDEFINE KNOWLEDE                                  
+
+SQL> SELECT S.SNAME AS STAFF_NAME,
+  2         S.DESIGN AS STAFF_DESIGNATION,
+  3         S.SAL AS STAFF_SALARY,
+  4         M.SNAME AS MANAGER_NAME,
+  5         M.DESIGN AS MANAGER_DESIGNATION,
+  6         M.SAL AS MANAGER_SALARY
+  7  FROM STAFF S
+  8  JOIN STAFF M ON S.MGRID = M.STAFFID
+  9  WHERE S.SAL < M.SAL;
+
+STAFF_NAME STAFF_DESIGNATI STAFF_SALARY MANAGER_NA MANAGER_DESIGNA MANAGER_SALARY                   
+---------- --------------- ------------ ---------- --------------- --------------                   
+MILLER     CLERK                   1430 CLARK      MANAGER                   2850                   
+ADAMS      CLERK                   1100 SCOTT      MANAGER                   2450                   
+SCOTT      MANAGER                 2450 KING       PRESIDENT                 5000                   
+CLARK      MANAGER                 2850 KING       PRESIDENT                 5000                   
+JONES      MANAGER                 2975 KING       PRESIDENT                 5000                   
+SMITH      CLERK                    800 FORD       SR LIBRARIAN              3000                   
+
+6 rows selected.
+
+SQL> SELECT S.DESIGN, COUNT(S.STAFFID) AS JOB_FILLED_COUNT
+  2  FROM STAFF S
+  3  WHERE (S.DOJ BETWEEN TO_DATE('01-JAN-02', 'DD-MON-YY') AND TO_DATE('30-JUN-02', 'DD-MON-YY')
+  4          OR S.DOJ BETWEEN TO_DATE('01-JAN-03', 'DD-MON-YY') AND TO_DATE('30-JUN-03', 'DD-MON-YY'))
+  5  GROUP BY S.DESIGN
+  6  HAVING COUNT(CASE WHEN S.DOJ BETWEEN TO_DATE('01-JAN-02', 'DD-MON-YY') AND TO_DATE('30-JUN-02', 'DD-MON-YY') THEN 1 END) > 0
+  7     AND COUNT(CASE WHEN S.DOJ BETWEEN TO_DATE('01-JAN-03', 'DD-MON-YY') AND TO_DATE('30-JUN-03', 'DD-MON-YY') THEN 1 END) > 0;
+
+no rows selected
+
+SQL> SELECT S.SNAME, S.DESIGN, S.SAL, S.LIBNO
+  2  FROM STAFF S
+  3  JOIN LIBRARY L ON S.LIBNO = L.LIBNO
+  4  WHERE L.LIBNAME = 'KNOWLEDGE POWER';  -- Assuming MILLER is associated with the 'KNOWLEDGE POWER' library
+  5  
+SQL> SELECT S.SNAME
+  2  FROM STAFF S
+  3  WHERE S.SAL = (SELECT MAX(SAL) FROM STAFF);
+
+SNAME                                                                                               
+----------                                                                                          
+KING                                                                                                
+
+SQL> SELECT S.SNAME, S.DESIGN, S.SAL, S.DOJ
+  2  FROM STAFF S
+  3  WHERE S.SAL > (SELECT AVG(SAL) FROM STAFF WHERE DOJ < TO_DATE('01-APR-01', 'DD-MON-YY'));
+
+SNAME      DESIGN                 SAL DOJ                                                           
+---------- --------------- ---------- ---------                                                     
+JONES      MANAGER               2975 04-FEB-01                                                     
+CLARK      MANAGER               2850 05-JAN-01                                                     
+SCOTT      MANAGER               2450 06-SEP-01                                                     
+KING       PRESIDENT             5000 17-NOV-01                                                     
+FORD       SR LIBRARIAN          3000 12-APR-01                                                     
+
+SQL> SELECT S.DESIGN, AVG(S.SAL) AS AVG_SALARY
+  2  FROM STAFF S
+  3  GROUP BY S.DESIGN
+  4  ORDER BY AVG_SALARY DESC
+  5  FETCH FIRST 1 ROW ONLY;
+FETCH FIRST 1 ROW ONLY
+*
+ERROR at line 5:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> SELECT L.LIBNO, L.LIBNAME, L.CITY
+  2  FROM LIBRARY L
+  3  JOIN STAFF S ON L.LIBNO = S.LIBNO
+  4  WHERE S.MGRID = 17698;
+
+     LIBNO LIBNAME              CITY                                                                
+---------- -------------------- ----------                                                          
+        30 EXPERTISE            CHENNAI                                                             
+        30 EXPERTISE            CHENNAI                                                             
+        30 EXPERTISE            CHENNAI                                                             
+        30 EXPERTISE            CHENNAI                                                             
+
+SQL> SELECT S.LIBNO, S.SNAME, S.SAL
+  2  FROM STAFF S
+  3  WHERE S.SAL = (SELECT MIN(SAL) FROM STAFF WHERE LIBNO = S.LIBNO)
+  4  ORDER BY S.LIBNO;
+
+     LIBNO SNAME             SAL                                                                    
+---------- ---------- ----------                                                                    
+        10 MILLER           1430                                                                    
+        20 SMITH             800                                                                    
+        30 JAMES             950                                                                    
+
+SQL> SELECT S.SNAME, S.DESIGN, S.SAL
+  2  FROM STAFF S
+  3  WHERE S.MGRID = (SELECT STAFFID FROM STAFF WHERE SNAME = 'KING');
+
+SNAME      DESIGN                 SAL                                                               
+---------- --------------- ----------                                                               
+JONES      MANAGER               2975                                                               
+CLARK      MANAGER               2850                                                               
+SCOTT      MANAGER               2450                                                               
+
+SQL> SELECT L.LIBNO, L.LIBNAME, AVG(S.SAL) AS AVG_SALARY
+  2  FROM STAFF S
+  3  JOIN LIBRARY L ON S.LIBNO = L.LIBNO
+  4  GROUP BY L.LIBNO, L.LIBNAME
+  5  ORDER BY AVG_SALARY DESC
+  6  FETCH FIRST 1 ROW ONLY;
+FETCH FIRST 1 ROW ONLY
+*
+ERROR at line 6:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> SPOOL OFF;

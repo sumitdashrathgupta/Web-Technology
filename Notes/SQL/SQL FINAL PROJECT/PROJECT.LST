@@ -1,0 +1,1396 @@
+SQL> CREATE TABLE STAFF(STAFFID NUMBER(5) PRIMARY KEY,
+  2                             SNAME VARCHAR(10) NOT NULL,
+  3                             DESIGN VARCHAR(10) NOT NULL,
+  4                             MGRID NUMBER(6) NOT NULL,
+  5                             DOJ DATE NOT NULL,
+  6                            SAL NUMBER(10) NOT NULL,
+  7                             COMM NUMBER(10) NOT NULL,
+  8                            LIBNO NUMBER(10) NOT NULL);
+
+Table created.
+
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                   
+------------------------------ ------- ----------                                                   
+DEPT                           TABLE                                                                
+EMP                            TABLE                                                                
+BONUS                          TABLE                                                                
+SALGRADE                       TABLE                                                                
+STAFF                          TABLE                                                                
+DUKAN                          TABLE                                                                
+
+6 rows selected.
+
+SQL> DESC STAFF;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ STAFFID                                               NOT NULL NUMBER(5)
+ SNAME                                                 NOT NULL VARCHAR2(10)
+ DESIGN                                                NOT NULL VARCHAR2(10)
+ MGRID                                                 NOT NULL NUMBER(6)
+ DOJ                                                   NOT NULL DATE
+ SAL                                                   NOT NULL NUMBER(10)
+ COMM                                                  NOT NULL NUMBER(10)
+ LIBNO                                                 NOT NULL NUMBER(10)
+
+SQL> ALTER TABLE STAFF
+  2          ADD CONSTRAINT library NOT NULL;
+        ADD CONSTRAINT library NOT NULL
+                               *
+ERROR at line 2:
+ORA-00904: : invalid identifier 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  ALTER TABLE STAFF
+  2*         ADD CONSTRAINT library
+SQL> /
+        ADD CONSTRAINT library
+                             *
+ERROR at line 2:
+ORA-00904: : invalid identifier 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  ALTER TABLE STAFF
+  2*         ADD CONSTRAINT library CHECK(100<LIBNO)
+SQL> /
+
+Table altered.
+
+SQL> ALTER TABLE STAFF
+  2         MODIFY COMM NUMBER(10) NULL;
+
+Table altered.
+
+SQL> INSERT INTO STAFF(STAFFID,SNAME,DESIGN,MGRID,DOJ,SAL,COMM,LIBNO)
+  2          VALUES(&STAFFID,&SNAME,&DESIGN,&MGRID,&DOJ,&SAL,&COMM,&LIBNO);
+Enter value for staffid: 17934
+Enter value for sname: 'MILLER'
+Enter value for design: 'CLERK'
+Enter value for mgrid: 17782
+Enter value for doj: '23-JAN-02'
+Enter value for sal: 1430
+Enter value for comm: NULL
+Enter value for libno: 10
+old   2:         VALUES(&STAFFID,&SNAME,&DESIGN,&MGRID,&DOJ,&SAL,&COMM,&LIBNO)
+new   2:         VALUES(17934,'MILLER','CLERK',17782,'23-JAN-02',1430,NULL,10)
+INSERT INTO STAFF(STAFFID,SNAME,DESIGN,MGRID,DOJ,SAL,COMM,LIBNO)
+*
+ERROR at line 1:
+ORA-02290: check constraint (SCOTT.LIBRARY) violated 
+
+
+SQL> ALTER TABLE STAFF DROP CONSTRAINT library;
+
+Table altered.
+
+SQL> ALTER TABLE STAFF ADD CONSTRAINT library CHECK (LIBNO > 0);
+
+Table altered.
+
+SQL> INSERT INTO STAFF(STAFFID,SNAME,DESIGN,MGRID,DOJ,SAL,COMM,LIBNO)
+  2          VALUES(&STAFFID,&SNAME,&DESIGN,&MGRID,&DOJ,&SAL,&COMM,&LIBNO);
+Enter value for staffid: 17934
+Enter value for sname: 'MILLER'
+Enter value for design: 'CLERK'
+Enter value for mgrid: 17782
+Enter value for doj: '23-JAN-02'
+Enter value for sal: 1430
+Enter value for comm: NULL
+Enter value for libno: 10  
+old   2:         VALUES(&STAFFID,&SNAME,&DESIGN,&MGRID,&DOJ,&SAL,&COMM,&LIBNO)
+new   2:         VALUES(17934,'MILLER','CLERK',17782,'23-JAN-02',1430,NULL,10  )
+
+1 row created.
+
+SQL> /
+Enter value for staffid: 17369
+Enter value for sname: 'SMITH'
+Enter value for design: 'CLERK'
+Enter value for mgrid: 17902
+Enter value for doj: '12-NOV-99'
+Enter value for sal: 800 
+Enter value for comm: NULL
+Enter value for libno: 20
+old   2:         VALUES(&STAFFID,&SNAME,&DESIGN,&MGRID,&DOJ,&SAL,&COMM,&LIBNO)
+new   2:         VALUES(17369,'SMITH','CLERK',17902,'12-NOV-99',800 ,NULL,20)
+
+1 row created.
+
+SQL> /
+Enter value for staffid: 17499
+Enter value for sname: 'ALLEN'
+Enter value for design: 'LIBRARIAN'
+Enter value for mgrid: 17698
+Enter value for doj: '20-FEB-01'
+Enter value for sal: 1600
+Enter value for comm: 300
+Enter value for libno: 30
+old   2:         VALUES(&STAFFID,&SNAME,&DESIGN,&MGRID,&DOJ,&SAL,&COMM,&LIBNO)
+new   2:         VALUES(17499,'ALLEN','LIBRARIAN',17698,'20-FEB-01',1600,300,30)
+
+1 row created.
+
+SQL> /
+Enter value for staffid: 17521 
+Enter value for sname: ' WARD'
+Enter value for design: 'LIBRARIAN'
+Enter value for mgrid: 17698
+Enter value for doj: '21-FEB-01'
+Enter value for sal: 1250
+Enter value for comm: 500
+Enter value for libno: 30  
+old   2:         VALUES(&STAFFID,&SNAME,&DESIGN,&MGRID,&DOJ,&SAL,&COMM,&LIBNO)
+new   2:         VALUES(17521 ,' WARD','LIBRARIAN',17698,'21-FEB-01',1250,500,30  )
+
+1 row created.
+
+SQL> /
+Enter value for staffid: 17566
+Enter value for sname: 'JONES'
+Enter value for design: 'MANAGER'
+Enter value for mgrid: 17839
+Enter value for doj: '04-FEB-01'
+Enter value for sal: 2975
+Enter value for comm: NULL
+Enter value for libno: 20
+old   2:         VALUES(&STAFFID,&SNAME,&DESIGN,&MGRID,&DOJ,&SAL,&COMM,&LIBNO)
+new   2:         VALUES(17566,'JONES','MANAGER',17839,'04-FEB-01',2975,NULL,20)
+
+1 row created.
+
+SQL> /
+Enter value for staffid: 17654
+Enter value for sname: 'MARTIN'
+Enter value for design: 'LIBRARIAN'
+Enter value for mgrid: 17698
+Enter value for doj: ' 29-SEP-01'
+Enter value for sal: 1250
+Enter value for comm: 1400
+Enter value for libno: 30  
+old   2:         VALUES(&STAFFID,&SNAME,&DESIGN,&MGRID,&DOJ,&SAL,&COMM,&LIBNO)
+new   2:         VALUES(17654,'MARTIN','LIBRARIAN',17698,' 29-SEP-01',1250,1400,30  )
+
+1 row created.
+
+SQL> /
+Enter value for staffid: 17782
+Enter value for sname: 'CLARK'
+Enter value for design: 'MANAGER'
+Enter value for mgrid: 17839
+Enter value for doj: '05-JAN-01'
+Enter value for sal: 2850
+Enter value for comm: NULL
+Enter value for libno: 30  
+old   2:         VALUES(&STAFFID,&SNAME,&DESIGN,&MGRID,&DOJ,&SAL,&COMM,&LIBNO)
+new   2:         VALUES(17782,'CLARK','MANAGER',17839,'05-JAN-01',2850,NULL,30  )
+
+1 row created.
+
+SQL> /
+Enter value for staffid: 17788
+Enter value for sname: 'SCOTT'
+Enter value for design: 'MANAGER'
+Enter value for mgrid: 17839
+Enter value for doj: '06-SEP-01'
+Enter value for sal: 2450
+Enter value for comm: NULL
+Enter value for libno: 30
+old   2:         VALUES(&STAFFID,&SNAME,&DESIGN,&MGRID,&DOJ,&SAL,&COMM,&LIBNO)
+new   2:         VALUES(17788,'SCOTT','MANAGER',17839,'06-SEP-01',2450,NULL,30)
+
+1 row created.
+
+SQL> /
+Enter value for staffid: 17839
+Enter value for sname: 'KING '
+Enter value for design: 'PRESIDENT'
+Enter value for mgrid: 
+Enter value for doj: '17-NOV-01'
+Enter value for sal: 5000 
+Enter value for comm: NULL
+Enter value for libno: 10
+old   2:         VALUES(&STAFFID,&SNAME,&DESIGN,&MGRID,&DOJ,&SAL,&COMM,&LIBNO)
+new   2:         VALUES(17839,'KING ','PRESIDENT',,'17-NOV-01',5000 ,NULL,10)
+        VALUES(17839,'KING ','PRESIDENT',,'17-NOV-01',5000 ,NULL,10)
+                                         *
+ERROR at line 2:
+ORA-00936: missing expression 
+
+
+SQL> DESC STAFF
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ STAFFID                                               NOT NULL NUMBER(5)
+ SNAME                                                 NOT NULL VARCHAR2(10)
+ DESIGN                                                NOT NULL VARCHAR2(10)
+ MGRID                                                 NOT NULL NUMBER(6)
+ DOJ                                                   NOT NULL DATE
+ SAL                                                   NOT NULL NUMBER(10)
+ COMM                                                           NUMBER(10)
+ LIBNO                                                 NOT NULL NUMBER(10)
+
+SQL> ALTER TABLE STAFF
+  2  MODIFY MGRID NUMBER(6) NULL;
+
+Table altered.
+
+SQL>  INSERT INTO STAFF(STAFFID,SNAME,DESIGN,MGRID,DOJ,SAL,COMM,LIBNO)
+  2           VALUES(&STAFFID,&SNAME,&DESIGN,&MGRID,&DOJ,&SAL,&COMM,&LIBNO);
+Enter value for staffid: 17839
+Enter value for sname: 'KING'
+Enter value for design: 'PRESIDENT'
+Enter value for mgrid: NULL
+Enter value for doj: '17-NOV-01'
+Enter value for sal: 5000
+Enter value for comm: NULL
+Enter value for libno: 10
+old   2:          VALUES(&STAFFID,&SNAME,&DESIGN,&MGRID,&DOJ,&SAL,&COMM,&LIBNO)
+new   2:          VALUES(17839,'KING','PRESIDENT',NULL,'17-NOV-01',5000,NULL,10)
+
+1 row created.
+
+SQL> /
+Enter value for staffid: 17844
+Enter value for sname: 'TURNER'
+Enter value for design: 'LIBRARIAN'
+Enter value for mgrid: 17698
+Enter value for doj: '09-AUG-01'
+Enter value for sal: 1500
+Enter value for comm: 0
+Enter value for libno:  30 
+old   2:          VALUES(&STAFFID,&SNAME,&DESIGN,&MGRID,&DOJ,&SAL,&COMM,&LIBNO)
+new   2:          VALUES(17844,'TURNER','LIBRARIAN',17698,'09-AUG-01',1500,0, 30 )
+
+1 row created.
+
+SQL> /
+Enter value for staffid: 17876
+Enter value for sname: 'ADAMS'
+Enter value for design: 'CLERK'
+Enter value for mgrid: 17788
+Enter value for doj: '01-DEC-03'
+Enter value for sal: 1100
+Enter value for comm: NULL
+Enter value for libno: 20
+old   2:          VALUES(&STAFFID,&SNAME,&DESIGN,&MGRID,&DOJ,&SAL,&COMM,&LIBNO)
+new   2:          VALUES(17876,'ADAMS','CLERK',17788,'01-DEC-03',1100,NULL,20)
+
+1 row created.
+
+SQL> /
+Enter value for staffid: 17900
+Enter value for sname: 'JAMES'
+Enter value for design: 'CLERK'
+Enter value for mgrid: 17900
+Enter value for doj: '12-MAR-01'
+Enter value for sal: 950 
+Enter value for comm: NULL
+Enter value for libno: 30
+old   2:          VALUES(&STAFFID,&SNAME,&DESIGN,&MGRID,&DOJ,&SAL,&COMM,&LIBNO)
+new   2:          VALUES(17900,'JAMES','CLERK',17900,'12-MAR-01',950 ,NULL,30)
+
+1 row created.
+
+SQL> /
+Enter value for staffid: 17902
+Enter value for sname: 'FORD'
+Enter value for design: 'SR LIBRARIAN'
+Enter value for mgrid: 17902
+Enter value for doj: '12-APR-01'
+Enter value for sal: 3000
+Enter value for comm: NULL
+Enter value for libno: 20
+old   2:          VALUES(&STAFFID,&SNAME,&DESIGN,&MGRID,&DOJ,&SAL,&COMM,&LIBNO)
+new   2:          VALUES(17902,'FORD','SR LIBRARIAN',17902,'12-APR-01',3000,NULL,20)
+         VALUES(17902,'FORD','SR LIBRARIAN',17902,'12-APR-01',3000,NULL,20)
+                             *
+ERROR at line 2:
+ORA-12899: value too large for column "SCOTT"."STAFF"."DESIGN" (actual: 12, maximum: 10) 
+
+
+SQL> ALTER TABLE STAFF
+  2  MODIFY DESIGN VARCHAR(15);
+
+Table altered.
+
+SQL>  VALUES(&STAFFID,&SNAME,&DESIGN,&MGRID,&DOJ,&SAL,&COMM,&LIBNO);
+SP2-0734: unknown command beginning "VALUES(&ST..." - rest of line ignored.
+SQL> INSERT INTO STAFF(STAFFID,SNAME,DESIGN,MGRID,DOJ,SAL,COMM,LIBNO)
+  2          VALUES(&STAFFID,&SNAME,&DESIGN,&MGRID,&DOJ,&SAL,&COMM,&LIBNO);
+Enter value for staffid: 17902
+Enter value for sname: 'FORD'
+Enter value for design: 'SR LIBRARIAN'
+Enter value for mgrid: 17902
+Enter value for doj: '12-APR-01'
+Enter value for sal: 3000
+Enter value for comm: NULL
+Enter value for libno: 20
+old   2:         VALUES(&STAFFID,&SNAME,&DESIGN,&MGRID,&DOJ,&SAL,&COMM,&LIBNO)
+new   2:         VALUES(17902,'FORD','SR LIBRARIAN',17902,'12-APR-01',3000,NULL,20)
+
+1 row created.
+
+SQL> CL SCR
+SQL> DESC STAFF
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ STAFFID                                               NOT NULL NUMBER(5)
+ SNAME                                                 NOT NULL VARCHAR2(10)
+ DESIGN                                                NOT NULL VARCHAR2(15)
+ MGRID                                                          NUMBER(6)
+ DOJ                                                   NOT NULL DATE
+ SAL                                                   NOT NULL NUMBER(10)
+ COMM                                                           NUMBER(10)
+ LIBNO                                                 NOT NULL NUMBER(10)
+
+SQL> SELECT * FROM STAFF;
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17934 MILLER     CLERK                17782 23-JAN-02       1430                    10         
+     17369 SMITH      CLERK                17902 12-NOV-99        800                    20         
+     17499 ALLEN      LIBRARIAN            17698 20-FEB-01       1600        300         30         
+     17521  WARD      LIBRARIAN            17698 21-FEB-01       1250        500         30         
+     17566 JONES      MANAGER              17839 04-FEB-01       2975                    20         
+     17654 MARTIN     LIBRARIAN            17698 29-SEP-01       1250       1400         30         
+     17782 CLARK      MANAGER              17839 05-JAN-01       2850                    30         
+     17788 SCOTT      MANAGER              17839 06-SEP-01       2450                    30         
+     17839 KING       PRESIDENT                  17-NOV-01       5000                    10         
+     17844 TURNER     LIBRARIAN            17698 09-AUG-01       1500          0         30         
+     17876 ADAMS      CLERK                17788 01-DEC-03       1100                    20         
+     17900 JAMES      CLERK                17900 12-MAR-01        950                    30         
+     17902 FORD       SR LIBRARIAN         17902 12-APR-01       3000                    20         
+
+13 rows selected.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> CREATE TABLE LIBRARY(LIBNO NUMBER(5) PRIMARY KEY,
+  2                     LIBNAME VARCHAR(15) NOT NULL,
+  3                     CITY VARCHAR(10) NOT NULL);
+
+Table created.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  CREATE TABLE LIBRARY(LIBNO NUMBER(5) PRIMARY KEY,
+  2                     LIBNAME VARCHAR(20) NOT NULL,
+  3*                    CITY VARCHAR(10) NOT NULL)
+SQL> ALTER TABLE LIBRARY
+  2  MODIFY LIBNAME VARCHAR(20);
+
+Table altered.
+
+SQL> CL SCR
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                   
+------------------------------ ------- ----------                                                   
+DEPT                           TABLE                                                                
+EMP                            TABLE                                                                
+BONUS                          TABLE                                                                
+SALGRADE                       TABLE                                                                
+STAFF                          TABLE                                                                
+LIBRARY                        TABLE                                                                
+DUKAN                          TABLE                                                                
+
+7 rows selected.
+
+SQL> SELECT * FROM STAFF;
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17934 MILLER     CLERK                17782 23-JAN-02       1430                    10         
+     17369 SMITH      CLERK                17902 12-NOV-99        800                    20         
+     17499 ALLEN      LIBRARIAN            17698 20-FEB-01       1600        300         30         
+     17521  WARD      LIBRARIAN            17698 21-FEB-01       1250        500         30         
+     17566 JONES      MANAGER              17839 04-FEB-01       2975                    20         
+     17654 MARTIN     LIBRARIAN            17698 29-SEP-01       1250       1400         30         
+     17782 CLARK      MANAGER              17839 05-JAN-01       2850                    30         
+     17788 SCOTT      MANAGER              17839 06-SEP-01       2450                    30         
+     17839 KING       PRESIDENT                  17-NOV-01       5000                    10         
+     17844 TURNER     LIBRARIAN            17698 09-AUG-01       1500          0         30         
+     17876 ADAMS      CLERK                17788 01-DEC-03       1100                    20         
+     17900 JAMES      CLERK                17900 12-MAR-01        950                    30         
+     17902 FORD       SR LIBRARIAN         17902 12-APR-01       3000                    20         
+
+13 rows selected.
+
+SQL> SELECT * FROM LIBRARY;
+
+no rows selected
+
+SQL> DESC LIBRARY;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ LIBNO                                                 NOT NULL NUMBER(5)
+ LIBNAME                                               NOT NULL VARCHAR2(20)
+ CITY                                                  NOT NULL VARCHAR2(10)
+
+SQL> INSERT INTO LIBRARY(LIBNO,LIBNAME,CITY) VALUES(&LIBNO,&LIBNAME,&CITY);
+Enter value for libno: 10
+Enter value for libname: 'KNOWLEDGE POWER'
+Enter value for city: 'DELHI'
+old   1: INSERT INTO LIBRARY(LIBNO,LIBNAME,CITY) VALUES(&LIBNO,&LIBNAME,&CITY)
+new   1: INSERT INTO LIBRARY(LIBNO,LIBNAME,CITY) VALUES(10,'KNOWLEDGE POWER','DELHI')
+
+1 row created.
+
+SQL> /
+Enter value for libno: 20
+Enter value for libname: 'REDEFINE KNOWLEDE'
+Enter value for city: 'BOMBAY'
+old   1: INSERT INTO LIBRARY(LIBNO,LIBNAME,CITY) VALUES(&LIBNO,&LIBNAME,&CITY)
+new   1: INSERT INTO LIBRARY(LIBNO,LIBNAME,CITY) VALUES(20,'REDEFINE KNOWLEDE','BOMBAY')
+
+1 row created.
+
+SQL> /
+Enter value for libno: 30
+Enter value for libname: 'EXPERTISE'
+Enter value for city: 'CHENNAI'
+old   1: INSERT INTO LIBRARY(LIBNO,LIBNAME,CITY) VALUES(&LIBNO,&LIBNAME,&CITY)
+new   1: INSERT INTO LIBRARY(LIBNO,LIBNAME,CITY) VALUES(30,'EXPERTISE','CHENNAI')
+
+1 row created.
+
+SQL> /
+Enter value for libno: 40
+Enter value for libname: 'EXCELLENCE'
+Enter value for city: 'KOLKATA'
+old   1: INSERT INTO LIBRARY(LIBNO,LIBNAME,CITY) VALUES(&LIBNO,&LIBNAME,&CITY)
+new   1: INSERT INTO LIBRARY(LIBNO,LIBNAME,CITY) VALUES(40,'EXCELLENCE','KOLKATA')
+
+1 row created.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> CL SCR
+SQL> SELECT * FROM LIBRARY;
+
+     LIBNO LIBNAME              CITY                                                                
+---------- -------------------- ----------                                                          
+        10 KNOWLEDGE POWER      DELHI                                                               
+        20 REDEFINE KNOWLEDE    BOMBAY                                                              
+        30 EXPERTISE            CHENNAI                                                             
+        40 EXCELLENCE           KOLKATA                                                             
+
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                   
+------------------------------ ------- ----------                                                   
+DEPT                           TABLE                                                                
+EMP                            TABLE                                                                
+BONUS                          TABLE                                                                
+SALGRADE                       TABLE                                                                
+STAFF                          TABLE                                                                
+LIBRARY                        TABLE                                                                
+DUKAN                          TABLE                                                                
+
+7 rows selected.
+
+SQL> CL SCR
+SQL> CREATE TABLE BOOKS(BOOK_NO VARCHAR2(20) PRIMARY KEY,
+  2                    BOOK_NAME VARCHAR2(20) NOT NULL,
+  3                    AUTHOR VARCHAR2(20) NOT NULL,
+  4                    PRICE  NUMBER(5) NOT NULL,
+  5                    NO_OF_BOOKS NUMBER(5) NOT NULL);
+
+Table created.
+
+SQL> DESC BOOKS;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ BOOK_NO                                               NOT NULL VARCHAR2(20)
+ BOOK_NAME                                             NOT NULL VARCHAR2(20)
+ AUTHOR                                                NOT NULL VARCHAR2(20)
+ PRICE                                                 NOT NULL NUMBER(5)
+ NO_OF_BOOKS                                           NOT NULL NUMBER(5)
+
+SQL> INSERT INTO BOOKS(BOOK_NO,BOOK_NAME,AUTHOR,PRICE,NO_OF_BOOKS) VALUES(&BOOK_NO,&BOOK_NAME,&AUTHOR,&PRICE,&NO_OF_BOOKS);
+Enter value for book_no: 'O101'
+Enter value for book_name: 'ORACLE'
+Enter value for author: 'IVAN'
+Enter value for price: 500
+Enter value for no_of_books: 10
+old   1: INSERT INTO BOOKS(BOOK_NO,BOOK_NAME,AUTHOR,PRICE,NO_OF_BOOKS) VALUES(&BOOK_NO,&BOOK_NAME,&AUTHOR,&PRICE,&NO_OF_BOOKS)
+new   1: INSERT INTO BOOKS(BOOK_NO,BOOK_NAME,AUTHOR,PRICE,NO_OF_BOOKS) VALUES('O101','ORACLE','IVAN',500,10)
+
+1 row created.
+
+SQL> /
+Enter value for book_no: 'J109'
+Enter value for book_name: 'JAVA'
+Enter value for author: 'BRUCE'
+Enter value for price: 478
+Enter value for no_of_books: 9
+old   1: INSERT INTO BOOKS(BOOK_NO,BOOK_NAME,AUTHOR,PRICE,NO_OF_BOOKS) VALUES(&BOOK_NO,&BOOK_NAME,&AUTHOR,&PRICE,&NO_OF_BOOKS)
+new   1: INSERT INTO BOOKS(BOOK_NO,BOOK_NAME,AUTHOR,PRICE,NO_OF_BOOKS) VALUES('J109','JAVA','BRUCE',478,9)
+
+1 row created.
+
+SQL> /
+Enter value for book_no: 'C104'
+Enter value for book_name: 'C-GUIDE'
+Enter value for author: 'COOK'
+Enter value for price: 987
+Enter value for no_of_books: 8
+old   1: INSERT INTO BOOKS(BOOK_NO,BOOK_NAME,AUTHOR,PRICE,NO_OF_BOOKS) VALUES(&BOOK_NO,&BOOK_NAME,&AUTHOR,&PRICE,&NO_OF_BOOKS)
+new   1: INSERT INTO BOOKS(BOOK_NO,BOOK_NAME,AUTHOR,PRICE,NO_OF_BOOKS) VALUES('C104','C-GUIDE','COOK',987,8)
+
+1 row created.
+
+SQL> /
+Enter value for book_no: 'S108'
+Enter value for book_name: 'SQL-SERVER'
+Enter value for author: 'SHARON'
+Enter value for price: 890
+Enter value for no_of_books: 8
+old   1: INSERT INTO BOOKS(BOOK_NO,BOOK_NAME,AUTHOR,PRICE,NO_OF_BOOKS) VALUES(&BOOK_NO,&BOOK_NAME,&AUTHOR,&PRICE,&NO_OF_BOOKS)
+new   1: INSERT INTO BOOKS(BOOK_NO,BOOK_NAME,AUTHOR,PRICE,NO_OF_BOOKS) VALUES('S108','SQL-SERVER','SHARON',890,8)
+
+1 row created.
+
+SQL> \
+SP2-0042: unknown command "\" - rest of line ignored.
+SQL> /
+Enter value for book_no: 'D178'
+Enter value for book_name: 'DB2'
+Enter value for author: 'SHARON'
+Enter value for price: 789
+Enter value for no_of_books: 9
+old   1: INSERT INTO BOOKS(BOOK_NO,BOOK_NAME,AUTHOR,PRICE,NO_OF_BOOKS) VALUES(&BOOK_NO,&BOOK_NAME,&AUTHOR,&PRICE,&NO_OF_BOOKS)
+new   1: INSERT INTO BOOKS(BOOK_NO,BOOK_NAME,AUTHOR,PRICE,NO_OF_BOOKS) VALUES('D178','DB2','SHARON',789,9)
+
+1 row created.
+
+SQL> /
+Enter value for book_no: 'S140'
+Enter value for book_name: 'SBASE'
+Enter value for author: 'COOK'
+Enter value for price: 876
+Enter value for no_of_books: 9
+old   1: INSERT INTO BOOKS(BOOK_NO,BOOK_NAME,AUTHOR,PRICE,NO_OF_BOOKS) VALUES(&BOOK_NO,&BOOK_NAME,&AUTHOR,&PRICE,&NO_OF_BOOKS)
+new   1: INSERT INTO BOOKS(BOOK_NO,BOOK_NAME,AUTHOR,PRICE,NO_OF_BOOKS) VALUES('S140','SBASE','COOK',876,9)
+
+1 row created.
+
+SQL> /
+Enter value for book_no: 'D120'
+Enter value for book_name: 'DATA WAREHOUSING'
+Enter value for author: 'IVAN'
+Enter value for price: 890
+Enter value for no_of_books: 10
+old   1: INSERT INTO BOOKS(BOOK_NO,BOOK_NAME,AUTHOR,PRICE,NO_OF_BOOKS) VALUES(&BOOK_NO,&BOOK_NAME,&AUTHOR,&PRICE,&NO_OF_BOOKS)
+new   1: INSERT INTO BOOKS(BOOK_NO,BOOK_NAME,AUTHOR,PRICE,NO_OF_BOOKS) VALUES('D120','DATA WAREHOUSING','IVAN',890,10)
+
+1 row created.
+
+SQL> /
+Enter value for book_no: 'D432'
+Enter value for book_name: 'DATAMINING'
+Enter value for author: 'LONEY'
+Enter value for price: 1190
+Enter value for no_of_books: 0
+old   1: INSERT INTO BOOKS(BOOK_NO,BOOK_NAME,AUTHOR,PRICE,NO_OF_BOOKS) VALUES(&BOOK_NO,&BOOK_NAME,&AUTHOR,&PRICE,&NO_OF_BOOKS)
+new   1: INSERT INTO BOOKS(BOOK_NO,BOOK_NAME,AUTHOR,PRICE,NO_OF_BOOKS) VALUES('D432','DATAMINING','LONEY',1190,0)
+
+1 row created.
+
+SQL> /
+Enter value for book_no: 'P108'
+Enter value for book_name: 'PL/SQL'
+Enter value for author: 'LONEY'
+Enter value for price: 1112
+Enter value for no_of_books: 2
+old   1: INSERT INTO BOOKS(BOOK_NO,BOOK_NAME,AUTHOR,PRICE,NO_OF_BOOKS) VALUES(&BOOK_NO,&BOOK_NAME,&AUTHOR,&PRICE,&NO_OF_BOOKS)
+new   1: INSERT INTO BOOKS(BOOK_NO,BOOK_NAME,AUTHOR,PRICE,NO_OF_BOOKS) VALUES('P108','PL/SQL','LONEY',1112,2)
+
+1 row created.
+
+SQL> /
+Enter value for book_no: 'D188'
+Enter value for book_name: 'DEVELOPER'
+Enter value for author: 'WONG'
+Enter value for price: 123
+Enter value for no_of_books: 6
+old   1: INSERT INTO BOOKS(BOOK_NO,BOOK_NAME,AUTHOR,PRICE,NO_OF_BOOKS) VALUES(&BOOK_NO,&BOOK_NAME,&AUTHOR,&PRICE,&NO_OF_BOOKS)
+new   1: INSERT INTO BOOKS(BOOK_NO,BOOK_NAME,AUTHOR,PRICE,NO_OF_BOOKS) VALUES('D188','DEVELOPER','WONG',123,6)
+
+1 row created.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> CL SCR
+SQL> SELECT * FROM BOOKS;
+
+BOOK_NO              BOOK_NAME            AUTHOR                    PRICE NO_OF_BOOKS               
+-------------------- -------------------- -------------------- ---------- -----------               
+O101                 ORACLE               IVAN                        500          10               
+J109                 JAVA                 BRUCE                       478           9               
+C104                 C-GUIDE              COOK                        987           8               
+S108                 SQL-SERVER           SHARON                      890           8               
+D178                 DB2                  SHARON                      789           9               
+S140                 SBASE                COOK                        876           9               
+D120                 DATA WAREHOUSING     IVAN                        890          10               
+D432                 DATAMINING           LONEY                      1190           0               
+P108                 PL/SQL               LONEY                      1112           2               
+D188                 DEVELOPER            WONG                        123           6               
+
+10 rows selected.
+
+SQL> CREATE TABLE MEMBER(MEM_NO VARCHAR2(20) PRIMARY KEY,
+  2                     MEM_NAME VARCHAR2(20) NOT NULL,
+  3                     MEM_TYPE VARCHAR(2) NOT NULL,
+  4                     NO_OF_BOOKS NUMBER(2) NOT NULL,
+  5                     TOTAL_FINE NUMBER(4) NULL,
+  6                     EXPIRY_DATE DATE NOT NULL);
+
+Table created.
+
+SQL> DESC MEMBER;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ MEM_NO                                                NOT NULL VARCHAR2(20)
+ MEM_NAME                                              NOT NULL VARCHAR2(20)
+ MEM_TYPE                                              NOT NULL VARCHAR2(2)
+ NO_OF_BOOKS                                           NOT NULL NUMBER(2)
+ TOTAL_FINE                                                     NUMBER(4)
+ EXPIRY_DATE                                           NOT NULL DATE
+
+SQL> INSERT INTO MEMBER(MEM_NO,MEM_NAME,MEM_TYPE,NO_OF_BOOKS,TOTAL_FINE,EXPIRY_DATE) VALUES(&MEM_NO,&MEM_NAME,&MEM_TYPE,&NO_OF_BOOKS,&TOTAL_FINE,&EXPIRY_DATE);
+Enter value for mem_no: 'M102'
+Enter value for mem_name: 'JANE'
+Enter value for mem_type: 'M'
+Enter value for no_of_books: 1
+Enter value for total_fine: NULL
+Enter value for expiry_date: '31-JUN-05'
+old   1: INSERT INTO MEMBER(MEM_NO,MEM_NAME,MEM_TYPE,NO_OF_BOOKS,TOTAL_FINE,EXPIRY_DATE) VALUES(&MEM_NO,&MEM_NAME,&MEM_TYPE,&NO_OF_BOOKS,&TOTAL_FINE,&EXPIRY_DATE)
+new   1: INSERT INTO MEMBER(MEM_NO,MEM_NAME,MEM_TYPE,NO_OF_BOOKS,TOTAL_FINE,EXPIRY_DATE) VALUES('M102','JANE','M',1,NULL,'31-JUN-05')
+INSERT INTO MEMBER(MEM_NO,MEM_NAME,MEM_TYPE,NO_OF_BOOKS,TOTAL_FINE,EXPIRY_DATE) VALUES('M102','JANE','M',1,NULL,'31-JUN-05')
+                                                                                                                *
+ERROR at line 1:
+ORA-01839: date not valid for month specified 
+
+
+SQL> INSERT INTO MEMBER(MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+  2  VALUES ('M102', 'JANE', 'M', 1, NULL, '30-JUN-05');
+
+1 row created.
+
+SQL> DELETE FROM MEMBER
+  2  WHERE MEM_NO='M102';
+
+1 row deleted.
+
+SQL> INSERT INTO MEMBER(MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+  2  VALUES ('M102', 'JANE', 'M', 1, NULL, '31-JUN-05');
+VALUES ('M102', 'JANE', 'M', 1, NULL, '31-JUN-05')
+                                      *
+ERROR at line 2:
+ORA-01839: date not valid for month specified 
+
+
+SQL> INSERT INTO MEMBER(MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+  2  VALUES ('M102', 'JANE', 'M', 1, NULL, TO_DATE('31-JUN-2005', 'DD-MON-YYYY'));
+VALUES ('M102', 'JANE', 'M', 1, NULL, TO_DATE('31-JUN-2005', 'DD-MON-YYYY'))
+                                              *
+ERROR at line 2:
+ORA-01839: date not valid for month specified 
+
+
+SQL> INSERT INTO MEMBER(MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+  2  VALUES ('M102', 'JANE', 'M', 1, NULL, '31-JUN-05');
+VALUES ('M102', 'JANE', 'M', 1, NULL, '31-JUN-05')
+                                      *
+ERROR at line 2:
+ORA-01839: date not valid for month specified 
+
+
+SQL> INSERT INTO MEMBER(MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+  2  VALUES ('M102', 'JANE', 'M', 1, NULL, '30-JUN-05');
+
+1 row created.
+
+SQL> SELECT * FROM MEMBER;
+
+MEM_NO               MEM_NAME             ME NO_OF_BOOKS TOTAL_FINE EXPIRY_DA                       
+-------------------- -------------------- -- ----------- ---------- ---------                       
+M102                 JANE                 M            1            30-JUN-05                       
+
+SQL> UPDATE MEMBER
+  2  SET EXPIRY_DATE = '31-JUN-05'
+  3  WHERE MEM_NO='M102';
+SET EXPIRY_DATE = '31-JUN-05'
+                  *
+ERROR at line 2:
+ORA-01839: date not valid for month specified 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  UPDATE MEMBER
+  2  SET EXPIRY_DATE = '31-JUN-05'
+  3* WHERE MEM_NO='M102'
+SQL> ALTER TABLE MEMBER
+  2  MODIFY EXPIRY_DATE DATE('DD-MON-YY');
+MODIFY EXPIRY_DATE DATE('DD-MON-YY')
+                       *
+ERROR at line 2:
+ORA-01735: invalid ALTER TABLE option 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  ALTER TABLE MEMBER
+  2* MODIFY EXPIRY_DATE DATE(DD-MON-YY)
+SQL> /
+MODIFY EXPIRY_DATE DATE(DD-MON-YY)
+                       *
+ERROR at line 2:
+ORA-01735: invalid ALTER TABLE option 
+
+
+SQL> INSERT INTO MEMBER(MEM_NO,MEM_NAME,MEM_TYPE,NO_OF_BOOKS,TOTAL_FINE,EXPIRY_DATE) VALUES(&MEM_NO,
+  2  &MEM_NAME,&MEM_TYPE,&NO_OF_BOOKS,&TOTAL_FINE,&EXPIRY_DATE);
+Enter value for mem_no: 'M102'
+old   1: INSERT INTO MEMBER(MEM_NO,MEM_NAME,MEM_TYPE,NO_OF_BOOKS,TOTAL_FINE,EXPIRY_DATE) VALUES(&MEM_NO,
+new   1: INSERT INTO MEMBER(MEM_NO,MEM_NAME,MEM_TYPE,NO_OF_BOOKS,TOTAL_FINE,EXPIRY_DATE) VALUES('M102',
+Enter value for mem_name: 'JANE'
+Enter value for mem_type: 'M'
+Enter value for no_of_books: 1
+Enter value for total_fine: NULL
+Enter value for expiry_date: '30-JUN-05'
+old   2: &MEM_NAME,&MEM_TYPE,&NO_OF_BOOKS,&TOTAL_FINE,&EXPIRY_DATE)
+new   2: 'JANE','M',1,NULL,'30-JUN-05')
+INSERT INTO MEMBER(MEM_NO,MEM_NAME,MEM_TYPE,NO_OF_BOOKS,TOTAL_FINE,EXPIRY_DATE) VALUES('M102',
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SCOTT.SYS_C006092) violated 
+
+
+SQL> CL SCR
+SQL> DESC MEMBER;
+ Name                                                  Null?    Type
+ ----------------------------------------------------- -------- ------------------------------------
+ MEM_NO                                                NOT NULL VARCHAR2(20)
+ MEM_NAME                                              NOT NULL VARCHAR2(20)
+ MEM_TYPE                                              NOT NULL VARCHAR2(2)
+ NO_OF_BOOKS                                           NOT NULL NUMBER(2)
+ TOTAL_FINE                                                     NUMBER(4)
+ EXPIRY_DATE                                           NOT NULL DATE
+
+SQL> INSERT ALL
+  2      INTO MEMBER (MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+  3      VALUES ('M102', 'JANE', 'M', 1, NULL, TO_DATE('30-JUN-05', 'DD-MON-YY'))
+  4  
+SQL>     INTO MEMBER (MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+SP2-0734: unknown command beginning "INTO MEMBE..." - rest of line ignored.
+SQL>     VALUES ('M108', 'MILLER', 'M', 2, 80, TO_DATE('20-JUN-05', 'DD-MON-YY'))
+SP2-0734: unknown command beginning "VALUES ('M..." - rest of line ignored.
+SQL> 
+SQL>     INTO MEMBER (MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+SP2-0734: unknown command beginning "INTO MEMBE..." - rest of line ignored.
+SQL>     VALUES ('M104', 'SHERLY', 'M', 2, 20, TO_DATE('20-JUN-05', 'DD-MON-YY'))
+SP2-0734: unknown command beginning "VALUES ('M..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SQL> 
+SQL>     INTO MEMBER (MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+SP2-0734: unknown command beginning "INTO MEMBE..." - rest of line ignored.
+SQL>     VALUES ('M109', 'WATSON', 'M', 1, 10, TO_DATE('29-AUG-05', 'DD-MON-YY'))
+SP2-0734: unknown command beginning "VALUES ('M..." - rest of line ignored.
+SQL> 
+SQL>     INTO MEMBER (MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+SP2-0734: unknown command beginning "INTO MEMBE..." - rest of line ignored.
+SQL>     VALUES ('Y101', 'LAZOR', 'Y', 3, 30, TO_DATE('29-AUG-06', 'DD-MON-YY'))
+SP2-0734: unknown command beginning "VALUES ('Y..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SQL> 
+SQL>     INTO MEMBER (MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+SP2-0734: unknown command beginning "INTO MEMBE..." - rest of line ignored.
+SQL>     VALUES ('Y109', 'PETER', 'Y', 4, 27, TO_DATE('27-JUN-06', 'DD-MON-YY'))
+SP2-0734: unknown command beginning "VALUES ('Y..." - rest of line ignored.
+SQL> 
+SQL>     INTO MEMBER (MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+SP2-0734: unknown command beginning "INTO MEMBE..." - rest of line ignored.
+SQL>     VALUES ('Y102', 'MERCY', 'Y', 2, 100, TO_DATE('20-JAN-06', 'DD-MON-YY'))
+SP2-0734: unknown command beginning "VALUES ('Y..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SQL> 
+SQL>     INTO MEMBER (MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+SP2-0734: unknown command beginning "INTO MEMBE..." - rest of line ignored.
+SQL>     VALUES ('L106', 'SONY', 'L', 6, 1100, TO_DATE('20-JAN-20', 'DD-MON-YY'))
+SP2-0734: unknown command beginning "VALUES ('L..." - rest of line ignored.
+SQL> 
+SQL>     INTO MEMBER (MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+SP2-0734: unknown command beginning "INTO MEMBE..." - rest of line ignored.
+SQL>     VALUES ('L109', 'GREG', 'L', 3, 2000, TO_DATE('22-SEP-20', 'DD-MON-YY'))
+SP2-0734: unknown command beginning "VALUES ('L..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SQL> 
+SQL>     INTO MEMBER (MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+SP2-0734: unknown command beginning "INTO MEMBE..." - rest of line ignored.
+SQL>     VALUES ('L117', 'MABIE', 'L', 2, 1000, TO_DATE('03-JAN-19', 'DD-MON-YY'))
+SP2-0734: unknown command beginning "VALUES ('L..." - rest of line ignored.
+SQL> 
+SQL> SELECT 1 FROM DUAL;
+
+         1                                                                                          
+----------                                                                                          
+         1                                                                                          
+
+SQL> cl scr
+SQL> INSERT INTO MEMBER (MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+  2      VALUES ('M102', 'JANE', 'M', 1, NULL, TO_DATE('30-JUN-05', 'DD-MON-YY'));
+INSERT INTO MEMBER (MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SCOTT.SYS_C006092) violated 
+
+
+SQL> SELECT * FROM MEMBER;
+
+MEM_NO               MEM_NAME             ME NO_OF_BOOKS TOTAL_FINE EXPIRY_DA                       
+-------------------- -------------------- -- ----------- ---------- ---------                       
+M102                 JANE                 M            1            30-JUN-05                       
+
+SQL> DELETE FROM MEMBER
+  2  WHERE MEM_NO='M102';
+
+1 row deleted.
+
+SQL> CL SCR
+SQL> INSERT INTO MEMBER (MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+  2      VALUES ('M102', 'JANE', 'M', 1, NULL, TO_DATE('30-JUN-05', 'DD-MON-YY'));
+
+1 row created.
+
+SQL> DELETE FROM MEMBER WHERE MEM_NO='M102';
+
+1 row deleted.
+
+SQL> CL SCR
+SQL> INSERT INTO MEMBER (MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+  2      VALUES ('M102', 'JANE', 'M', 1, NULL, TO_DATE('31-JUN-05', 'DD-MON-YY'));
+    VALUES ('M102', 'JANE', 'M', 1, NULL, TO_DATE('31-JUN-05', 'DD-MON-YY'))
+                                                  *
+ERROR at line 2:
+ORA-01839: date not valid for month specified 
+
+
+SQL> INSERT INTO MEMBER (MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+  2      VALUES ('M102', 'JANE', 'M', 1, NULL, TO_DATE('30-JUN-05', 'DD-MON-YY'));
+
+1 row created.
+
+SQL> INSERT INTO MEMBER (MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+  2      VALUES ('M108', 'MILLER', 'M', 2, 80, TO_DATE('20-JUN-05', 'DD-MON-YY'));
+
+1 row created.
+
+SQL> INSERT INTO MEMBER (MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+  2      VALUES ('M104', 'SHERLY', 'M', 2, 20, TO_DATE('20-JUN-05', 'DD-MON-YY'));
+
+1 row created.
+
+SQL> INSERT INTO MEMBER (MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+  2      VALUES ('M109', 'WATSON', 'M', 1, 10, TO_DATE('29-AUG-05', 'DD-MON-YY'));
+
+1 row created.
+
+SQL> INSERT INTO MEMBER (MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+  2      VALUES ('Y101', 'LAZOR', 'Y', 3, 30, TO_DATE('29-AUG-06', 'DD-MON-YY'));
+
+1 row created.
+
+SQL> INSERT INTO MEMBER (MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+  2      VALUES ('Y109', 'PETER', 'Y', 4, 27, TO_DATE('27-JUN-06', 'DD-MON-YY'));
+
+1 row created.
+
+SQL> INSERT INTO MEMBER (MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+  2      VALUES ('Y102', 'MERCY', 'Y', 2, 100, TO_DATE('20-JAN-06', 'DD-MON-YY'));
+
+1 row created.
+
+SQL> INSERT INTO MEMBER (MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+  2      VALUES ('L106', 'SONY', 'L', 6, 1100, TO_DATE('20-JAN-20', 'DD-MON-YY'));
+
+1 row created.
+
+SQL> INSERT INTO MEMBER (MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+  2      VALUES ('L109', 'GREG', 'L', 3, 2000, TO_DATE('22-SEP-20', 'DD-MON-YY'));
+
+1 row created.
+
+SQL> INSERT INTO MEMBER (MEM_NO, MEM_NAME, MEM_TYPE, NO_OF_BOOKS, TOTAL_FINE, EXPIRY_DATE)
+  2      VALUES ('L117', 'MABIE', 'L', 2, 1000, TO_DATE('03-JAN-19', 'DD-MON-YY'));
+
+1 row created.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> CL SCR
+SQL> SELECT * FROM MEMBER;
+
+MEM_NO               MEM_NAME             ME NO_OF_BOOKS TOTAL_FINE EXPIRY_DA                       
+-------------------- -------------------- -- ----------- ---------- ---------                       
+M102                 JANE                 M            1            30-JUN-05                       
+M108                 MILLER               M            2         80 20-JUN-05                       
+M104                 SHERLY               M            2         20 20-JUN-05                       
+M109                 WATSON               M            1         10 29-AUG-05                       
+Y101                 LAZOR                Y            3         30 29-AUG-06                       
+Y109                 PETER                Y            4         27 27-JUN-06                       
+Y102                 MERCY                Y            2        100 20-JAN-06                       
+L106                 SONY                 L            6       1100 20-JAN-20                       
+L109                 GREG                 L            3       2000 22-SEP-20                       
+L117                 MABIE                L            2       1000 03-JAN-19                       
+
+10 rows selected.
+
+SQL> CREATE TABLE SALGRADE2(GRADE NUMBER(5) NOT NULL,
+  2                        LOSAL NUMBER(5) ,
+  3  
+SQL> CREATE TABLE SALGRADE2(GRADE NUMBER(1),
+  2                         LOSAL NUMBER(5),HISAL NUMBER(5));
+
+Table created.
+
+SQL> CL SCR
+SQL> INSERT INTO SALGRADE2 (GRADE,LOSAL,HISAL)
+  2      VALUES (&GRADE,&LOSAL,&HISAL);
+Enter value for grade: 1
+Enter value for losal: 700
+Enter value for hisal: 1200
+old   2:     VALUES (&GRADE,&LOSAL,&HISAL)
+new   2:     VALUES (1,700,1200)
+
+1 row created.
+
+SQL> /
+Enter value for grade: 2
+Enter value for losal: 1201
+Enter value for hisal: 1400
+old   2:     VALUES (&GRADE,&LOSAL,&HISAL)
+new   2:     VALUES (2,1201,1400)
+
+1 row created.
+
+SQL> /
+Enter value for grade: 3
+Enter value for losal: 1401
+Enter value for hisal: 2000
+old   2:     VALUES (&GRADE,&LOSAL,&HISAL)
+new   2:     VALUES (3,1401,2000)
+
+1 row created.
+
+SQL> /
+Enter value for grade: 4
+Enter value for losal: 2001
+Enter value for hisal: 3000
+old   2:     VALUES (&GRADE,&LOSAL,&HISAL)
+new   2:     VALUES (4,2001,3000)
+
+1 row created.
+
+SQL> /
+Enter value for grade: 5
+Enter value for losal: 3001
+Enter value for hisal: 9999
+old   2:     VALUES (&GRADE,&LOSAL,&HISAL)
+new   2:     VALUES (5,3001,9999)
+
+1 row created.
+
+SQL> COMMIT ;
+
+Commit complete.
+
+SQL> CL SCR
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                   
+------------------------------ ------- ----------                                                   
+DEPT                           TABLE                                                                
+EMP                            TABLE                                                                
+BONUS                          TABLE                                                                
+SALGRADE                       TABLE                                                                
+STAFF                          TABLE                                                                
+LIBRARY                        TABLE                                                                
+BOOKS                          TABLE                                                                
+MEMBER                         TABLE                                                                
+SALGRADE2                      TABLE                                                                
+DUKAN                          TABLE                                                                
+
+10 rows selected.
+
+SQL> SELECT * FROM SALGRADE2;
+
+     GRADE      LOSAL      HISAL                                                                    
+---------- ---------- ----------                                                                    
+         1        700       1200                                                                    
+         2       1201       1400                                                                    
+         3       1401       2000                                                                    
+         4       2001       3000                                                                    
+         5       3001       9999                                                                    
+
+SQL> CREATE TABLE TRANSACTION(BOOK_NO VARCHAR2(20) FOREIGN KEY OF BOOK,
+  2                 MEM_NO VARCHAR2(20) FOREIGN KEY OF MEMBER,
+  3                ISSUE_DATE DATE SYSDATE,
+  4                DUE_DATE DATE SYSDATE+7,
+  5                RETURN_DATE DATE NULL,
+  6                FINE NUMBER(5) NULL);
+CREATE TABLE TRANSACTION(BOOK_NO VARCHAR2(20) FOREIGN KEY OF BOOK,
+                                              *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+14 rows selected.
+
+SQL> 
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                   
+------------------------------ ------- ----------                                                   
+DEPT                           TABLE                                                                
+EMP                            TABLE                                                                
+BONUS                          TABLE                                                                
+SALGRADE                       TABLE                                                                
+STAFF                          TABLE                                                                
+LIBRARY                        TABLE                                                                
+BOOKS                          TABLE                                                                
+MEMBER                         TABLE                                                                
+SALGRADE2                      TABLE                                                                
+DUKAN                          TABLE                                                                
+
+10 rows selected.
+
+SQL> CREATE TABLE TRANSACTION(BOOK_NO VARCHAR2(20) FOREIGN KEY OF BOOK,
+  2                 MEM_NO VARCHAR2(20) FOREIGN KEY OF MEMBER,
+  3                ISSUE_DATE DATE SYSDATE,
+  4                DUE_DATE DATE SYSDATE+7,
+  5                RETURN_DATE DATE NULL,
+  6                FINE NUMBER(5) NULL);
+CREATE TABLE TRANSACTION(BOOK_NO VARCHAR2(20) FOREIGN KEY OF BOOK,
+                                              *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  CREATE TABLE TRANSACTION(BOOK_NO VARCHAR2(20) FOREIGN KEY OF BOOKS,
+  2                 MEM_NO VARCHAR2(20) FOREIGN KEY OF MEMBER,
+  3                ISSUE_DATE DATE SYSDATE,
+  4                DUE_DATE DATE SYSDATE+7,
+  5                RETURN_DATE DATE NULL,
+  6*               FINE NUMBER(5) NULL)
+SQL> /
+CREATE TABLE TRANSACTION(BOOK_NO VARCHAR2(20) FOREIGN KEY OF BOOKS,
+                                              *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> CREATE TABLE TRANSACTION (
+  2      BOOK_NO VARCHAR2(20),
+  3      MEM_NO VARCHAR2(20),
+  4      ISSUE_DATE DATE DEFAULT SYSDATE,
+  5      DUE_DATE DATE DEFAULT SYSDATE + 7,
+  6      RETURN_DATE DATE,
+  7      FINE NUMBER(5),
+  8      CONSTRAINT FK_BOOK FOREIGN KEY (BOOK_NO) REFERENCES BOOKS(BOOK_NO),
+  9      CONSTRAINT FK_MEMBER FOREIGN KEY (MEM_NO) REFERENCES MEMBER(MEM_NO)
+ 10  );
+
+Table created.
+
+SQL> CL SCR
+SQL> INSERT INTO TRANSACTION (BOOK_NO, MEM_NO, ISSUE_DATE, DUE_DATE, RETURN_DATE, FINE) VALUES
+  2      ('J109', 'M102', TO_DATE('12-AUG-05', 'DD-MON-YY'), TO_DATE('19-AUG-05', 'DD-MON-YY'), TO_DATE('14-AUG-05', 'DD-MON-YY'), NULL),
+  3      ('C104', 'M104', TO_DATE('12-AUG-05', 'DD-MON-YY'), TO_DATE('19-AUG-05', 'DD-MON-YY'), TO_DATE('28-AUG-05', 'DD-MON-YY'), 160),
+  4      ('S108', 'M104', TO_DATE('14-AUG-05', 'DD-MON-YY'), TO_DATE('21-AUG-05', 'DD-MON-YY'), TO_DATE('20-AUG-05', 'DD-MON-YY'), NULL),
+  5      ('P108', 'M109', TO_DATE('01-AUG-05', 'DD-MON-YY'), TO_DATE('07-AUG-05', 'DD-MON-YY'), TO_DATE('11-AUG-05', 'DD-MON-YY'), 40),
+  6      ('P108', 'Y101', TO_DATE('02-AUG-05', 'DD-MON-YY'), TO_DATE('09-AUG-05', 'DD-MON-YY'), TO_DATE('12-AUG-05', 'DD-MON-YY'), 30),
+  7      ('P108', 'L109', TO_DATE('14-AUG-05', 'DD-MON-YY'), TO_DATE('21-AUG-05', 'DD-MON-YY'), TO_DATE('30-AUG-05', 'DD-MON-YY'), 90),
+  8      ('P108', 'L117', TO_DATE('14-AUG-05', 'DD-MON-YY'), TO_DATE('21-AUG-05', 'DD-MON-YY'), TO_DATE('29-SEP-05', 'DD-MON-YY'), 450),
+  9      ('S108', 'L109', TO_DATE('12-SEP-05', 'DD-MON-YY'), TO_DATE('19-SEP-05', 'DD-MON-YY'), NULL, NULL),
+ 10      ('D188', 'Y102', TO_DATE('14-SEP-05', 'DD-MON-YY'), TO_DATE('21-SEP-05', 'DD-MON-YY'), NULL, NULL),
+ 11      ('D188', 'L117', TO_DATE('18-SEP-05', 'DD-MON-YY'), TO_DATE('25-SEP-05', 'DD-MON-YY'), TO_DATE('20-SEP-05', 'DD-MON-YY'), NULL),
+ 12      ('S140', 'L109', TO_DATE('19-SEP-05', 'DD-MON-YY'), TO_DATE('26-SEP-05', 'DD-MON-YY'), TO_DATE('29-SEP-05', 'DD-MON-YY'), 30),
+ 13      ('P108', 'Y102', TO_DATE('19-SEP-05', 'DD-MON-YY'), TO_DATE('26-SEP-05', 'DD-MON-YY'), NULL, NULL),
+ 14      ('P108', 'L117', TO_DATE('19-SEP-05', 'DD-MON-YY'), TO_DATE('26-SEP-05', 'DD-MON-YY'), NULL, NULL);
+    ('J109', 'M102', TO_DATE('12-AUG-05', 'DD-MON-YY'), TO_DATE('19-AUG-05', 'DD-MON-YY'), TO_DATE('14-AUG-05', 'DD-MON-YY'), NULL),
+                                                                                                                                   *
+ERROR at line 2:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> INSERT INTO TRANSACTION (BOOK_NO, MEM_NO, ISSUE_DATE, DUE_DATE, RETURN_DATE, FINE) VALUES
+  2      ('J109', 'M102', TO_DATE('12-AUG-05', 'DD-MON-YY'), TO_DATE('19-AUG-05', 'DD-MON-YY'), TO_DATE('14-AUG-05', 'DD-MON-YY'), NULL),
+  3      ('C104', 'M104', TO_DATE('12-AUG-05', 'DD-MON-YY'), TO_DATE('19-AUG-05', 'DD-MON-YY'), TO_DATE('28-AUG-05', 'DD-MON-YY'), 160),
+  4      ('S108', 'M104', TO_DATE('14-AUG-05', 'DD-MON-YY'), TO_DATE('21-AUG-05', 'DD-MON-YY'), TO_DATE('20-AUG-05', 'DD-MON-YY'), NULL),
+  5      ('P108', 'M109', TO_DATE('01-AUG-05', 'DD-MON-YY'), TO_DATE('07-AUG-05', 'DD-MON-YY'), TO_DATE('11-AUG-05', 'DD-MON-YY'), 40),
+  6      ('P108', 'Y101', TO_DATE('02-AUG-05', 'DD-MON-YY'), TO_DATE('09-AUG-05', 'DD-MON-YY'), TO_DATE('12-AUG-05', 'DD-MON-YY'), 30),
+  7      ('P108', 'L109', TO_DATE('14-AUG-05', 'DD-MON-YY'), TO_DATE('21-AUG-05', 'DD-MON-YY'), TO_DATE('30-AUG-05', 'DD-MON-YY'), 90),
+  8      ('P108', 'L117', TO_DATE('14-AUG-05', 'DD-MON-YY'), TO_DATE('21-AUG-05', 'DD-MON-YY'), TO_DATE('29-SEP-05', 'DD-MON-YY'), 450),
+  9      ('S108', 'L109', TO_DATE('12-SEP-05', 'DD-MON-YY'), TO_DATE('19-SEP-05', 'DD-MON-YY'), NULL, NULL),
+ 10      ('D188', 'Y102', TO_DATE('14-SEP-05', 'DD-MON-YY'), TO_DATE('21-SEP-05', 'DD-MON-YY'), NULL, NULL),
+ 11      ('D188', 'L117', TO_DATE('18-SEP-05', 'DD-MON-YY'), TO_DATE('25-SEP-05', 'DD-MON-YY'), TO_DATE('20-SEP-05', 'DD-MON-YY'), NULL),
+ 12      ('S140', 'L109', TO_DATE('19-SEP-05', 'DD-MON-YY'), TO_DATE('26-SEP-05', 'DD-MON-YY'), TO_DATE('29-SEP-05', 'DD-MON-YY'), 30),
+ 13      ('P108', 'Y102', TO_DATE('19-SEP-05', 'DD-MON-YY'), TO_DATE('26-SEP-05', 'DD-MON-YY'), NULL, NULL),
+ 14      ('P108', 'L117', TO_DATE('19-SEP-05', 'DD-MON-YY'), TO_DATE('26-SEP-05', 'DD-MON-YY'), NULL, NULL);
+    ('J109', 'M102', TO_DATE('12-AUG-05', 'DD-MON-YY'), TO_DATE('19-AUG-05', 'DD-MON-YY'), TO_DATE('14-AUG-05', 'DD-MON-YY'), NULL),
+                                                                                                                                   *
+ERROR at line 2:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> INSERT INTO TRANSACTION (BOOK_NO, MEM_NO, ISSUE_DATE, DUE_DATE, RETURN_DATE, FINE) VALUES
+  2      (('J109', 'M102', TO_DATE('12-AUG-05', 'DD-MON-YY'), TO_DATE('19-AUG-05', 'DD-MON-YY'), TO_DATE('14-AUG-05', 'DD-MON-YY'), NULL),
+  3      ('C104', 'M104', TO_DATE('12-AUG-05', 'DD-MON-YY'), TO_DATE('19-AUG-05', 'DD-MON-YY'), TO_DATE('28-AUG-05', 'DD-MON-YY'), 160),
+  4      ('S108', 'M104', TO_DATE('14-AUG-05', 'DD-MON-YY'), TO_DATE('21-AUG-05', 'DD-MON-YY'), TO_DATE('20-AUG-05', 'DD-MON-YY'), NULL),
+  5      ('P108', 'M109', TO_DATE('01-AUG-05', 'DD-MON-YY'), TO_DATE('07-AUG-05', 'DD-MON-YY'), TO_DATE('11-AUG-05', 'DD-MON-YY'), 40),
+  6      ('P108', 'Y101', TO_DATE('02-AUG-05', 'DD-MON-YY'), TO_DATE('09-AUG-05', 'DD-MON-YY'), TO_DATE('12-AUG-05', 'DD-MON-YY'), 30),
+  7      ('P108', 'L109', TO_DATE('14-AUG-05', 'DD-MON-YY'), TO_DATE('21-AUG-05', 'DD-MON-YY'), TO_DATE('30-AUG-05', 'DD-MON-YY'), 90),
+  8      ('P108', 'L117', TO_DATE('14-AUG-05', 'DD-MON-YY'), TO_DATE('21-AUG-05', 'DD-MON-YY'), TO_DATE('29-SEP-05', 'DD-MON-YY'), 450),
+  9      ('S108', 'L109', TO_DATE('12-SEP-05', 'DD-MON-YY'), TO_DATE('19-SEP-05', 'DD-MON-YY'), NULL, NULL),
+ 10      ('D188', 'Y102', TO_DATE('14-SEP-05', 'DD-MON-YY'), TO_DATE('21-SEP-05', 'DD-MON-YY'), NULL, NULL),
+ 11      ('D188', 'L117', TO_DATE('18-SEP-05', 'DD-MON-YY'), TO_DATE('25-SEP-05', 'DD-MON-YY'), TO_DATE('20-SEP-05', 'DD-MON-YY'), NULL),
+ 12      ('S140', 'L109', TO_DATE('19-SEP-05', 'DD-MON-YY'), TO_DATE('26-SEP-05', 'DD-MON-YY'), TO_DATE('29-SEP-05', 'DD-MON-YY'), 30),
+ 13      ('P108', 'Y102', TO_DATE('19-SEP-05', 'DD-MON-YY'), TO_DATE('26-SEP-05', 'DD-MON-YY'), NULL, NULL),
+ 14      ('P108', 'L117', TO_DATE('19-SEP-05', 'DD-MON-YY'), TO_DATE('26-SEP-05', 'DD-MON-YY'), NULL, NULL));
+    (('J109', 'M102', TO_DATE('12-AUG-05', 'DD-MON-YY'), TO_DATE('19-AUG-05', 'DD-MON-YY'), TO_DATE('14-AUG-05', 'DD-MON-YY'), NULL),
+            *
+ERROR at line 2:
+ORA-00907: missing right parenthesis 
+
+
+SQL> INSERT INTO TRANSACTION (BOOK_NO, MEM_NO, ISSUE_DATE, DUE_DATE, RETURN_DATE, FINE) VALUES
+  2      ('J109', 'M102', TO_DATE('12-AUG-05', 'DD-MON-YY'), TO_DATE('19-AUG-05', 'DD-MON-YY'), TO_DATE('14-AUG-05', 'DD-MON-YY'), NULL);
+
+1 row created.
+
+SQL> INSERT INTO TRANSACTION (BOOK_NO, MEM_NO, ISSUE_DATE, DUE_DATE, RETURN_DATE, FINE) VALUES
+  2      ('C104', 'M104', TO_DATE('12-AUG-05', 'DD-MON-YY'), TO_DATE('19-AUG-05', 'DD-MON-YY'), TO_DATE('28-AUG-05', 'DD-MON-YY'), 160);
+
+1 row created.
+
+SQL> INSERT INTO TRANSACTION (BOOK_NO, MEM_NO, ISSUE_DATE, DUE_DATE, RETURN_DATE, FINE) VALUES
+  2      ('S108', 'M104', TO_DATE('14-AUG-05', 'DD-MON-YY'), TO_DATE('21-AUG-05', 'DD-MON-YY'), TO_DATE('20-AUG-05', 'DD-MON-YY'), NULL);
+
+1 row created.
+
+SQL> INSERT INTO TRANSACTION (BOOK_NO, MEM_NO, ISSUE_DATE, DUE_DATE, RETURN_DATE, FINE) VALUES
+  2      ('P108', 'M109', TO_DATE('01-AUG-05', 'DD-MON-YY'), TO_DATE('07-AUG-05', 'DD-MON-YY'), TO_DATE('11-AUG-05', 'DD-MON-YY'), 40);
+
+1 row created.
+
+SQL> INSERT INTO TRANSACTION (BOOK_NO, MEM_NO, ISSUE_DATE, DUE_DATE, RETURN_DATE, FINE) VALUES
+  2      ('P108', 'Y101', TO_DATE('02-AUG-05', 'DD-MON-YY'), TO_DATE('09-AUG-05', 'DD-MON-YY'), TO_DATE('12-AUG-05', 'DD-MON-YY'), 30);
+
+1 row created.
+
+SQL> INSERT INTO TRANSACTION (BOOK_NO, MEM_NO, ISSUE_DATE, DUE_DATE, RETURN_DATE, FINE) VALUES
+  2      ('P108', 'L109', TO_DATE('14-AUG-05', 'DD-MON-YY'), TO_DATE('21-AUG-05', 'DD-MON-YY'), TO_DATE('30-AUG-05', 'DD-MON-YY'), 90);
+
+1 row created.
+
+SQL> INSERT INTO TRANSACTION (BOOK_NO, MEM_NO, ISSUE_DATE, DUE_DATE, RETURN_DATE, FINE) VALUES
+  2      ('P108', 'L117', TO_DATE('14-AUG-05', 'DD-MON-YY'), TO_DATE('21-AUG-05', 'DD-MON-YY'), TO_DATE('29-SEP-05', 'DD-MON-YY'), 450);
+
+1 row created.
+
+SQL> INSERT INTO TRANSACTION (BOOK_NO, MEM_NO, ISSUE_DATE, DUE_DATE, RETURN_DATE, FINE) VALUES
+  2  
+SQL> INSERT INTO TRANSACTION (BOOK_NO, MEM_NO, ISSUE_DATE, DUE_DATE, RETURN_DATE, FINE) VALUES
+  2      ('S108', 'L109', TO_DATE('12-SEP-05', 'DD-MON-YY'), TO_DATE('19-SEP-05', 'DD-MON-YY'), NULL, NULL);
+
+1 row created.
+
+SQL> INSERT INTO TRANSACTION (BOOK_NO, MEM_NO, ISSUE_DATE, DUE_DATE, RETURN_DATE, FINE) VALUES
+  2      ('D188', 'Y102', TO_DATE('14-SEP-05', 'DD-MON-YY'), TO_DATE('21-SEP-05', 'DD-MON-YY'), NULL, NULL);
+
+1 row created.
+
+SQL> INSERT INTO TRANSACTION (BOOK_NO, MEM_NO, ISSUE_DATE, DUE_DATE, RETURN_DATE, FINE) VALUES
+  2      ('D188', 'L117', TO_DATE('18-SEP-05', 'DD-MON-YY'), TO_DATE('25-SEP-05', 'DD-MON-YY'), TO_DATE('20-SEP-05', 'DD-MON-YY'), NULL);
+
+1 row created.
+
+SQL> INSERT INTO TRANSACTION (BOOK_NO, MEM_NO, ISSUE_DATE, DUE_DATE, RETURN_DATE, FINE) VALUES
+  2      ('S140', 'L109', TO_DATE('19-SEP-05', 'DD-MON-YY'), TO_DATE('26-SEP-05', 'DD-MON-YY'), TO_DATE('29-SEP-05', 'DD-MON-YY'), 30);
+
+1 row created.
+
+SQL> INSERT INTO TRANSACTION (BOOK_NO, MEM_NO, ISSUE_DATE, DUE_DATE, RETURN_DATE, FINE) VALUES
+  2      ('P108', 'Y102', TO_DATE('19-SEP-05', 'DD-MON-YY'), TO_DATE('26-SEP-05', 'DD-MON-YY'), NULL, NULL);
+
+1 row created.
+
+SQL> INSERT INTO TRANSACTION (BOOK_NO, MEM_NO, ISSUE_DATE, DUE_DATE, RETURN_DATE, FINE) VALUES
+  2      ('P108', 'L117', TO_DATE('19-SEP-05', 'DD-MON-YY'), TO_DATE('26-SEP-05', 'DD-MON-YY'), NULL, NULL);
+
+1 row created.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> CL SCR
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                   
+------------------------------ ------- ----------                                                   
+DEPT                           TABLE                                                                
+EMP                            TABLE                                                                
+BONUS                          TABLE                                                                
+SALGRADE                       TABLE                                                                
+STAFF                          TABLE                                                                
+LIBRARY                        TABLE                                                                
+BOOKS                          TABLE                                                                
+MEMBER                         TABLE                                                                
+SALGRADE2                      TABLE                                                                
+TRANSACTION                    TABLE                                                                
+DUKAN                          TABLE                                                                
+
+11 rows selected.
+
+SQL> SELECT * FROM TRANSACTION;
+
+BOOK_NO              MEM_NO               ISSUE_DAT DUE_DATE  RETURN_DA       FINE                  
+-------------------- -------------------- --------- --------- --------- ----------                  
+J109                 M102                 12-AUG-05 19-AUG-05 14-AUG-05                             
+C104                 M104                 12-AUG-05 19-AUG-05 28-AUG-05        160                  
+S108                 M104                 14-AUG-05 21-AUG-05 20-AUG-05                             
+P108                 M109                 01-AUG-05 07-AUG-05 11-AUG-05         40                  
+P108                 Y101                 02-AUG-05 09-AUG-05 12-AUG-05         30                  
+P108                 L109                 14-AUG-05 21-AUG-05 30-AUG-05         90                  
+P108                 L117                 14-AUG-05 21-AUG-05 29-SEP-05        450                  
+S108                 L109                 12-SEP-05 19-SEP-05                                       
+D188                 Y102                 14-SEP-05 21-SEP-05                                       
+D188                 L117                 18-SEP-05 25-SEP-05 20-SEP-05                             
+S140                 L109                 19-SEP-05 26-SEP-05 29-SEP-05         30                  
+P108                 Y102                 19-SEP-05 26-SEP-05                                       
+P108                 L117                 19-SEP-05 26-SEP-05                                       
+
+13 rows selected.
+
+SQL> SELECT * FROM SALGRADE2;
+
+     GRADE      LOSAL      HISAL                                                                    
+---------- ---------- ----------                                                                    
+         1        700       1200                                                                    
+         2       1201       1400                                                                    
+         3       1401       2000                                                                    
+         4       2001       3000                                                                    
+         5       3001       9999                                                                    
+
+SQL> SELECT * FROM MEMBER;
+
+MEM_NO               MEM_NAME             ME NO_OF_BOOKS TOTAL_FINE EXPIRY_DA                       
+-------------------- -------------------- -- ----------- ---------- ---------                       
+M102                 JANE                 M            1            30-JUN-05                       
+M108                 MILLER               M            2         80 20-JUN-05                       
+M104                 SHERLY               M            2         20 20-JUN-05                       
+M109                 WATSON               M            1         10 29-AUG-05                       
+Y101                 LAZOR                Y            3         30 29-AUG-06                       
+Y109                 PETER                Y            4         27 27-JUN-06                       
+Y102                 MERCY                Y            2        100 20-JAN-06                       
+L106                 SONY                 L            6       1100 20-JAN-20                       
+L109                 GREG                 L            3       2000 22-SEP-20                       
+L117                 MABIE                L            2       1000 03-JAN-19                       
+
+10 rows selected.
+
+SQL> SELECT * FROM BOOKS;
+
+BOOK_NO              BOOK_NAME            AUTHOR                    PRICE NO_OF_BOOKS               
+-------------------- -------------------- -------------------- ---------- -----------               
+O101                 ORACLE               IVAN                        500          10               
+J109                 JAVA                 BRUCE                       478           9               
+C104                 C-GUIDE              COOK                        987           8               
+S108                 SQL-SERVER           SHARON                      890           8               
+D178                 DB2                  SHARON                      789           9               
+S140                 SBASE                COOK                        876           9               
+D120                 DATA WAREHOUSING     IVAN                        890          10               
+D432                 DATAMINING           LONEY                      1190           0               
+P108                 PL/SQL               LONEY                      1112           2               
+D188                 DEVELOPER            WONG                        123           6               
+
+10 rows selected.
+
+SQL> SELECT * FROM LIBRARY;
+
+     LIBNO LIBNAME              CITY                                                                
+---------- -------------------- ----------                                                          
+        10 KNOWLEDGE POWER      DELHI                                                               
+        20 REDEFINE KNOWLEDE    BOMBAY                                                              
+        30 EXPERTISE            CHENNAI                                                             
+        40 EXCELLENCE           KOLKATA                                                             
+
+SQL> SELECT * FROM STAFF;
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17934 MILLER     CLERK                17782 23-JAN-02       1430                    10         
+     17369 SMITH      CLERK                17902 12-NOV-99        800                    20         
+     17499 ALLEN      LIBRARIAN            17698 20-FEB-01       1600        300         30         
+     17521  WARD      LIBRARIAN            17698 21-FEB-01       1250        500         30         
+     17566 JONES      MANAGER              17839 04-FEB-01       2975                    20         
+     17654 MARTIN     LIBRARIAN            17698 29-SEP-01       1250       1400         30         
+     17782 CLARK      MANAGER              17839 05-JAN-01       2850                    30         
+     17788 SCOTT      MANAGER              17839 06-SEP-01       2450                    30         
+     17839 KING       PRESIDENT                  17-NOV-01       5000                    10         
+     17844 TURNER     LIBRARIAN            17698 09-AUG-01       1500          0         30         
+     17876 ADAMS      CLERK                17788 01-DEC-03       1100                    20         
+     17900 JAMES      CLERK                17900 12-MAR-01        950                    30         
+     17902 FORD       SR LIBRARIAN         17902 12-APR-01       3000                    20         
+
+13 rows selected.
+
+SQL> SPOOL OFF;

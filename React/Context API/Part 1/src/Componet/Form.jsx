@@ -8,7 +8,7 @@ const Form = () => {
         password: "",
         date: "",
         address: "",
-        img:""
+        img: ""
     });
 
     const { setuser } = useContext(UserContext);

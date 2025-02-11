@@ -1,0 +1,331 @@
+SQL> SELECT MEM_NO, SUM(FINE) AS TOTAL_FINE
+  2  FROM TRANSACTION
+  3  GROUP BY MEM_NO;
+
+MEM_NO               TOTAL_FINE                                                                     
+-------------------- ----------                                                                     
+M102                                                                                                
+M104                        160                                                                     
+L109                        120                                                                     
+Y102                                                                                                
+Y101                         30                                                                     
+L117                        450                                                                     
+M109                         40                                                                     
+
+7 rows selected.
+
+SQL> SELECT M.*
+  2  FROM MEMBER M, TRANSACTION T
+  3  WHERE M.MEM_NO = T.MEM_NO
+  4    AND TO_CHAR(TO_DATE(T.ISSUE_DAT, 'DD-MON-YY'), 'Day') = 'Wednesday';
+  AND TO_CHAR(TO_DATE(T.ISSUE_DAT, 'DD-MON-YY'), 'Day') = 'Wednesday'
+                      *
+ERROR at line 4:
+ORA-00904: "T"."ISSUE_DAT": invalid identifier 
+
+
+SQL> SELECT M.*
+  2  FROM MEMBER M, TRANSACTION T
+  3  WHERE M.MEM_NO = T.MEM_NO
+  4    AND T.BOOK_NO IN (SELECT BOOK_NO
+  5                      FROM TRANSACTION
+  6                      WHERE FINE > 50);
+
+MEM_NO               MEM_NAME             ME NO_OF_BOOKS TOTAL_FINE EXPIRY_DA                       
+-------------------- -------------------- -- ----------- ---------- ---------                       
+M104                 SHERLY               M            2         20 20-JUN-05                       
+M109                 WATSON               M            1         10 29-AUG-05                       
+Y101                 LAZOR                Y            3         30 29-AUG-06                       
+Y102                 MERCY                Y            2        100 20-JAN-06                       
+L109                 GREG                 L            3       2000 22-SEP-20                       
+L117                 MABIE                L            2       1000 03-JAN-19                       
+L117                 MABIE                L            2       1000 03-JAN-19                       
+
+7 rows selected.
+
+SQL> SELECT M.*
+  2  FROM MEMBER M
+  3  WHERE M.MEM_NO NOT IN (SELECT MEM_NO FROM TRANSACTION);
+
+MEM_NO               MEM_NAME             ME NO_OF_BOOKS TOTAL_FINE EXPIRY_DA                       
+-------------------- -------------------- -- ----------- ---------- ---------                       
+M108                 MILLER               M            2         80 20-JUN-05                       
+Y109                 PETER                Y            4         27 27-JUN-06                       
+L106                 SONY                 L            6       1100 20-JAN-20                       
+
+SQL> SELECT B.*
+  2  FROM BOOKS B
+  3  WHERE B.BOOK_NO NOT IN (SELECT BOOK_NO FROM TRANSACTION);
+
+BOOK_NO              BOOK_NAME            AUTHOR                    PRICE NO_OF_BOOKS               
+-------------------- -------------------- -------------------- ---------- -----------               
+O101                 ORACLE               IVAN                        500          10               
+D178                 DB2                  SHARON                      789           9               
+D120                 DATA WAREHOUSING     IVAN                        890          10               
+D432                 DATAMINING           LONEY                      1190           0               
+
+SQL> SELECT M.*
+  2  FROM MEMBER M, TRANSACTION T
+  3  WHERE M.MEM_NO = T.MEM_NO
+  4    AND T.FINE > 100;
+
+MEM_NO               MEM_NAME             ME NO_OF_BOOKS TOTAL_FINE EXPIRY_DA                       
+-------------------- -------------------- -- ----------- ---------- ---------                       
+M104                 SHERLY               M            2         20 20-JUN-05                       
+L117                 MABIE                L            2       1000 03-JAN-19                       
+
+SQL> SELECT M.*
+  2  FROM MEMBER M
+  3  WHERE M.MEM_NO NOT IN (SELECT MEM_NO FROM TRANSACTION WHERE FINE > 0);
+
+MEM_NO               MEM_NAME             ME NO_OF_BOOKS TOTAL_FINE EXPIRY_DA                       
+-------------------- -------------------- -- ----------- ---------- ---------                       
+M102                 JANE                 M            1            30-JUN-05                       
+M108                 MILLER               M            2         80 20-JUN-05                       
+Y109                 PETER                Y            4         27 27-JUN-06                       
+Y102                 MERCY                Y            2        100 20-JAN-06                       
+L106                 SONY                 L            6       1100 20-JAN-20                       
+
+SQL> SELECT T1.MEM_NO, T1.BOOK_NO, T1.ISSUE_DAT
+  2  FROM TRANSACTION T1, TRANSACTION T2
+  3  WHERE T1.BOOK_NO = T2.BOOK_NO
+  4    AND T1.ISSUE_DAT = T2.ISSUE_DAT
+  5    AND T1.MEM_NO != T2.MEM_NO;
+  AND T1.ISSUE_DAT = T2.ISSUE_DAT
+                     *
+ERROR at line 4:
+ORA-00904: "T2"."ISSUE_DAT": invalid identifier 
+
+
+SQL> SELECT * FROM BOOKS
+  2  WHERE REGEXP_LIKE(BOOK_NO, '^[A-Za-z]\d{3}$');
+
+BOOK_NO              BOOK_NAME            AUTHOR                    PRICE NO_OF_BOOKS               
+-------------------- -------------------- -------------------- ---------- -----------               
+O101                 ORACLE               IVAN                        500          10               
+J109                 JAVA                 BRUCE                       478           9               
+C104                 C-GUIDE              COOK                        987           8               
+S108                 SQL-SERVER           SHARON                      890           8               
+D178                 DB2                  SHARON                      789           9               
+S140                 SBASE                COOK                        876           9               
+D120                 DATA WAREHOUSING     IVAN                        890          10               
+D432                 DATAMINING           LONEY                      1190           0               
+P108                 PL/SQL               LONEY                      1112           2               
+D188                 DEVELOPER            WONG                        123           6               
+
+10 rows selected.
+
+SQL> SELECT BOOK_NAME, AUTHOR
+  2  FROM BOOKS
+  3  GROUP BY AUTHOR
+  4  HAVING COUNT(BOOK_NAME) > 1;
+SELECT BOOK_NAME, AUTHOR
+       *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> SELECT * FROM BOOKS
+  2  WHERE PRICE IN (SELECT PRICE
+  3                   FROM BOOKS
+  4                   GROUP BY PRICE
+  5                   HAVING COUNT(BOOK_NAME) > 1);
+
+BOOK_NO              BOOK_NAME            AUTHOR                    PRICE NO_OF_BOOKS               
+-------------------- -------------------- -------------------- ---------- -----------               
+S108                 SQL-SERVER           SHARON                      890           8               
+D120                 DATA WAREHOUSING     IVAN                        890          10               
+
+SQL> SELECT AUTHOR, COUNT(BOOK_NAME) AS NUM_BOOKS
+  2  FROM BOOKS
+  3  GROUP BY AUTHOR;
+
+AUTHOR                NUM_BOOKS                                                                     
+-------------------- ----------                                                                     
+LONEY                         2                                                                     
+WONG                          1                                                                     
+BRUCE                         1                                                                     
+IVAN                          2                                                                     
+SHARON                        2                                                                     
+COOK                          2                                                                     
+
+6 rows selected.
+
+SQL> SELECT * FROM STAFF
+  2  WHERE (DESIGN = 'CLERK' AND SAL < 1000)
+  3     OR DESIGN = 'MANAGER';
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17369 SMITH      CLERK                17902 12-NOV-99        800                    20         
+     17566 JONES      MANAGER              17839 04-FEB-01       2975                    20         
+     17782 CLARK      MANAGER              17839 05-JAN-01       2850                    30         
+     17788 SCOTT      MANAGER              17839 06-SEP-01       2450                    30         
+     17900 JAMES      CLERK                17900 12-MAR-01        950                    30         
+
+SQL> SELECT CONCAT(CONCAT('ALLEN BORROWED ', CONCAT(BOOK_NAME, ' BOOK')), ' FROM ORACLE')
+  2  FROM TRANSACTION T, STAFF S, BOOKS B
+  3  WHERE S.SNAME = 'ALLEN' AND T.BOOK_NO = B.BOOK_NO;
+
+CONCAT(CONCAT('ALLENBORROWED',CONCAT(BOOK_NAME,'BOOK                                                
+----------------------------------------------------                                                
+ALLEN BORROWED JAVA BOOK FROM ORACLE                                                                
+ALLEN BORROWED C-GUIDE BOOK FROM ORACLE                                                             
+ALLEN BORROWED SQL-SERVER BOOK FROM ORACLE                                                          
+ALLEN BORROWED PL/SQL BOOK FROM ORACLE                                                              
+ALLEN BORROWED PL/SQL BOOK FROM ORACLE                                                              
+ALLEN BORROWED PL/SQL BOOK FROM ORACLE                                                              
+ALLEN BORROWED PL/SQL BOOK FROM ORACLE                                                              
+ALLEN BORROWED SQL-SERVER BOOK FROM ORACLE                                                          
+ALLEN BORROWED DEVELOPER BOOK FROM ORACLE                                                           
+ALLEN BORROWED DEVELOPER BOOK FROM ORACLE                                                           
+ALLEN BORROWED SBASE BOOK FROM ORACLE                                                               
+ALLEN BORROWED PL/SQL BOOK FROM ORACLE                                                              
+ALLEN BORROWED PL/SQL BOOK FROM ORACLE                                                              
+
+13 rows selected.
+
+SQL> SELECT MEM_NO, BOOK_NO,
+  2         CASE
+  3             WHEN FINE = 0 THEN 'nofine'
+  4             WHEN FINE <= 50 THEN 'somefine'
+  5             ELSE 'fine'
+  6         END AS FINE_STATUS
+  7  FROM TRANSACTION;
+
+MEM_NO               BOOK_NO              FINE_STA                                                  
+-------------------- -------------------- --------                                                  
+M102                 J109                 fine                                                      
+M104                 C104                 fine                                                      
+M104                 S108                 fine                                                      
+M109                 P108                 somefine                                                  
+Y101                 P108                 somefine                                                  
+L109                 P108                 fine                                                      
+L117                 P108                 fine                                                      
+L109                 S108                 fine                                                      
+Y102                 D188                 fine                                                      
+L117                 D188                 fine                                                      
+L109                 S140                 somefine                                                  
+Y102                 P108                 fine                                                      
+L117                 P108                 fine                                                      
+
+13 rows selected.
+
+SQL> SELECT M.MEM_NO, M.MEM_NAME, COUNT(T.BOOK_NO) AS NO_OF_BOOKS
+  2  FROM MEMBER M
+  3  LEFT JOIN TRANSACTION T ON M.MEM_NO = T.MEM_NO
+  4  GROUP BY M.MEM_NO, M.MEM_NAME;
+
+MEM_NO               MEM_NAME             NO_OF_BOOKS                                               
+-------------------- -------------------- -----------                                               
+M108                 MILLER                         0                                               
+L117                 MABIE                          3                                               
+Y109                 PETER                          0                                               
+Y102                 MERCY                          2                                               
+M109                 WATSON                         1                                               
+Y101                 LAZOR                          1                                               
+M104                 SHERLY                         2                                               
+L109                 GREG                           3                                               
+L106                 SONY                           0                                               
+M102                 JANE                           1                                               
+
+10 rows selected.
+
+SQL> SELECT DESIGN, AVG(SAL) AS AVG_SAL
+  2  FROM STAFF
+  3  WHERE DESIGN != 'MANAGER'
+  4  GROUP BY DESIGN;
+
+DESIGN             AVG_SAL                                                                          
+--------------- ----------                                                                          
+LIBRARIAN             1400                                                                          
+CLERK                 1070                                                                          
+PRESIDENT             5000                                                                          
+SR LIBRARIAN          3000                                                                          
+
+SQL> SELECT COUNT(*) AS NUMBER_OF_MANAGERS
+  2  FROM STAFF
+  3  WHERE DESIGN = 'MANAGER';
+
+NUMBER_OF_MANAGERS                                                                                  
+------------------                                                                                  
+                 3                                                                                  
+
+SQL> SELECT * FROM MEMBER
+  2  WHERE TO_CHAR(EXPIRY_DA, 'DD') = TO_CHAR(LAST_DAY(EXPIRY_DA), 'DD');
+WHERE TO_CHAR(EXPIRY_DA, 'DD') = TO_CHAR(LAST_DAY(EXPIRY_DA), 'DD')
+                                                  *
+ERROR at line 2:
+ORA-00904: "EXPIRY_DA": invalid identifier 
+
+
+SQL> SELECT M.SNAME AS MANAGER, COUNT(S.STAFFID) AS NUMBER_OF_STAFF
+  2  FROM STAFF S
+  3  JOIN STAFF M ON S.MGRID = M.STAFFID
+  4  GROUP BY M.SNAME;
+
+MANAGER    NUMBER_OF_STAFF                                                                          
+---------- ---------------                                                                          
+FORD                     2                                                                          
+CLARK                    1                                                                          
+SCOTT                    1                                                                          
+KING                     3                                                                          
+JAMES                    1                                                                          
+
+SQL> SELECT DESIGN, COUNT(*) AS NUM_PEOPLE
+  2  FROM STAFF
+  3  GROUP BY DESIGN;
+
+DESIGN          NUM_PEOPLE                                                                          
+--------------- ----------                                                                          
+LIBRARIAN                4                                                                          
+CLERK                    4                                                                          
+PRESIDENT                1                                                                          
+SR LIBRARIAN             1                                                                          
+MANAGER                  3                                                                          
+
+SQL> SELECT * FROM STAFF
+  2  WHERE MGRID IN (SELECT STAFFID FROM STAFF WHERE DESIGN = 'MANAGER');
+
+   STAFFID SNAME      DESIGN               MGRID DOJ              SAL       COMM      LIBNO         
+---------- ---------- --------------- ---------- --------- ---------- ---------- ----------         
+     17934 MILLER     CLERK                17782 23-JAN-02       1430                    10         
+     17876 ADAMS      CLERK                17788 01-DEC-03       1100                    20         
+
+SQL> SELECT STAFFID, SNAME, DESIGN, SAL
+  2  FROM STAFF
+  3  WHERE (DESIGN, SAL) IN
+  4        (SELECT DESIGN, MAX(SAL)
+  5         FROM STAFF
+  6         GROUP BY DESIGN);
+
+   STAFFID SNAME      DESIGN                 SAL                                                    
+---------- ---------- --------------- ----------                                                    
+     17934 MILLER     CLERK                 1430                                                    
+     17499 ALLEN      LIBRARIAN             1600                                                    
+     17566 JONES      MANAGER               2975                                                    
+     17839 KING       PRESIDENT             5000                                                    
+     17902 FORD       SR LIBRARIAN          3000                                                    
+
+SQL> SELECT M.MEM_NO, M.MEM_NAME, B.BOOK_NO, B.BOOK_NAME
+  2  FROM MEMBER M, BOOKS B, TRANSACTION T
+  3  WHERE M.MEM_NO = T.MEM_NO
+  4    AND B.BOOK_NO = T.BOOK_NO
+  5    AND T.RETURN_DA IS NULL;
+  AND T.RETURN_DA IS NULL
+      *
+ERROR at line 5:
+ORA-00904: "T"."RETURN_DA": invalid identifier 
+
+
+SQL> SELECT M.*, B.*
+  2  FROM MEMBER M, BOOKS B, TRANSACTION T
+  3  WHERE M.MEM_NO = T.MEM_NO
+  4    AND B.BOOK_NO = T.BOOK_NO
+  5    AND M.MEM_NO = 'SPECIFIED_MEMBER_NO'
+  6    AND B.BOOK_NO = 'SPECIFIED_BOOK_NO';
+
+no rows selected
+
+SQL> CL SCR
+SQL> SPOOL OFF;
