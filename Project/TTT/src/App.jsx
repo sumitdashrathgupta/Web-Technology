@@ -1,9 +1,11 @@
 import React from 'react'
+import TTT from "./Components/TTT"
+import Car1 from "./assets/Image/car1"
 function App() {
- 
+
   return (
     <>
-    <h1>Hello TODO</h1>
+      <TTT img={Car1} title=" XYZ Car" price={499} />
     </>
   )
 }
