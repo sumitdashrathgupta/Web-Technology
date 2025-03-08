@@ -1,0 +1,7 @@
+github code contribution
+
+git clone
+git checkout -b brance name
+git add .
+git commit -m ""
+git push origin brance name
