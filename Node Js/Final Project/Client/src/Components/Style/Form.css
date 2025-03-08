@@ -1,0 +1,66 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+.form-section {
+    width: 20%;
+    height: 100%;
+    margin: 10% auto;
+    padding: 2% 2%;
+    background-color: rgba(0, 0, 0, 0.533);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    flex-direction: column;
+    box-shadow: 5px 5px 20px rgba(22, 10, 10, 0.517);
+}
+
+.form-data {
+    margin: 15px 0;
+    position: relative;
+}
+
+input {
+    width: 100%;
+    border: none;
+    padding: 5px;
+    outline: none;
+}
+
+input:focus {
+    outline: 0.5px solid rgb(210, 10, 10);
+}
+
+span {
+    position: absolute;
+    left: 91%;
+    bottom: -1px;
+}
+
+label,
+h1 {
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+}
+
+button {
+    cursor: pointer;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: .2s linear;
+}
+
+button:hover {
+    background-color: rgb(18, 65, 158);
+    color: white;
+}
