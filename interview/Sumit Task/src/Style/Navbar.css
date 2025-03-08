@@ -1,0 +1,59 @@
+header {
+    width: 90%;
+    height: 100%;
+    margin: 2% auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.c-logo {
+    width: 80%;
+    cursor: pointer;
+}
+
+.navbar {
+    position: relative;
+    right: 200px;
+
+    & a {
+        font-size: 13px;
+        text-decoration: none;
+        color: rgb(167, 167, 167);
+        padding: 18px;
+    }
+}
+
+.login_system {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.icon {
+    color: white;
+    font-size: 20px;
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.btn-lo {
+    background: rgb(74 108 247);
+}
+
+.btn-lo:hover {
+    background: rgba(74, 109, 247, 0.822);
+}
+
+.btn-up {
+    background-color: rgba(128, 128, 128, 0.185);
+}
