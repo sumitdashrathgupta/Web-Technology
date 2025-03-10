@@ -1,0 +1,62 @@
+.Features_contenar {
+    width: 76%;
+    margin: auto;
+}
+
+.Features_hading {
+    margin: auto;
+    text-align: center;
+    color: white;
+    width: 50%;
+    font-size: 2.5em;
+    margin-bottom: 1%;
+}
+
+.Features_para {
+    color: rgba(128, 128, 128, 0.705);
+    font-family: 10px;
+    width: 60%;
+    margin: auto;
+    text-align: center;
+}
+
+.cart_section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.cart {
+    margin: 5% 0;
+    width: 25%;
+    text-align: center;
+}
+
+.cart-1 {
+    margin: auto;
+    width: 30%;
+    border-radius: 50%;
+    padding: 10px;
+    background-color: rgba(128, 128, 128, 0.192);
+    margin-bottom: 30px;
+    transition: .2s linear;
+}
+
+.cart-1:hover {
+    background-color: rgb(74 108 247);
+    cursor: pointer;
+}
+
+.cart_para {
+    color: rgba(128, 128, 128, 0.562);
+}
+
+.cart_title {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.cart_icon {
+    font-size: 50px;
+    color: white;
+}
