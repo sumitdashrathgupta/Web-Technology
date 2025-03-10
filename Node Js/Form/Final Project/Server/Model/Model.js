@@ -23,9 +23,8 @@ const CreateSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    Image: {
-        data: Buffer,
-        contentType: String
+    image: {
+        type: String
     }
 });
 

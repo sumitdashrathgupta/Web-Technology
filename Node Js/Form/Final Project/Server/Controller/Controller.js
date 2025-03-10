@@ -4,9 +4,9 @@ const CreateData = require("../Model/Model")
 //? InserData
 
 const InsertData = async (req, res) => {
-    let { FName, LName, Password, Email, Phone, Image } = req.body
+    let { FName, LName, Password, Email, Phone, image } = req.body
     const Insert = new CreateData({
-        FName, LName, Password, Email, Phone, Image
+        FName, LName, Password, Email, Phone, image
     })
     Insert.save().then(() => {
         res.send("The login sucessfuly")

@@ -64,3 +64,29 @@ button:hover {
     background-color: rgb(18, 65, 158);
     color: white;
 }
+
+img {
+    width: 22px;
+}
+
+.upload_img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: aqua;
+    height: 100px;
+    width: 40%;
+    margin: auto;
+
+
+    & input[type] {
+        display: none;
+    }
+
+    & img {
+        margin: 10px 0px;
+        width: 100%;
+    }
+
+}

@@ -12,8 +12,7 @@ const Form = () => {
         LName: "",
         Password: "",
         Email: "",
-        Phone: "",
-        Image:""
+        Phone: ""
     })
 
     const submithandle = (e) => {
@@ -25,7 +24,6 @@ const Form = () => {
             Password: "",
             Email: "",
             Phone: "",
-            Image:""
         })
 
         axios.post('http://localhost:4000/insert', Data)
@@ -60,10 +58,6 @@ const Form = () => {
                     <div className="form-data">
                         <label htmlFor="email">Email Id :</label>
                         <input type="email" id="email" name="Email" value={Data.Email} onChange={handelform} />
-                    </div>
-                    <div className="form-data">
-                        <label htmlFor="image">Image :</label>
-                        <input type="file" id="file" name="Image" value={Data.Image} onChange={handelform} />
                     </div>
                     <div className="form-data">
                         <label htmlFor="phone">Phone :</label>
