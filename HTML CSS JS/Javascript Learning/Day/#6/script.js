@@ -1,12 +1,12 @@
-// function Employee(name,id){
-//     this.enmae=name;
-//     this.eId=id;
-// }
+function Employee(name,id){
+    this.enmae=name;
+    this.eId=id;
+}
 
-// let e1=new Employee("sumit",24);
-// console.log(e1);
-// console.log(e1.enmae);
-// console.log(e1.eId);
+let e1=new Employee("sumit",24);
+console.log(e1);
+console.log(e1.enmae);
+console.log(e1.eId);
 
 
 // static methods in object
@@ -24,7 +24,7 @@ const obj = {
     }
 }
 
-console.log(obj);
+// console.log(obj);
 // console.log(obj.name);
 // obj.name = "amit"
 // console.log(obj);

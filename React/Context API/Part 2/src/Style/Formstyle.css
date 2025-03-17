@@ -15,17 +15,18 @@
 }
 
 .formdata {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 30%;
     margin: 10px 5px;
 }
 
-.divd{
-    margin:5px 0;
+.divd {
+    margin: 5px 0;
 }
 
-button{
+button {
     width: 20%;
     border-radius: 10px;
     font-size: 12px;
@@ -36,7 +37,7 @@ button{
     padding: 5px 10px;
 }
 
-input{
+input {
     padding: 5px;
     outline: none;
     border: none;
@@ -44,6 +45,12 @@ input{
     transition: .2s linear;
 }
 
-input:hover{
+input:hover {
     outline: 1px solid rgb(12, 16, 243);
+}
+
+span {
+    position: absolute;
+    left: 92%;
+    top: 42%;
 }

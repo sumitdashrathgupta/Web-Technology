@@ -55,7 +55,7 @@ let b = outer();
 console.log(b());
 */
 
-(function sum(x,y){
-    console.log(x+y);
-})
-(2,4);
+// (function sum(x,y){
+//     console.log(x+y);
+// })
+// (2,4);
