@@ -5,3 +5,11 @@ git checkout -b brance name
 git add .
 git commit -m ""
 git push origin brance name
+
+
+
+How to create Expo App
+CMD - npm install -g expo-cli
+vs code - expo init MyNewProject
+start server - npm start or expo start
+
