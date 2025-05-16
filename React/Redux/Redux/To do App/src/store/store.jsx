@@ -1,5 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
+import CreateSlice from "../Slice/CreateSlice"
 
-const store=configureStore({
-    Data:[]
+const Store=configureStore({
+    reducer:CreateSlice
 })
+
+export default Store
