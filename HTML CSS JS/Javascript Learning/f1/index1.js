@@ -1,3 +1,4 @@
+// Lexical Scope
 let f1 = (i) => {
     let a = 12
     console.log(i);
@@ -16,7 +17,7 @@ let f1 = (i) => {
     }
 }
 
-// f1(2)
+// f1(2)Closures
 
 
 function work(){

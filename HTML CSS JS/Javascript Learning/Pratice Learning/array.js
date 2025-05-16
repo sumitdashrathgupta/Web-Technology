@@ -8,6 +8,7 @@ let obj = {
 let arr = [23, "sujdu", null, undefined, "work", 8628]
 // console.log(obj);
 // console.log(arr);
+// console.log(Object.entries(obj));  //It will be conver object to 2D array
 // console.log(Object.entries(obj).flat());  //It will be conver object to array
 // console.log(Object.keys(obj));  //It will be conver object to array key 
 // console.log(Object.values(obj));  //It will be conver object to array value
@@ -26,14 +27,14 @@ let arr = [23, "sujdu", null, undefined, "work", 8628]
 // console.log(arr);
 // console.log(arr.indexOf(null));
 // console.log(arr);
-// console.log(arr.concat(arrr));
+// console.log(arr.concat(arr));
 
 
 // let arrr = [34, [56], [76, 45], 76] 
 // console.log(arrr.flat());
 // let arrr = [34, 56, 76, 45, 76]
 // console.log(arrr.reverse()); //Array Reverse
-// let str="javascript"
+let str="javascript"
 // console.log(str.split(""))
 // console.log(str.split("").reverse().join(""));  // String Reverse
 // console.log(str.split(""))
@@ -41,3 +42,11 @@ let arr = [23, "sujdu", null, undefined, "work", 8628]
 let arrr = [34, 56, 76, 45, 76]
 // console.log(arrr.fill(33,2,4));
 
+
+
+
+// console.log(arr.join(" ")); //It will be array to string
+// console.log(str.split(""))  //It will be string to array
+// console.log(Object.entries(obj).flat());  //It will be conver object to array
+let ss=Object.entries(arrr)
+console.log(Object.fromEntries(ss)) // It will be convert array to object

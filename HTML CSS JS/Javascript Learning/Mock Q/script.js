@@ -13,15 +13,15 @@
 //     return `current number ${x}`
 // }
 
-// const b = (c, d) => {
-//     return c + d
-// }
+const b = (c, d) => {
+    return c + d
+}
 
-// const t = (e, f, g) => {
-//     return e + f + g
-// }
-// console.log(t(2, 7, 5));
-// console.log(a(12));
+const t = (e, f, g) => {
+    return e + f + g
+}
+console.log(t(2, 7, 5));
+console.log(a(12));
 
 
 
